@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 1, y: 0}
-  walkable: 0
+  walkable: 1
 --- !u!65 &113776963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 0}
-  walkable: 0
+  walkable: 1
 --- !u!65 &508779784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
-  walkable: 0
+  walkable: 1
 --- !u!65 &806019595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 1}
-  walkable: 0
+  walkable: 1
 --- !u!65 &1066288868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 1}
-  walkable: 0
+  walkable: 1
 --- !u!65 &1643238927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 1, y: 2}
-  walkable: 0
+  walkable: 1
 --- !u!65 &1839148657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 1, y: 1}
-  walkable: 0
+  walkable: 1
 --- !u!65 &1845717452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 2}
-  walkable: 0
+  walkable: 1
 --- !u!65 &2032871894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 2}
-  walkable: 0
+  walkable: 1
 --- !u!65 &2047553282
 BoxCollider:
   m_ObjectHideFlags: 0
