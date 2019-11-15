@@ -10,9 +10,9 @@ FBXHeaderExtension:  {
 		Month: 11
 		Day: 15
 		Hour: 1
-		Minute: 20
-		Second: 5
-		Millisecond: 231
+		Minute: 41
+		Second: 22
+		Millisecond: 21
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.0"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,21 +28,21 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Blade\blade.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Blade\blade.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Blade\blade.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Blade\blade.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2019"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:20:05.231"
-			P: "Original|FileName", "KString", "", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Blade\blade.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:41:22.019"
+			P: "Original|FileName", "KString", "", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Blade\blade.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2019"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:20:05.231"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:41:22.019"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\laura\Documents\3dsMax"
-			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Blade\blade_project.max"
+			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Blade\blade_project.max"
 		}
 	}
 }
@@ -60,7 +60,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",100
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "DefaultCamera", "KString", "", "", "Producer Front"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1766255459664, "", "Scene" {
+	Document: 1766475946352, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -226,7 +226,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1766451143648, "Geometry::", "Mesh" {
+	Geometry: 1766451126240, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.450980392156863,0.450980392156863,0.450980392156863
 		}
@@ -402,29 +402,29 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1766249168208, "Model::blade", "Mesh" {
+	Model: 1766249181360, "Model::blade", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
 			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
-			P: "GeometricTranslation", "Vector3D", "Vector", "",-57.0483169555664,-327.054809570313,-0.1004638671875
+			P: "GeometricRotation", "Vector3D", "Vector", "",-0,-0,12.4999990463257
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",0,-0,12.5000003137254
+			P: "Lcl Translation", "Lcl Translation", "", "A",-0.04143623046875,17.1739780761719,0.0502884033203125
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.0254,0.0254,0.0254
 			P: "MaxHandle", "int", "Integer", "UH",35
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	AnimationStack: 1765636478432, "AnimStack::Take 001", "" {
+	AnimationStack: 1765823750864, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 1766454669920, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 1766252381072, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -434,13 +434,13 @@ Objects:  {
 Connections:  {
 	
 	;Model::blade, Model::RootNode
-	C: "OO",1766249168208,0
+	C: "OO",1766249181360,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1766454669920,1765636478432
+	C: "OO",1766252381072,1765823750864
 	
 	;Geometry::, Model::blade
-	C: "OO",1766451143648,1766249168208
+	C: "OO",1766451126240,1766249181360
 }
 ;Takes section
 ;----------------------------------------------------

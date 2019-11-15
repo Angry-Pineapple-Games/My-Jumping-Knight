@@ -8,11 +8,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2019
 		Month: 11
-		Day: 14
-		Hour: 19
-		Minute: 38
-		Second: 32
-		Millisecond: 700
+		Day: 15
+		Hour: 1
+		Minute: 44
+		Second: 35
+		Millisecond: 763
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.0"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,19 +28,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Arrow\only_arrow.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Arrow\only_arrow.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Arrow\arrow.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Arrow\arrow.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2019"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "14/11/2019 18:38:32.699"
-			P: "Original|FileName", "KString", "", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Arrow\only_arrow.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:44:35.762"
+			P: "Original|FileName", "KString", "", "", "C:\Users\laura\Desktop\My-Jumping-Knight\Modelos3D\Traps\Arrow\arrow.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2019"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "14/11/2019 18:38:32.699"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "15/11/2019 00:44:35.762"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\laura\Documents\3dsMax"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\laura\Desktop\Cuarto\Juegos para web\My jumping knight\Trampas\Arrow\arrow_project.max"
 		}
@@ -60,7 +60,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",100
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "DefaultCamera", "KString", "", "", "Producer Right"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2188006962160, "", "Scene" {
+	Document: 1765690306688, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -226,7 +226,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2186369390272, "Geometry::", "Mesh" {
+	Geometry: 1766459429456, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.450980392156863,0.450980392156863,0.450980392156863
 		}
@@ -359,15 +359,17 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2186367441808, "Model::arrow", "Mesh" {
+	Model: 1766249172592, "Model::arrow", "Mesh" {
 		Version: 232
 		Properties70:  {
+			P: "ScalingOffset", "Vector3D", "Vector", "",0,-8.88178419700125e-16,-2.64697796016969e-23
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
 			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
-			P: "GeometricTranslation", "Vector3D", "Vector", "",0,0.552495360374451,-232.279357910156
+			P: "GeometricTranslation", "Vector3D", "Vector", "",0,0.552497088909149,-192.332061767578
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",0,5.09776441955566,-0
 			P: "Lcl Rotation", "Lcl Rotation", "", "A",90.0000025044781,-0,0
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.0254,0.0254,0.0254
 			P: "MaxHandle", "int", "Integer", "UH",35
@@ -375,13 +377,13 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	AnimationStack: 2187361583360, "AnimStack::Take 001", "" {
+	AnimationStack: 1765823804528, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 2186369219840, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 1765685965152, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -391,13 +393,13 @@ Objects:  {
 Connections:  {
 	
 	;Model::arrow, Model::RootNode
-	C: "OO",2186367441808,0
+	C: "OO",1766249172592,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2186369219840,2187361583360
+	C: "OO",1765685965152,1765823804528
 	
 	;Geometry::, Model::arrow
-	C: "OO",2186369390272,2186367441808
+	C: "OO",1766459429456,1766249172592
 }
 ;Takes section
 ;----------------------------------------------------
