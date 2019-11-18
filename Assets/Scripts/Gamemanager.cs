@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Gamemanager : MonoBehaviour
 {
-
+    #region Parameters
     public Player P1;
     public List<Tile> tiles;
     public int currentTileId;
     public int gridH;
     public int gridW;
+    public int stepCounter;
+    #endregion
+
+    #region Enumerations
+    public enum Direction { up, right, left, down };
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +31,23 @@ public class Gamemanager : MonoBehaviour
             if(currentTileId + gridW < tiles.Count)
             {
                 Tile nextTile = tiles[currentTileId + gridW];
-                if (nextTile.walkable)
+
+                if (nextTile == null)
+                {
+                    P1.Fall(Direction.up);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
                 {
                     currentTileId += gridW;
-                    P1.Move(Player.Direction.up);
+                    P1.Move(Direction.up);
+                    stepCounter++;
                 }
-                
+            }
+            else
+            {
+                P1.Fall(Direction.up);
+                stepCounter++;
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -38,11 +55,22 @@ public class Gamemanager : MonoBehaviour
             if(currentTileId - gridW >= 0)
             {
                 Tile nextTile = tiles[currentTileId - gridW];
-                if (nextTile.walkable)
+                if (nextTile == null)
+                {
+                    P1.Fall(Direction.down);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
                 {
                     currentTileId -= gridW;
-                    P1.Move(Player.Direction.down);
+                    P1.Move(Direction.down);
+                    stepCounter++;
                 }
+            }
+            else
+            {
+                P1.Fall(Direction.down);
+                stepCounter++;
             }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -50,11 +78,22 @@ public class Gamemanager : MonoBehaviour
             if((currentTileId + 1) % gridW  != 0)
             {
                 Tile nextTile = tiles[currentTileId + 1];
-                if (nextTile.walkable)
+                if (nextTile == null)
                 {
-                    currentTileId++;
-                    P1.Move(Player.Direction.right);
+                    P1.Fall(Direction.right);
+                    stepCounter++;
                 }
+                else if (nextTile.walkable)
+                {
+                    currentTileId ++;
+                    P1.Move(Direction.right);
+                    stepCounter++;
+                }
+            }
+            else
+            {
+                P1.Fall(Direction.right);
+                stepCounter++;
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -62,13 +101,24 @@ public class Gamemanager : MonoBehaviour
             if(((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId -1) >= 0)
             {
                 Tile nextTile = tiles[currentTileId -1];
-                if (nextTile.walkable)
+                if (nextTile == null)
+                {
+                    P1.Fall(Direction.left);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
                 {
                     currentTileId--;
-                    P1.Move(Player.Direction.left);
+                    P1.Move(Direction.left);
+                    stepCounter++;
                 }
             }
-            
+            else
+            {
+                P1.Fall(Direction.left);
+                stepCounter++;
+            }
+
         }
     }
 }

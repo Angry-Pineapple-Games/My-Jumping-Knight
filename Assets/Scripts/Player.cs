@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     #region Parameters
 
     public Vector2 pos;
-    public enum Direction {up, right, left, down}
+    public Gamemanager.Direction orientation;
+    
 
     #endregion
     // Start is called before the first frame update
@@ -22,24 +23,23 @@ public class Player : MonoBehaviour
         
     }
 
-    public void Move(Direction direction)
+    public void Move(Gamemanager.Direction direction)
     {
         switch (direction)
         {
-
-            case Direction.up:
+            case Gamemanager.Direction.up:
                 pos.y++;
                 transform.Translate(0, 0, -10);
                 break;
-            case Direction.down:
+            case Gamemanager.Direction.down:
                 pos.y--;
                 transform.Translate(0, 0, 10);
                 break;
-            case Direction.right:
+            case Gamemanager.Direction.right:
                 pos.x++;
                 transform.Translate(-10, 0, 0);
                 break;
-            case Direction.left:
+            case Gamemanager.Direction.left:
                 pos.x--;
                 transform.Translate(10, 0, 0);
                 break;
@@ -48,6 +48,9 @@ public class Player : MonoBehaviour
                 break;
         }
         //trasladar al transform (debera cambiarse por animacion de salto)
-        
+    }
+    public void Fall(Gamemanager.Direction direction)
+    {
+        Debug.Log("oops, i fell");
     }
 }
