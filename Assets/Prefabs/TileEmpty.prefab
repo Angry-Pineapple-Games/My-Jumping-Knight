@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3713010864252844174}
   - component: {fileID: 3713010864252844173}
   m_Layer: 0
-  m_Name: Tile0
+  m_Name: TileEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3713010864252844172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.32228, y: -7.899536, z: -15.111385}
+  m_LocalPosition: {x: 0, y: -7.899536, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,3 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   walkable: 1
+  hole: 0

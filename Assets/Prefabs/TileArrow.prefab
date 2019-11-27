@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6405826235711615236}
   - component: {fileID: 6405826235711615239}
   m_Layer: 0
-  m_Name: Tile21
+  m_Name: TileArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6405826235711615238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.32228, y: -7.899536, z: -55.085636}
+  m_LocalPosition: {x: 0, y: -7.899536, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6405826235342337818}
@@ -198,3 +198,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 2}
   walkable: 0
+  hole: 0

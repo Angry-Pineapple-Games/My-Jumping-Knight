@@ -10,6 +10,7 @@ public class Gamemanager : MonoBehaviour
     public int gridW;
     public int stepCounter;
     public TextAsset levelTxt;
+    public int startingTileId = 0;
     
     #endregion
 
@@ -20,7 +21,7 @@ public class Gamemanager : MonoBehaviour
     #endregion
 
     #region Parameters
-    private List<Tile> tiles;
+    public List<Tile> tiles;
     private int currentTileId;
     #endregion
 
@@ -31,6 +32,7 @@ public class Gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Instanciacion del nivel
         TileParser parser = new TileParser();
         List<int> tileIds = parser.GetTilesFromFile(levelTxt);
         int idX;
@@ -42,7 +44,7 @@ public class Gamemanager : MonoBehaviour
             switch ((TileType)tileIds[i])
             {
                 case TileType.none:
-                    tiles.Add(createTile(idX, idY, noTilePrefab));
+                    tiles.Add(null);
                     break;
                 case TileType.empty:
                     tiles.Add(createTile(idX, idY, TilePrefab));
@@ -55,6 +57,9 @@ public class Gamemanager : MonoBehaviour
                     break;
             }
         }
+        idX = startingTileId % gridW;
+        idY = startingTileId / gridW;
+        P1.transform.Translate(-10 * idX, 0, -10 * idY);
             
     }
 
@@ -68,7 +73,7 @@ public class Gamemanager : MonoBehaviour
             {
                 Tile nextTile = tiles[currentTileId + gridW];
 
-                if (nextTile.hole)
+                if (nextTile == null)
                 {
                     P1.Fall(Direction.up);
                     stepCounter++;
@@ -91,7 +96,7 @@ public class Gamemanager : MonoBehaviour
             if(currentTileId - gridW >= 0)
             {
                 Tile nextTile = tiles[currentTileId - gridW];
-                if (nextTile.hole)
+                if (nextTile == null)
                 {
                     P1.Fall(Direction.down);
                     stepCounter++;
@@ -114,7 +119,7 @@ public class Gamemanager : MonoBehaviour
             if((currentTileId + 1) % gridW  != 0)
             {
                 Tile nextTile = tiles[currentTileId + 1];
-                if (nextTile.hole)
+                if (nextTile == null)
                 {
                     P1.Fall(Direction.right);
                     stepCounter++;
@@ -137,7 +142,7 @@ public class Gamemanager : MonoBehaviour
             if(((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId -1) >= 0)
             {
                 Tile nextTile = tiles[currentTileId -1];
-                if (nextTile.hole)
+                if (nextTile == null)
                 {
                     P1.Fall(Direction.left);
                     stepCounter++;

@@ -8,12 +8,15 @@ public class TileParser
     public List<int> GetTilesFromFile(TextAsset asset)
     {
         List<int> tileIds = new List<int>();
-        string[] content = asset.text.Split(',');
-        for(int i = 0; i < content.Length; i++)
+        string[] lines = asset.text.Split(';');
+        for(int i = lines.Length - 1; i >= 0; i--)
         {
-            tileIds.Add(int.Parse(content[i]));
+            string[] content = lines[i].Split(',');
+            for(int j = 0; j < content.Length; j++)
+            {
+                tileIds.Add(int.Parse(content[j]));
+            }
         }
-
         return tileIds;
     }
 }

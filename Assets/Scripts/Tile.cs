@@ -6,7 +6,6 @@ public class Tile : MonoBehaviour
 {
     public Vector2 pos;
     public bool walkable = true;
-    public bool hole = false;
 
     // Start is called before the first frame update
     void Start()
