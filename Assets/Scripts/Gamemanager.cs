@@ -10,7 +10,6 @@ public class Gamemanager : MonoBehaviour
     public int gridW;
     public int stepCounter;
     public TextAsset levelTxt;
-    public int startingTileId = 0;
     
     #endregion
 
@@ -23,11 +22,13 @@ public class Gamemanager : MonoBehaviour
     #region Parameters
     public List<Tile> tiles;
     private int currentTileId;
+    private int startTileId = 0;
+    private int goalTileId;
     #endregion
 
     #region Enumerations
     public enum Direction { up, right, left, down };
-    public enum TileType { none = 0, empty = 1, arrow = 2};
+    public enum TileType { none = 0, empty = 1, arrow = 2, saw = 3, shield = 4, spikes = 5, heart = 6, blade = 7, clock = 8, goal = 9, start = 10 };
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -52,13 +53,40 @@ public class Gamemanager : MonoBehaviour
                 case TileType.arrow:
                     tiles.Add(createTile(idX, idY, ArrowTilePrefab));
                     break;
+                case TileType.saw:
+                    tiles.Add(createTile(idX, idY, ArrowTilePrefab));
+                    break;
+                case TileType.shield:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    break;
+                case TileType.spikes:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    break;
+                case TileType.heart:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    break;
+                case TileType.blade:
+                    tiles.Add(createTile(idX, idY, ArrowTilePrefab));
+                    break;
+                case TileType.clock:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    break;
+                case TileType.goal:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    goalTileId = i;
+                    break;
+                case TileType.start:
+                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    startTileId = i;
+                    break;
                 default:
                     Debug.Log("Id de tile erroneo.");
                     break;
             }
         }
-        idX = startingTileId % gridW;
-        idY = startingTileId / gridW;
+        idX = startTileId % gridW;
+        idY = startTileId / gridW;
+        currentTileId = startTileId;
         P1.transform.Translate(-10 * idX, 0, -10 * idY);
             
     }
@@ -160,6 +188,10 @@ public class Gamemanager : MonoBehaviour
                 stepCounter++;
             }
 
+        }
+        if(currentTileId == goalTileId)
+        {
+            Debug.Log("Goal");
         }
     }
 

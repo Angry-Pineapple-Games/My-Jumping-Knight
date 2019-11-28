@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TileParserTest.unity
+    guid: 64cf958138e7b364eb4e7211e4435910
   m_configObjects: {}
