@@ -63,13 +63,10 @@ public class Player : MonoBehaviour
                 spikes.Activate();
             }
         }
-        if (collider.gameObject.tag == "Spikes")
+
+        if(collider.gameObject.tag == "Hazard")
         {
-            Spikes spikes = collider.gameObject.GetComponent<Spikes>();
-            if (spikes.isActive())
-            {
-                GetHit();
-            }
+            GetHit();
         }
     }
 

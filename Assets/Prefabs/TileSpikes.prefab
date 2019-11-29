@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 0d176ec918769d14ab027d8ad91cbc86, type: 3}
       propertyPath: m_TagString
-      value: Spikes
+      value: Hazard
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0d176ec918769d14ab027d8ad91cbc86, type: 3}
       propertyPath: m_LocalPosition.x
