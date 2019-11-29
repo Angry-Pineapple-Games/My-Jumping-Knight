@@ -7,6 +7,7 @@ TagManager:
   - Spikes
   - Powerup
   - Hazard
+  - SpikesActivator
   layers:
   - Default
   - TransparentFX

@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 383.58765, y: 405.8309, z: 438.23395}
-  m_Center: {x: 0, y: -2.7517935e-13, z: 38.85535}
+  m_Size: {x: 383.58765, y: 405.8309, z: 327.8253}
+  m_Center: {x: 0, y: 3.5525782e-15, z: -16.349083}
 --- !u!95 &1236164805707874808
 Animator:
   serializedVersion: 3
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 8915381401257643688}
   m_Layer: 0
   m_Name: TileSpikes
-  m_TagString: Untagged
+  m_TagString: SpikesActivator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,8 +89,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8173281, y: 0.9500969, z: 0.8723068}
+  m_Center: {x: -0.0008963585, y: 0.18147583, z: -0.0008626938}
 --- !u!114 &8915381401257643688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 385684e306b21f745883840fda0e03c1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 385684e306b21f745883840fda0e03c1, type: 3}

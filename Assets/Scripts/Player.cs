@@ -55,16 +55,20 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        if(collider.gameObject.tag == "SpikesActivator")
+        {
+            Spikes spikes = collider.gameObject.GetComponentInChildren<Spikes>();
+            if (!spikes.isActive())
+            {
+                spikes.Activate();
+            }
+        }
         if (collider.gameObject.tag == "Spikes")
         {
             Spikes spikes = collider.gameObject.GetComponent<Spikes>();
             if (spikes.isActive())
             {
                 GetHit();
-            }
-            else
-            {
-                spikes.Activate();
             }
         }
     }
