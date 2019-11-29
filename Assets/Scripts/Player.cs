@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 
     public Vector2 pos;
     public Gamemanager.Direction orientation;
-    
 
     #endregion
     // Start is called before the first frame update
@@ -52,5 +51,26 @@ public class Player : MonoBehaviour
     public void Fall(Gamemanager.Direction direction)
     {
         Debug.Log("oops, i fell");
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Spikes")
+        {
+            Spikes spikes = collider.gameObject.GetComponent<Spikes>();
+            if (spikes.isActive())
+            {
+                GetHit();
+            }
+            else
+            {
+                spikes.Activate();
+            }
+        }
+    }
+
+    public void GetHit()
+    {
+        Debug.Log("Ouch");
     }
 }

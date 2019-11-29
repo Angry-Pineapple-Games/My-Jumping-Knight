@@ -16,11 +16,11 @@ public class Gamemanager : MonoBehaviour
     #region Prefabs
     public Tile TilePrefab;
     public Tile ArrowTilePrefab;
-    public Tile noTilePrefab;
+    public Tile SpikesTilePrefab;
     #endregion
 
     #region Parameters
-    public List<Tile> tiles;
+    private List<Tile> tiles;
     private int currentTileId;
     private int startTileId = 0;
     private int goalTileId;
@@ -34,6 +34,7 @@ public class Gamemanager : MonoBehaviour
     void Start()
     {
         //Instanciacion del nivel
+        tiles = new List<Tile>();
         TileParser parser = new TileParser();
         List<int> tileIds = parser.GetTilesFromFile(levelTxt);
         int idX;
@@ -60,7 +61,7 @@ public class Gamemanager : MonoBehaviour
                     tiles.Add(createTile(idX, idY, TilePrefab));
                     break;
                 case TileType.spikes:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, SpikesTilePrefab));
                     break;
                 case TileType.heart:
                     tiles.Add(createTile(idX, idY, TilePrefab));
