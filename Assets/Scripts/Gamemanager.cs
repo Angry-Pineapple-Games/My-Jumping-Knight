@@ -19,6 +19,7 @@ public class Gamemanager : MonoBehaviour
     public Tile SpikesTilePrefab;
     public Tile SawTilePrefab;
     public Tile EmptySawTilePrefab;
+    public Tile BladeTilePrefab;
     #endregion
 
     #region Parameters
@@ -104,7 +105,7 @@ public class Gamemanager : MonoBehaviour
                     tiles.Add(createTile(idX, idY, TilePrefab));
                     break;
                 case TileType.blade:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, BladeTilePrefab));
                     break;
                 case TileType.clock:
                     tiles.Add(createTile(idX, idY, TilePrefab));

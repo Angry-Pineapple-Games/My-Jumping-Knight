@@ -1,21 +1,14 @@
 fileFormatVersion: 2
-guid: 48503f3b52785dc47af31e6b411e656f
+guid: 36b7f6ae749910a40a9a520e8704aa6f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: blade
-    100002: //RootNode
-    100004: tile
-    400000: blade
-    400002: //RootNode
-    400004: tile
+    100000: //RootNode
+    400000: //RootNode
     2100000: No Name
-    2300000: blade
-    2300002: tile
-    3300000: blade
-    3300002: tile
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: tile
-    4300002: blade
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
