@@ -17,6 +17,8 @@ public class Gamemanager : MonoBehaviour
     public Tile TilePrefab;
     public Tile ArrowTilePrefab;
     public Tile SpikesTilePrefab;
+    public Tile SawTilePrefab;
+    public Tile EmptySawTilePrefab;
     #endregion
 
     #region Parameters
@@ -38,8 +40,9 @@ public class Gamemanager : MonoBehaviour
         heart = 6,
         blade = 7,
         clock = 8,
-        goal = 9,
-        start = 10 };
+        emptySaw = 9,
+        goal = 10,
+        start = 11 };
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -76,7 +79,20 @@ public class Gamemanager : MonoBehaviour
                     }
                     break;
                 case TileType.saw:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, SawTilePrefab));
+                    tiles[i].GetComponentInChildren<Saw>().tileDistance = (tileIds[i] * 100) % 10;
+                    if (tileIds[i] >= 3.1f)
+                    {
+                        tiles[i].transform.Rotate(0, 180, 0);
+                    }
+                    else if (tileIds[i] >= 3.2f)
+                    {
+                        tiles[i].transform.Rotate(0, -90, 0);
+                    }
+                    else if (tileIds[i] >= 3.3f)
+                    {
+                        tiles[i].transform.Rotate(0, 90, 0);
+                    }
                     break;
                 case TileType.shield:
                     tiles.Add(createTile(idX, idY, TilePrefab));
@@ -92,6 +108,13 @@ public class Gamemanager : MonoBehaviour
                     break;
                 case TileType.clock:
                     tiles.Add(createTile(idX, idY, TilePrefab));
+                    break;
+                case TileType.emptySaw:
+                    tiles.Add(createTile(idX, idY, EmptySawTilePrefab));
+                    if(tileIds[i] == 9.1f)
+                    {
+                        tiles[i].transform.Rotate(0, 90, 0);
+                    }
                     break;
                 case TileType.goal:
                     tiles.Add(createTile(idX, idY, TilePrefab));

@@ -283,8 +283,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812852398}
-  m_LocalRotation: {x: -0.041184593, y: -0.89832497, z: 0.4288028, w: -0.08628016}
-  m_LocalPosition: {x: -34.314133, y: 117.90001, z: 74.411385}
+  m_LocalRotation: {x: -0.041184593, y: -0.898325, z: 0.4288027, w: -0.08628019}
+  m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 528876621}
@@ -400,8 +400,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141551220}
-  m_LocalRotation: {x: -0.041184593, y: -0.89832497, z: 0.4288028, w: -0.08628016}
-  m_LocalPosition: {x: -34.314133, y: 117.90001, z: 74.411385}
+  m_LocalRotation: {x: -0.041184593, y: -0.898325, z: 0.4288027, w: -0.08628019}
+  m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -446,6 +446,10 @@ MonoBehaviour:
   ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,
     type: 3}
   SpikesTilePrefab: {fileID: 8915381401257643688, guid: e2610b86890c6434e8913f2de52c219a,
+    type: 3}
+  SawTilePrefab: {fileID: 2886538982317573298, guid: 974a48ade3ae3344aa7a6d05843eaf59,
+    type: 3}
+  EmptySawTilePrefab: {fileID: 5301903900554277248, guid: 5e11ddffe455d5f40b21bc573dd29aaa,
     type: 3}
 --- !u!4 &1188972555
 Transform:
@@ -617,7 +621,7 @@ PrefabInstance:
     - target: {fileID: 5085651128339645543, guid: a2c72758d478d7544ba682248c249050,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0583382
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 5085651128339645543, guid: a2c72758d478d7544ba682248c249050,
         type: 3}
