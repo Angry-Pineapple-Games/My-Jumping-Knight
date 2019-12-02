@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: fd5eb2dd38ea1b14a9cfb8919f67f28a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: caballero_riggeado:Character1_Ctrl_ChestEndEffector
+    100004: caballero_riggeado:Character1_Ctrl_Head
+    100006: caballero_riggeado:Character1_Ctrl_HeadEffector
+    100008: caballero_riggeado:Character1_Ctrl_Hips
+    100010: caballero_riggeado:Character1_Ctrl_HipsEffector
+    100012: caballero_riggeado:Character1_Ctrl_LeftAnkleEffector
+    100014: caballero_riggeado:Character1_Ctrl_LeftArm
+    100016: caballero_riggeado:Character1_Ctrl_LeftElbowEffector
+    100018: caballero_riggeado:Character1_Ctrl_LeftFoot
+    100020: caballero_riggeado:Character1_Ctrl_LeftForeArm
+    100022: caballero_riggeado:Character1_Ctrl_LeftHand
+    100024: caballero_riggeado:Character1_Ctrl_LeftHipEffector
+    100026: caballero_riggeado:Character1_Ctrl_LeftKneeEffector
+    100028: caballero_riggeado:Character1_Ctrl_LeftLeg
+    100030: caballero_riggeado:Character1_Ctrl_LeftShoulder
+    100032: caballero_riggeado:Character1_Ctrl_LeftShoulderEffector
+    100034: caballero_riggeado:Character1_Ctrl_LeftUpLeg
+    100036: caballero_riggeado:Character1_Ctrl_LeftWristEffector
+    100038: caballero_riggeado:Character1_Ctrl_Neck
+    100040: caballero_riggeado:Character1_Ctrl_Reference
+    100042: caballero_riggeado:Character1_Ctrl_RightAnkleEffector
+    100044: caballero_riggeado:Character1_Ctrl_RightArm
+    100046: caballero_riggeado:Character1_Ctrl_RightElbowEffector
+    100048: caballero_riggeado:Character1_Ctrl_RightFoot
+    100050: caballero_riggeado:Character1_Ctrl_RightForeArm
+    100052: caballero_riggeado:Character1_Ctrl_RightHand
+    100054: caballero_riggeado:Character1_Ctrl_RightHipEffector
+    100056: caballero_riggeado:Character1_Ctrl_RightKneeEffector
+    100058: caballero_riggeado:Character1_Ctrl_RightLeg
+    100060: caballero_riggeado:Character1_Ctrl_RightShoulder
+    100062: caballero_riggeado:Character1_Ctrl_RightShoulderEffector
+    100064: caballero_riggeado:Character1_Ctrl_RightUpLeg
+    100066: caballero_riggeado:Character1_Ctrl_RightWristEffector
+    100068: caballero_riggeado:Character1_Ctrl_Spine
+    100070: caballero_riggeado:Character1_Ctrl_Spine1
+    100072: caballero_riggeado:Character1_Ctrl_Spine2
+    100074: caballero_riggeado:Character1_Head
+    100076: caballero_riggeado:Character1_Hips
+    100078: caballero_riggeado:Character1_LeftArm
+    100080: caballero_riggeado:Character1_LeftFoot
+    100082: caballero_riggeado:Character1_LeftForeArm
+    100084: caballero_riggeado:Character1_LeftHand
+    100086: caballero_riggeado:Character1_LeftLeg
+    100088: caballero_riggeado:Character1_LeftShoulder
+    100090: caballero_riggeado:Character1_LeftUpLeg
+    100092: caballero_riggeado:Character1_Neck
+    100094: caballero_riggeado:Character1_Reference
+    100096: caballero_riggeado:Character1_RightArm
+    100098: caballero_riggeado:Character1_RightFoot
+    100100: caballero_riggeado:Character1_RightForeArm
+    100102: caballero_riggeado:Character1_RightHand
+    100104: caballero_riggeado:Character1_RightLeg
+    100106: caballero_riggeado:Character1_RightShoulder
+    100108: caballero_riggeado:Character1_RightUpLeg
+    100110: caballero_riggeado:Character1_Spine
+    100112: caballero_riggeado:Character1_Spine1
+    100114: caballero_riggeado:Character1_Spine2
+    100116: caballero_riggeado:personaje
+    400000: //RootNode
+    400002: caballero_riggeado:Character1_Ctrl_ChestEndEffector
+    400004: caballero_riggeado:Character1_Ctrl_Head
+    400006: caballero_riggeado:Character1_Ctrl_HeadEffector
+    400008: caballero_riggeado:Character1_Ctrl_Hips
+    400010: caballero_riggeado:Character1_Ctrl_HipsEffector
+    400012: caballero_riggeado:Character1_Ctrl_LeftAnkleEffector
+    400014: caballero_riggeado:Character1_Ctrl_LeftArm
+    400016: caballero_riggeado:Character1_Ctrl_LeftElbowEffector
+    400018: caballero_riggeado:Character1_Ctrl_LeftFoot
+    400020: caballero_riggeado:Character1_Ctrl_LeftForeArm
+    400022: caballero_riggeado:Character1_Ctrl_LeftHand
+    400024: caballero_riggeado:Character1_Ctrl_LeftHipEffector
+    400026: caballero_riggeado:Character1_Ctrl_LeftKneeEffector
+    400028: caballero_riggeado:Character1_Ctrl_LeftLeg
+    400030: caballero_riggeado:Character1_Ctrl_LeftShoulder
+    400032: caballero_riggeado:Character1_Ctrl_LeftShoulderEffector
+    400034: caballero_riggeado:Character1_Ctrl_LeftUpLeg
+    400036: caballero_riggeado:Character1_Ctrl_LeftWristEffector
+    400038: caballero_riggeado:Character1_Ctrl_Neck
+    400040: caballero_riggeado:Character1_Ctrl_Reference
+    400042: caballero_riggeado:Character1_Ctrl_RightAnkleEffector
+    400044: caballero_riggeado:Character1_Ctrl_RightArm
+    400046: caballero_riggeado:Character1_Ctrl_RightElbowEffector
+    400048: caballero_riggeado:Character1_Ctrl_RightFoot
+    400050: caballero_riggeado:Character1_Ctrl_RightForeArm
+    400052: caballero_riggeado:Character1_Ctrl_RightHand
+    400054: caballero_riggeado:Character1_Ctrl_RightHipEffector
+    400056: caballero_riggeado:Character1_Ctrl_RightKneeEffector
+    400058: caballero_riggeado:Character1_Ctrl_RightLeg
+    400060: caballero_riggeado:Character1_Ctrl_RightShoulder
+    400062: caballero_riggeado:Character1_Ctrl_RightShoulderEffector
+    400064: caballero_riggeado:Character1_Ctrl_RightUpLeg
+    400066: caballero_riggeado:Character1_Ctrl_RightWristEffector
+    400068: caballero_riggeado:Character1_Ctrl_Spine
+    400070: caballero_riggeado:Character1_Ctrl_Spine1
+    400072: caballero_riggeado:Character1_Ctrl_Spine2
+    400074: caballero_riggeado:Character1_Head
+    400076: caballero_riggeado:Character1_Hips
+    400078: caballero_riggeado:Character1_LeftArm
+    400080: caballero_riggeado:Character1_LeftFoot
+    400082: caballero_riggeado:Character1_LeftForeArm
+    400084: caballero_riggeado:Character1_LeftHand
+    400086: caballero_riggeado:Character1_LeftLeg
+    400088: caballero_riggeado:Character1_LeftShoulder
+    400090: caballero_riggeado:Character1_LeftUpLeg
+    400092: caballero_riggeado:Character1_Neck
+    400094: caballero_riggeado:Character1_Reference
+    400096: caballero_riggeado:Character1_RightArm
+    400098: caballero_riggeado:Character1_RightFoot
+    400100: caballero_riggeado:Character1_RightForeArm
+    400102: caballero_riggeado:Character1_RightHand
+    400104: caballero_riggeado:Character1_RightLeg
+    400106: caballero_riggeado:Character1_RightShoulder
+    400108: caballero_riggeado:Character1_RightUpLeg
+    400110: caballero_riggeado:Character1_Spine
+    400112: caballero_riggeado:Character1_Spine1
+    400114: caballero_riggeado:Character1_Spine2
+    400116: caballero_riggeado:personaje
+    2100000: lambert1
+    4300000: caballero_riggeado:personaje
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: caballero_riggeado:personaje
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
