@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private bool clock = false;
     float timePassed = 0.0f;
     public float timeInterval = 5f;
+
+    private Animator animator;
     
     #endregion
 
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         pos = new Vector2(0, 0);
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -51,25 +54,30 @@ public class Player : MonoBehaviour
         {
             case Gamemanager.Direction.up:
                 pos.y++;
-                transform.Translate(0, 0, -10);
+                //transform.Translate(0, 0, -10);
+                animator.SetInteger("Direction", 0);
                 break;
             case Gamemanager.Direction.down:
                 pos.y--;
                 transform.Translate(0, 0, 10);
+                animator.SetInteger("Direction", 3);
                 break;
             case Gamemanager.Direction.right:
                 pos.x++;
                 transform.Translate(-10, 0, 0);
+                animator.SetInteger("Direction", 1);
                 break;
             case Gamemanager.Direction.left:
                 pos.x--;
                 transform.Translate(10, 0, 0);
+                animator.SetInteger("Direction", 2);
                 break;
             default:
                 Debug.Log("Error at Player.Move(): default case in switch");
                 break;
         }
         //trasladar al transform (debera cambiarse por animacion de salto)
+        animator.SetTrigger("Jump");
     }
     public void Fall(Gamemanager.Direction direction)
     {
