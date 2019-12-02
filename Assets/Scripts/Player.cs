@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private bool shield = false;
     private bool clock = false;
     float timePassed = 0.0f;
-    public float timeInterval = 5f;
+    public float timeInterval = 8f;
     
     #endregion
 
