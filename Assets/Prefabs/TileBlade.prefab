@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8834753358441740618}
   - component: {fileID: 4599542286024092590}
+  - component: {fileID: 539667675971262842}
   m_Layer: 0
   m_Name: bladePivot
   m_TagString: Untagged
@@ -112,6 +113,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &539667675971262842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236446483068406216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000d17c024ee01a42b17e70f5eecfdc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &1958778372797166655
 CapsuleCollider:
   m_ObjectHideFlags: 0

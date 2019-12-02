@@ -2,39 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowLaucher : MonoBehaviour
+public class Blade : MonoBehaviour
 {
-    public Arrow arrowPrefab;
-    public float timeInterval;
-    float timePassed = 0.0f;
-    private float speedChange = 1f;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timePassed += Time.deltaTime;
-        if (timePassed >= timeInterval * speedChange)
-        {
-            Arrow newArrow = Instantiate(arrowPrefab, this.transform);
-            newArrow.speedChange = 1 / speedChange;
-            timePassed = 0f;
-        }
+        
     }
 
     private void SlowDown()
     {
-        speedChange = 2f;
+        animator.speed = 0.5f;
     }
 
     private void RestoreTime()
     {
-        speedChange = 1f;
+        animator.speed = 1f;
     }
 
     private void OnEnable()

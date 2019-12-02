@@ -6,13 +6,15 @@ public class Saw : MonoBehaviour
 {
     public float tileDistance = 4f;
     public float speed = 0.5f;
+    private float speedChange = 1f;
     public int startDirection = -1;
     private int direction = -1;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,30 @@ public class Saw : MonoBehaviour
         {
             direction = startDirection;
         }
-        transform.Translate(direction * speed, 0f, 0f);
+        transform.Translate(direction * speed * speedChange, 0f, 0f);
+    }
+
+    private void SlowDown()
+    {
+        speedChange = 0.5f;
+        animator.speed = 0.5f;
+    }
+
+    private void RestoreTime()
+    {
+        speedChange = 1f;
+        animator.speed = 1f;
+    }
+
+    private void OnEnable()
+    {
+        Player.OnTimeStopped += SlowDown;
+        Player.OnTimeStarted += RestoreTime;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnTimeStopped -= SlowDown;
+        Player.OnTimeStarted -= RestoreTime;
     }
 }

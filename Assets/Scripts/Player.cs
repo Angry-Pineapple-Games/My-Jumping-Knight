@@ -10,6 +10,19 @@ public class Player : MonoBehaviour
     public Gamemanager.Direction orientation;
     private int health = 3;
     private bool shield = false;
+    private bool clock = false;
+    float timePassed = 0.0f;
+    public float timeInterval = 5f;
+    
+    #endregion
+
+    #region Events
+
+    public delegate void StopTime();
+    public static event StopTime OnTimeStopped;
+
+    public delegate void StartTime();
+    public static event StartTime OnTimeStarted;
 
     #endregion
     // Start is called before the first frame update
@@ -21,7 +34,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (clock)
+        {
+            timePassed += Time.deltaTime;
+            if(timePassed >= timeInterval)
+            {
+                timePassed = 0.0f;
+                restoreTime();
+            }
+        }
     }
 
     public void Move(Gamemanager.Direction direction)
@@ -111,7 +132,18 @@ public class Player : MonoBehaviour
 
     public void obtainHourglass()
     {
+        if(OnTimeStopped != null)
+            OnTimeStopped();
+        clock = true;
         Debug.Log("Got clock");
+    }
+
+    public void restoreTime()
+    {
+        if (OnTimeStarted != null)
+            OnTimeStarted();
+        clock = false;
+        Debug.Log("Time back");
     }
 
     #region getters and setters

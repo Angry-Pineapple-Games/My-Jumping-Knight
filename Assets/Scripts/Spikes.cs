@@ -32,5 +32,26 @@ public class Spikes : MonoBehaviour
     {
         this.active = active;
     }
-    
+
+    private void SlowDown()
+    {
+        animator.speed = 0.5f;
+    }
+
+    private void RestoreTime()
+    {
+        animator.speed = 1f;
+    }
+
+    private void OnEnable()
+    {
+        Player.OnTimeStopped += SlowDown;
+        Player.OnTimeStarted += RestoreTime;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnTimeStopped -= SlowDown;
+        Player.OnTimeStarted -= RestoreTime;
+    }
 }
