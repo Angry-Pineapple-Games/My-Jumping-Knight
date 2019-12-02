@@ -20,6 +20,9 @@ public class Gamemanager : MonoBehaviour
     public Tile SawTilePrefab;
     public Tile EmptySawTilePrefab;
     public Tile BladeTilePrefab;
+    public Tile HeartTilePrefab;
+    public Tile ShieldTilePrefab;
+    public Tile HourglassTilePrefab;
     #endregion
 
     #region Parameters
@@ -96,19 +99,19 @@ public class Gamemanager : MonoBehaviour
                     }
                     break;
                 case TileType.shield:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, ShieldTilePrefab));
                     break;
                 case TileType.spikes:
                     tiles.Add(createTile(idX, idY, SpikesTilePrefab));
                     break;
                 case TileType.heart:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, HeartTilePrefab));
                     break;
                 case TileType.blade:
                     tiles.Add(createTile(idX, idY, BladeTilePrefab));
                     break;
                 case TileType.clock:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, HourglassTilePrefab));
                     break;
                 case TileType.emptySaw:
                     tiles.Add(createTile(idX, idY, EmptySawTilePrefab));
@@ -249,5 +252,10 @@ public class Gamemanager : MonoBehaviour
         Tile tile = Instantiate(prefab, this.transform);
         tile.transform.Translate(-10 * xId, 0, -10 * yId);
         return tile;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
     }
 }

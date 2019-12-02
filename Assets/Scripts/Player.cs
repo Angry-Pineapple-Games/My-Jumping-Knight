@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     public Vector2 pos;
     public Gamemanager.Direction orientation;
+    private int health = 3;
+    private bool shield = false;
 
     #endregion
     // Start is called before the first frame update
@@ -68,10 +70,56 @@ public class Player : MonoBehaviour
         {
             GetHit();
         }
+
+        if(collider.gameObject.tag == "Powerup")
+        {
+            Powerup powerup = collider.gameObject.GetComponent<Powerup>();
+            powerup.GetPowerUp(this);
+        }
     }
 
     public void GetHit()
     {
+        if (shield)
+        {
+            shield = false;
+        }
+        else if (health > 0)
+        {
+            health--;
+        }
+        else
+        {
+            Debug.Log("GameOver");
+        }
         Debug.Log("Ouch");
     }
+
+    public void healHealth()
+    {
+        if(health < 3)
+        {
+            health++;
+        }
+        Debug.Log("healed");
+    }
+
+    public void obtainShield()
+    {
+        shield = true;
+    }
+
+    public void obtainHourglass()
+    {
+        Debug.Log("Got clock");
+    }
+
+    #region getters and setters
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+    #endregion
 }
