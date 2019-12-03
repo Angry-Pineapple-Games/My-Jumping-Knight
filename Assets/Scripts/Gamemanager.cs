@@ -144,100 +144,107 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Inputs
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (!P1.jumping)
         {
-            if(currentTileId + gridW < tiles.Count)
+            //Inputs
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Tile nextTile = tiles[currentTileId + gridW];
+                if (currentTileId + gridW < tiles.Count)
+                {
+                    Tile nextTile = tiles[currentTileId + gridW];
 
-                if (nextTile == null)
+                    if (nextTile == null)
+                    {
+                        P1.Fall(Direction.up);
+                        stepCounter++;
+                    }
+                    else if (nextTile.walkable)
+                    {
+                        currentTileId += gridW;
+                        P1.SetTargetTile(nextTile);
+                        P1.Move(Direction.up);
+                        stepCounter++;
+                    }
+                }
+                else
                 {
                     P1.Fall(Direction.up);
                     stepCounter++;
                 }
-                else if (nextTile.walkable)
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (currentTileId - gridW >= 0)
                 {
-                    currentTileId += gridW;
-                    P1.Move(Direction.up);
-                    stepCounter++;
+                    Tile nextTile = tiles[currentTileId - gridW];
+                    if (nextTile == null)
+                    {
+                        P1.Fall(Direction.down);
+                        stepCounter++;
+                    }
+                    else if (nextTile.walkable)
+                    {
+                        currentTileId -= gridW;
+                        P1.SetTargetTile(nextTile);
+                        P1.Move(Direction.down);
+                        stepCounter++;
+                    }
                 }
-            }
-            else
-            {
-                P1.Fall(Direction.up);
-                stepCounter++;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if(currentTileId - gridW >= 0)
-            {
-                Tile nextTile = tiles[currentTileId - gridW];
-                if (nextTile == null)
+                else
                 {
                     P1.Fall(Direction.down);
                     stepCounter++;
                 }
-                else if (nextTile.walkable)
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if ((currentTileId + 1) % gridW != 0)
                 {
-                    currentTileId -= gridW;
-                    P1.Move(Direction.down);
-                    stepCounter++;
+                    Tile nextTile = tiles[currentTileId + 1];
+                    if (nextTile == null)
+                    {
+                        P1.Fall(Direction.right);
+                        stepCounter++;
+                    }
+                    else if (nextTile.walkable)
+                    {
+                        currentTileId++;
+                        P1.SetTargetTile(nextTile);
+                        P1.Move(Direction.right);
+                        stepCounter++;
+                    }
                 }
-            }
-            else
-            {
-                P1.Fall(Direction.down);
-                stepCounter++;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if((currentTileId + 1) % gridW  != 0)
-            {
-                Tile nextTile = tiles[currentTileId + 1];
-                if (nextTile == null)
+                else
                 {
                     P1.Fall(Direction.right);
                     stepCounter++;
                 }
-                else if (nextTile.walkable)
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId - 1) >= 0)
                 {
-                    currentTileId ++;
-                    P1.Move(Direction.right);
-                    stepCounter++;
+                    Tile nextTile = tiles[currentTileId - 1];
+                    if (nextTile == null)
+                    {
+                        P1.Fall(Direction.left);
+                        stepCounter++;
+                    }
+                    else if (nextTile.walkable)
+                    {
+                        currentTileId--;
+
+                        P1.SetTargetTile(nextTile);
+                        P1.Move(Direction.left);
+                        stepCounter++;
+                    }
                 }
-            }
-            else
-            {
-                P1.Fall(Direction.right);
-                stepCounter++;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if(((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId -1) >= 0)
-            {
-                Tile nextTile = tiles[currentTileId -1];
-                if (nextTile == null)
+                else
                 {
                     P1.Fall(Direction.left);
                     stepCounter++;
                 }
-                else if (nextTile.walkable)
-                {
-                    currentTileId--;
-                    P1.Move(Direction.left);
-                    stepCounter++;
-                }
             }
-            else
-            {
-                P1.Fall(Direction.left);
-                stepCounter++;
-            }
-
         }
         if(currentTileId == goalTileId)
         {
