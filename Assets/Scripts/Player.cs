@@ -128,10 +128,12 @@ public class Player : MonoBehaviour
         else if (health > 0)
         {
             health--;
+            animator.SetTrigger("Damage");
         }
         else
         {
             Debug.Log("GameOver");
+            animator.SetTrigger("Damage");
         }
         Debug.Log("Ouch");
     }
