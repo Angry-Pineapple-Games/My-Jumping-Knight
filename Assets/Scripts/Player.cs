@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     private bool clock = false;
     float timePassed = 0.0f;
     public float timeInterval = 5f;
+    private Vector3 targetTile;
+    public bool jumping = false;
+    public float speed = 0.2f;
 
     private Animator animator;
     
@@ -46,6 +49,14 @@ public class Player : MonoBehaviour
                 restoreTime();
             }
         }
+        if (jumping && targetTile != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetTile, speed);
+            if(transform.position == targetTile)
+            {
+                jumping = false;
+            }
+        }
     }
 
     public void Move(Gamemanager.Direction direction)
@@ -54,23 +65,23 @@ public class Player : MonoBehaviour
         {
             case Gamemanager.Direction.up:
                 pos.y++;
-                //transform.Translate(0, 0, -10);
-                animator.SetInteger("Direction", 0);
+                
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 180, 0);
                 break;
             case Gamemanager.Direction.down:
                 pos.y--;
-                transform.Translate(0, 0, 10);
-                animator.SetInteger("Direction", 3);
+                
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 0);
                 break;
             case Gamemanager.Direction.right:
                 pos.x++;
-                transform.Translate(-10, 0, 0);
-                animator.SetInteger("Direction", 1);
+                
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, -90, 0);
                 break;
             case Gamemanager.Direction.left:
                 pos.x--;
-                transform.Translate(10, 0, 0);
-                animator.SetInteger("Direction", 2);
+                
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 90, 0);
                 break;
             default:
                 Debug.Log("Error at Player.Move(): default case in switch");
@@ -78,6 +89,7 @@ public class Player : MonoBehaviour
         }
         //trasladar al transform (debera cambiarse por animacion de salto)
         animator.SetTrigger("Jump");
+        jumping = true;
     }
     public void Fall(Gamemanager.Direction direction)
     {
@@ -159,6 +171,12 @@ public class Player : MonoBehaviour
     public int getHealth()
     {
         return health;
+    }
+
+    public void SetTargetTile(Tile target)
+    {
+        Vector3 pos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+        targetTile = pos;
     }
 
     #endregion
