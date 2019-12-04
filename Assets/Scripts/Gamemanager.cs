@@ -144,8 +144,9 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!P1.jumping)
+        if (!P1.jumping && !P1.falling)
         {
+            Tile lastTile = tiles[currentTileId];
             //Inputs
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -155,19 +156,23 @@ public class Gamemanager : MonoBehaviour
 
                     if (nextTile == null)
                     {
+                        P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
+                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                         P1.Fall(Direction.up);
                         stepCounter++;
                     }
                     else if (nextTile.walkable)
                     {
                         currentTileId += gridW;
-                        P1.SetTargetTile(nextTile);
+                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
                         P1.Move(Direction.up);
                         stepCounter++;
                     }
                 }
                 else
                 {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                     P1.Fall(Direction.up);
                     stepCounter++;
                 }
@@ -179,19 +184,23 @@ public class Gamemanager : MonoBehaviour
                     Tile nextTile = tiles[currentTileId - gridW];
                     if (nextTile == null)
                     {
+                        P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
+                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                         P1.Fall(Direction.down);
                         stepCounter++;
                     }
                     else if (nextTile.walkable)
                     {
                         currentTileId -= gridW;
-                        P1.SetTargetTile(nextTile);
+                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
                         P1.Move(Direction.down);
                         stepCounter++;
                     }
                 }
                 else
                 {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                     P1.Fall(Direction.down);
                     stepCounter++;
                 }
@@ -203,19 +212,23 @@ public class Gamemanager : MonoBehaviour
                     Tile nextTile = tiles[currentTileId + 1];
                     if (nextTile == null)
                     {
+                        P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
+                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                         P1.Fall(Direction.right);
                         stepCounter++;
                     }
                     else if (nextTile.walkable)
                     {
                         currentTileId++;
-                        P1.SetTargetTile(nextTile);
+                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
                         P1.Move(Direction.right);
                         stepCounter++;
                     }
                 }
                 else
                 {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                     P1.Fall(Direction.right);
                     stepCounter++;
                 }
@@ -227,6 +240,8 @@ public class Gamemanager : MonoBehaviour
                     Tile nextTile = tiles[currentTileId - 1];
                     if (nextTile == null)
                     {
+                        P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
+                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                         P1.Fall(Direction.left);
                         stepCounter++;
                     }
@@ -234,13 +249,15 @@ public class Gamemanager : MonoBehaviour
                     {
                         currentTileId--;
 
-                        P1.SetTargetTile(nextTile);
+                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
                         P1.Move(Direction.left);
                         stepCounter++;
                     }
                 }
                 else
                 {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
                     P1.Fall(Direction.left);
                     stepCounter++;
                 }

@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
     float timePassed = 0.0f;
     public float timeInterval = 8f;
     private Vector3 targetTile;
+    private Vector3 fallPos;
     public bool jumping = false;
-    public float speed = 0.2f;
+    public float speed = 1f;
+    public bool falling = false;
+    public Vector3 lastTile;
 
     private Animator animator;
     
@@ -57,43 +60,52 @@ public class Player : MonoBehaviour
                 jumping = false;
             }
         }
+        if(falling && !jumping && targetTile != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, fallPos, speed);
+            if (transform.position == fallPos)
+            {
+                GetHit();
+                transform.position = lastTile;
+                falling = false;
+            }
+        }
     }
 
     public void Move(Gamemanager.Direction direction)
     {
-        switch (direction)
-        {
-            case Gamemanager.Direction.up:
-                pos.y++;
-                
-                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 180, 0);
-                break;
-            case Gamemanager.Direction.down:
-                pos.y--;
-                
-                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 0);
-                break;
-            case Gamemanager.Direction.right:
-                pos.x++;
-                
-                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, -90, 0);
-                break;
-            case Gamemanager.Direction.left:
-                pos.x--;
-                
-                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 90, 0);
-                break;
-            default:
-                Debug.Log("Error at Player.Move(): default case in switch");
-                break;
-        }
-        //trasladar al transform (debera cambiarse por animacion de salto)
+        Rotate(direction);
         animator.SetTrigger("Jump");
         jumping = true;
     }
     public void Fall(Gamemanager.Direction direction)
     {
-        Debug.Log("oops, i fell");
+        Rotate(direction);
+        animator.SetTrigger("Jump");
+        falling = true;
+        jumping = true;
+    }
+
+    public void Rotate(Gamemanager.Direction direction)
+    {
+        switch (direction)
+        {
+            case Gamemanager.Direction.up:
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 180, 0);
+                break;
+            case Gamemanager.Direction.down:
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 0);
+                break;
+            case Gamemanager.Direction.right:
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, -90, 0);
+                break;
+            case Gamemanager.Direction.left:
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 90, 0);
+                break;
+            default:
+                Debug.Log("Error at Player.Rotate(): default case in switch");
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -175,10 +187,15 @@ public class Player : MonoBehaviour
         return health;
     }
 
-    public void SetTargetTile(Tile target)
+    public void SetTargetTile(Vector3 target)
     {
-        Vector3 pos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-        targetTile = pos;
+        targetTile = target;
+        fallPos = new Vector3(target.x, target.y - 50, target.z);
+    }
+
+    public void SetLastTile(Vector3 target)
+    {
+        lastTile = target;
     }
 
     #endregion
