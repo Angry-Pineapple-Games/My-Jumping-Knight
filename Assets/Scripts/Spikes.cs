@@ -35,12 +35,12 @@ public class Spikes : MonoBehaviour
 
     private void SlowDown()
     {
-        animator.speed = 0.5f;
+        animator.speed *= 0.5f;
     }
 
     private void RestoreTime()
     {
-        animator.speed = 1f;
+        animator.speed *= 2f;
     }
 
     private void OnEnable()
