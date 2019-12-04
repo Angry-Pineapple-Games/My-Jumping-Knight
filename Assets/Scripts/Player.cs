@@ -11,8 +11,12 @@ public class Player : MonoBehaviour
     private int health = 3;
     private bool shield = false;
     private bool clock = false;
+    private bool invincible = false;
     float timePassed = 0.0f;
     public float timeInterval = 8f;
+    float iFramesSecs = 0.0f;
+    int iFrames = 0;
+    public float totalIFrames = 3f;
     private Vector3 targetTile;
     private Vector3 fallPos;
     public bool jumping = false;
@@ -21,6 +25,7 @@ public class Player : MonoBehaviour
     public Vector3 lastTile;
 
     private Animator animator;
+    public Renderer modelRenderer;
     
     #endregion
 
@@ -50,6 +55,26 @@ public class Player : MonoBehaviour
             {
                 timePassed = 0.0f;
                 restoreTime();
+            }
+        }
+        if (invincible)
+        {
+            iFramesSecs += Time.deltaTime;
+            iFrames++;
+            if (iFrames % 10 == 0)
+            {
+                modelRenderer.enabled = false;
+            }
+            else
+            {
+                modelRenderer.enabled = true;
+            }
+            if(iFramesSecs >= totalIFrames)
+            {
+                iFramesSecs = 0.0f;
+                iFrames = 0;
+                invincible = false;
+                modelRenderer.enabled = true;
             }
         }
         if (jumping && targetTile != null)
@@ -133,21 +158,26 @@ public class Player : MonoBehaviour
 
     public void GetHit()
     {
-        if (shield)
+        if (!invincible)
         {
-            shield = false;
+            if (shield)
+            {
+                shield = false;
+            }
+            else if (health > 0)
+            {
+                health--;
+                animator.SetTrigger("Damage");
+                invincible = true;
+            }
+            else
+            {
+                Debug.Log("GameOver");
+                animator.SetTrigger("Damage");
+            }
+            Debug.Log("Ouch");
         }
-        else if (health > 0)
-        {
-            health--;
-            animator.SetTrigger("Damage");
-        }
-        else
-        {
-            Debug.Log("GameOver");
-            animator.SetTrigger("Damage");
-        }
-        Debug.Log("Ouch");
+        
     }
 
     public void healHealth()

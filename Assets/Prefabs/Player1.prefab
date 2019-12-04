@@ -67,10 +67,12 @@ MonoBehaviour:
   pos: {x: 1, y: 0}
   orientation: 0
   timeInterval: 5
+  totalIFrames: 2
   jumping: 0
   speed: 1
   falling: 0
   lastTile: {x: 0, y: 0, z: 0}
+  modelRenderer: {fileID: 2498547211739937102}
 --- !u!54 &136154990825613092
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -239,11 +241,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3741a8bd816dd224e8be5d789cf86434, type: 2}
+    - target: {fileID: 13700000, guid: fd5eb2dd38ea1b14a9cfb8919f67f28a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd5eb2dd38ea1b14a9cfb8919f67f28a, type: 3}
 --- !u!4 &2498547211744979054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: fd5eb2dd38ea1b14a9cfb8919f67f28a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2498547211745112814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2498547211739937102 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: fd5eb2dd38ea1b14a9cfb8919f67f28a,
     type: 3}
   m_PrefabInstance: {fileID: 2498547211745112814}
   m_PrefabAsset: {fileID: 0}
