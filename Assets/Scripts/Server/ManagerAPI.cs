@@ -25,11 +25,25 @@ class ManagerAPI : MonoBehaviour
     private string myAccessToken;
     private string myRefreshToken;
     //usuario
-    private string myUsername;
-    private string myPassword;
-    private string myLevel1;
-    private string myLevel2;
-    private string myLevel3;
+    [HideInInspector]
+    public string myUsername;
+    [HideInInspector]
+    public string myPassword;
+    [HideInInspector]
+    public string myRank1 = "";
+    [HideInInspector]
+    public string myLevel1 = "";
+    [HideInInspector]
+    public string myRank2 = "";
+    [HideInInspector]
+    public string myLevel2 = "";
+    [HideInInspector]
+    public string myRank3 = "";
+    [HideInInspector]
+    public string myLevel3 = "";
+    //oponente
+    [HideInInspector]
+    public string oponentUsername;
     //partida
     private string[] sampleGames;
     #endregion
@@ -81,8 +95,11 @@ class ManagerAPI : MonoBehaviour
             myAccessToken = aLogin.access_token;
             myUsername = username;
             myPassword = password;
+            myRank1 = aLogin.myrank1;
             myLevel1 = aLogin.mylevel1;
+            myRank2 = aLogin.myrank2;
             myLevel2 = aLogin.mylevel2;
+            myRank3 = aLogin.myrank3;
             myLevel3 = aLogin.mylevel3;
             if (debug)
             {
@@ -93,8 +110,11 @@ class ManagerAPI : MonoBehaviour
                 Debug.Log("Level1: " + aLogin.level1);
                 Debug.Log("Level2: " + aLogin.level2);
                 Debug.Log("Level3: " + aLogin.level3);
-                Debug.Log("myLevel3: " + aLogin.mylevel1);
-                Debug.Log("myLevel3: " + aLogin.mylevel2);
+                Debug.Log("myRank1: " + aLogin.myrank1);
+                Debug.Log("myLevel1: " + aLogin.mylevel1);
+                Debug.Log("myRank2: " + aLogin.myrank2);
+                Debug.Log("myLevel2: " + aLogin.mylevel2);
+                Debug.Log("myRank3: " + aLogin.myrank3);
                 Debug.Log("myLevel3: " + aLogin.mylevel3);
             }
 
@@ -270,17 +290,29 @@ class ManagerAPI : MonoBehaviour
                 break;
             }
         }
-
     }
 
-    /*Guarda en local la mejor partida del cliente (compara la pasada con la existente)*/
+    /*Guarda en local la mejor partida del cliente (compara la pasada con la existente)
+     si es nuevo lo guarda o 
+     si tiene más o la misma vida y si ha tardado menos tiempo*/
     private void UpdateLevelUserPlayerPrefs(string level, string levelstring)
     {
         string key = myUsername + "level" + level;
         string[] newLevelString = levelstring.Split(null);
         string[] oldLevelString = PlayerPrefs.GetString(key).Split(' ');
-        if (newLevelString.Length == 1 || float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[newLevelString.Length - 2]))
+        if (newLevelString.Length == 1 || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[newLevelString.Length - 1]) 
+            && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[newLevelString.Length - 2])))
             PlayerPrefs.SetString(key, levelstring);
+    }
+
+    /*Devuelve una partida guardada al azar*/
+    public string[] GetRandomOponent()
+    {
+        string[] oponentString = "".Split(' ');
+        oponentUsername = oponentString[0];
+        string[] result = new string[oponentString.Length-2];
+        Array.Copy(oponentString, 1, result, 0, oponentString.Length - 2);
+        return result;
     }
     #endregion
 }
@@ -352,8 +384,11 @@ public class AnswerRegistration
 public class AnswerLogin
 {
     public string access_token;
+    public string myrank1;
     public string mylevel1;
+    public string myrank2;
     public string mylevel2;
+    public string myrank3;
     public string mylevel3;
     public string level1;
     public string level2;
