@@ -23,6 +23,7 @@ public class Gamemanager : MonoBehaviour
     public Tile HeartTilePrefab;
     public Tile ShieldTilePrefab;
     public Tile HourglassTilePrefab;
+    
     #endregion
 
     #region Parameters
@@ -146,121 +147,22 @@ public class Gamemanager : MonoBehaviour
     {
         if (!P1.jumping && !P1.falling)
         {
-            Tile lastTile = tiles[currentTileId];
             //Inputs
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (currentTileId + gridW < tiles.Count)
-                {
-                    Tile nextTile = tiles[currentTileId + gridW];
-
-                    if (nextTile == null)
-                    {
-                        P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
-                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                        P1.Fall(Direction.up);
-                        stepCounter++;
-                    }
-                    else if (nextTile.walkable)
-                    {
-                        currentTileId += gridW;
-                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                        P1.Move(Direction.up);
-                        stepCounter++;
-                    }
-                }
-                else
-                {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.up);
-                    stepCounter++;
-                }
+                InputUp(P1);
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (currentTileId - gridW >= 0)
-                {
-                    Tile nextTile = tiles[currentTileId - gridW];
-                    if (nextTile == null)
-                    {
-                        P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
-                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                        P1.Fall(Direction.down);
-                        stepCounter++;
-                    }
-                    else if (nextTile.walkable)
-                    {
-                        currentTileId -= gridW;
-                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                        P1.Move(Direction.down);
-                        stepCounter++;
-                    }
-                }
-                else
-                {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.down);
-                    stepCounter++;
-                }
+                InputDown(P1);
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if ((currentTileId + 1) % gridW != 0)
-                {
-                    Tile nextTile = tiles[currentTileId + 1];
-                    if (nextTile == null)
-                    {
-                        P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
-                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                        P1.Fall(Direction.right);
-                        stepCounter++;
-                    }
-                    else if (nextTile.walkable)
-                    {
-                        currentTileId++;
-                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                        P1.Move(Direction.right);
-                        stepCounter++;
-                    }
-                }
-                else
-                {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.right);
-                    stepCounter++;
-                }
+                InputRight(P1);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId - 1) >= 0)
-                {
-                    Tile nextTile = tiles[currentTileId - 1];
-                    if (nextTile == null)
-                    {
-                        P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
-                        P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                        P1.Fall(Direction.left);
-                        stepCounter++;
-                    }
-                    else if (nextTile.walkable)
-                    {
-                        currentTileId--;
-
-                        P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                        P1.Move(Direction.left);
-                        stepCounter++;
-                    }
-                }
-                else
-                {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.left);
-                    stepCounter++;
-                }
+                InputLeft(P1);
             }
         }
         if(currentTileId == goalTileId)
@@ -269,7 +171,143 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    #region Inputs
+    public void InputUp(Player player)
+    {
+        if (!player.jumping && !player.falling)
+        {
+            Tile lastTile = tiles[currentTileId];
+            if (currentTileId + gridW < tiles.Count)
+            {
+                Tile nextTile = tiles[currentTileId + gridW];
 
+                if (nextTile == null)
+                {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                    P1.Fall(Direction.up);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
+                {
+                    currentTileId += gridW;
+                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
+                    P1.Move(Direction.up);
+                    stepCounter++;
+                }
+            }
+            else
+            {
+                P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
+                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                P1.Fall(Direction.up);
+                stepCounter++;
+            }
+        }
+    }
+
+    public void InputDown(Player player)
+    {
+        if (!player.jumping && !player.falling)
+        {
+            Tile lastTile = tiles[currentTileId];
+            if (currentTileId - gridW >= 0)
+            {
+
+                Tile nextTile = tiles[currentTileId - gridW];
+                if (nextTile == null)
+                {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                    P1.Fall(Direction.down);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
+                {
+                    currentTileId -= gridW;
+                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
+                    P1.Move(Direction.down);
+                    stepCounter++;
+                }
+            }
+            else
+            {
+                P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
+                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                P1.Fall(Direction.down);
+                stepCounter++;
+            }
+        }
+    }
+
+    public void InputRight(Player player)
+    {
+        if (!player.jumping && !player.falling)
+        {
+            Tile lastTile = tiles[currentTileId];
+            if ((currentTileId + 1) % gridW != 0)
+            {
+                Tile nextTile = tiles[currentTileId + 1];
+                if (nextTile == null)
+                {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                    P1.Fall(Direction.right);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
+                {
+                    currentTileId++;
+                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
+                    P1.Move(Direction.right);
+                    stepCounter++;
+                }
+            }
+            else
+            {
+                P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
+                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                P1.Fall(Direction.right);
+                stepCounter++;
+            }
+        }
+    }
+
+    public void InputLeft(Player player)
+    {
+        if (!player.jumping && !player.falling)
+        {
+            Tile lastTile = tiles[currentTileId];
+            if (((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId - 1) >= 0)
+            {
+                Tile nextTile = tiles[currentTileId - 1];
+                if (nextTile == null)
+                {
+                    P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
+                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                    P1.Fall(Direction.left);
+                    stepCounter++;
+                }
+                else if (nextTile.walkable)
+                {
+                    currentTileId--;
+
+                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
+                    P1.Move(Direction.left);
+                    stepCounter++;
+                }
+            }
+            else
+            {
+                P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
+                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
+                P1.Fall(Direction.left);
+                stepCounter++;
+            }
+        }
+    }
+
+    #endregion
 
     Tile createTile(int xId, int yId, Tile prefab)
     {
