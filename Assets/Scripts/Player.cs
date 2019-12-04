@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;
     public Renderer modelRenderer;
+    public GameObject shieldObject;
     
     #endregion
 
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     {
         pos = new Vector2(0, 0);
         animator = GetComponentInChildren<Animator>();
+        shieldObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -163,6 +165,7 @@ public class Player : MonoBehaviour
             if (shield)
             {
                 shield = false;
+                shieldObject.SetActive(false);
             }
             else if (health > 0)
             {
@@ -192,6 +195,7 @@ public class Player : MonoBehaviour
     public void obtainShield()
     {
         shield = true;
+        shieldObject.SetActive(true);
     }
 
     public void obtainHourglass()
