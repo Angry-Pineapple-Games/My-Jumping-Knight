@@ -6,6 +6,7 @@ public class Gamemanager : MonoBehaviour
 {
     #region InEditorParameters
     public Player P1;
+    public Player P2;
     public int gridH;
     public int gridW;
     public int stepCounter;
@@ -28,7 +29,6 @@ public class Gamemanager : MonoBehaviour
 
     #region Parameters
     private List<Tile> tiles;
-    private int currentTileId;
     private int startTileId = 0;
     private int goalTileId;
     #endregion
@@ -137,35 +137,52 @@ public class Gamemanager : MonoBehaviour
         }
         idX = startTileId % gridW;
         idY = startTileId / gridW;
-        currentTileId = startTileId;
+        P1.currentTileId = startTileId;
         P1.transform.Translate(-10 * idX, 0, -10 * idY);
-            
+        P2.currentTileId = startTileId;
+        P2.transform.Translate(-10 * idX, 0, -10 * idY);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!P1.jumping && !P1.falling)
+        //Inputs
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            //Inputs
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                InputUp(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                InputDown(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                InputRight(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                InputLeft(P1);
-            }
+            InputUp(P1);
         }
-        if(currentTileId == goalTileId)
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            InputDown(P1);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            InputRight(P1);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            InputLeft(P1);
+        }
+        //Inputs Dummy. Eliminar
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            InputUp(P2);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            InputDown(P2);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            InputRight(P2);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            InputLeft(P2);
+        }
+
+        if (P1.currentTileId == goalTileId)
         {
             Debug.Log("Goal");
         }
@@ -176,31 +193,31 @@ public class Gamemanager : MonoBehaviour
     {
         if (!player.jumping && !player.falling)
         {
-            Tile lastTile = tiles[currentTileId];
-            if (currentTileId + gridW < tiles.Count)
+            Tile lastTile = tiles[player.currentTileId];
+            if (player.currentTileId + gridW < tiles.Count)
             {
-                Tile nextTile = tiles[currentTileId + gridW];
+                Tile nextTile = tiles[player.currentTileId + gridW];
 
                 if (nextTile == null)
                 {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.up);
+                    player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
+                    player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                    player.Fall(Direction.up);
                     stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
-                    currentTileId += gridW;
-                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                    P1.Move(Direction.up);
+                    player.currentTileId += gridW;
+                    player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
+                    player.Move(Direction.up);
                     stepCounter++;
                 }
             }
             else
             {
-                P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z - 10));
-                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                P1.Fall(Direction.up);
+                player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
+                player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                player.Fall(Direction.up);
                 stepCounter++;
             }
         }
@@ -210,31 +227,31 @@ public class Gamemanager : MonoBehaviour
     {
         if (!player.jumping && !player.falling)
         {
-            Tile lastTile = tiles[currentTileId];
-            if (currentTileId - gridW >= 0)
+            Tile lastTile = tiles[player.currentTileId];
+            if (player.currentTileId - gridW >= 0)
             {
 
-                Tile nextTile = tiles[currentTileId - gridW];
+                Tile nextTile = tiles[player.currentTileId - gridW];
                 if (nextTile == null)
                 {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.down);
+                    player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
+                    player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                    player.Fall(Direction.down);
                     stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
-                    currentTileId -= gridW;
-                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                    P1.Move(Direction.down);
+                    player.currentTileId -= gridW;
+                    player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
+                    player.Move(Direction.down);
                     stepCounter++;
                 }
             }
             else
             {
-                P1.SetTargetTile(new Vector3(P1.transform.position.x, P1.transform.position.y, P1.transform.position.z + 10));
-                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                P1.Fall(Direction.down);
+                player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
+                player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                player.Fall(Direction.down);
                 stepCounter++;
             }
         }
@@ -244,30 +261,30 @@ public class Gamemanager : MonoBehaviour
     {
         if (!player.jumping && !player.falling)
         {
-            Tile lastTile = tiles[currentTileId];
-            if ((currentTileId + 1) % gridW != 0)
+            Tile lastTile = tiles[player.currentTileId];
+            if ((player.currentTileId + 1) % gridW != 0)
             {
-                Tile nextTile = tiles[currentTileId + 1];
+                Tile nextTile = tiles[player.currentTileId + 1];
                 if (nextTile == null)
                 {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.right);
+                    player.SetTargetTile(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
+                    player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                    player.Fall(Direction.right);
                     stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
-                    currentTileId++;
-                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                    P1.Move(Direction.right);
+                    player.currentTileId++;
+                    player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
+                    player.Move(Direction.right);
                     stepCounter++;
                 }
             }
             else
             {
-                P1.SetTargetTile(new Vector3(P1.transform.position.x - 10, P1.transform.position.y, P1.transform.position.z));
-                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                P1.Fall(Direction.right);
+                player.SetTargetTile(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
+                player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                player.Fall(Direction.right);
                 stepCounter++;
             }
         }
@@ -277,31 +294,31 @@ public class Gamemanager : MonoBehaviour
     {
         if (!player.jumping && !player.falling)
         {
-            Tile lastTile = tiles[currentTileId];
-            if (((currentTileId - 1) % gridW != (gridW - 1)) && (currentTileId - 1) >= 0)
+            Tile lastTile = tiles[player.currentTileId];
+            if (((player.currentTileId - 1) % gridW != (gridW - 1)) && (player.currentTileId - 1) >= 0)
             {
-                Tile nextTile = tiles[currentTileId - 1];
+                Tile nextTile = tiles[player.currentTileId - 1];
                 if (nextTile == null)
                 {
-                    P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
-                    P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                    P1.Fall(Direction.left);
+                    player.SetTargetTile(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
+                    player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                    player.Fall(Direction.left);
                     stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
-                    currentTileId--;
+                    player.currentTileId--;
 
-                    P1.SetTargetTile(new Vector3(nextTile.transform.position.x, P1.transform.position.y, nextTile.transform.position.z));
-                    P1.Move(Direction.left);
+                    player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
+                    player.Move(Direction.left);
                     stepCounter++;
                 }
             }
             else
             {
-                P1.SetTargetTile(new Vector3(P1.transform.position.x + 10, P1.transform.position.y, P1.transform.position.z));
-                P1.SetLastTile(new Vector3(lastTile.transform.position.x, P1.transform.position.y, lastTile.transform.position.z));
-                P1.Fall(Direction.left);
+                player.SetTargetTile(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
+                player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
+                player.Fall(Direction.left);
                 stepCounter++;
             }
         }

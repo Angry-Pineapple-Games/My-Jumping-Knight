@@ -27,7 +27,9 @@ public class Player : MonoBehaviour
     private Animator animator;
     public Renderer modelRenderer;
     public GameObject shieldObject;
-    
+
+    public int currentTileId;
+
     #endregion
 
     #region Events

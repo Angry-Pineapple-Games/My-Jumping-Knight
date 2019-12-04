@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Hourglass : Powerup
 {
-    public override void GetPowerUp(Player player)
+    public override void DoEffect(Player player)
     {
-        base.GetPowerUp(player);
         player.obtainHourglass();
     }
 }

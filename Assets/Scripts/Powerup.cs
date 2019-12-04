@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
+    bool player1 = false;
+    bool player2 = false;
+    public MeshRenderer meshRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,8 +20,39 @@ public class Powerup : MonoBehaviour
         
     }
 
-    public virtual void GetPowerUp(Player player)
+    public void GetPowerUp(Player player)
     {
-        this.transform.gameObject.SetActive(false);
+        if(player.tag == "Player1")
+        {
+            if (!player1)
+            {
+                player1 = true;
+                if (player2)
+                {
+                    this.transform.gameObject.SetActive(false);
+                }
+                else
+                {
+                    meshRenderer.material.color = Color.blue;
+                }
+                DoEffect(player);
+            }
+        }else if(player.tag == "Player2")
+        {
+            if (!player2)
+            {
+                player2 = true;
+                if (player1)
+                {
+                    this.transform.gameObject.SetActive(false);
+                }
+                else
+                {
+                    meshRenderer.material.color = Color.red;
+                }
+                DoEffect(player);
+            }
+        }
     }
+    public virtual void DoEffect(Player player) { }
 }
