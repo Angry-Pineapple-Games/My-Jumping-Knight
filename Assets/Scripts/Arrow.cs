@@ -28,12 +28,12 @@ public class Arrow : MonoBehaviour
 
     private void SlowDown()
     {
-        speedChange = 0.5f;
+        speedChange *= 0.5f;
     }
 
     private void RestoreTime()
     {
-        speedChange = 1f;
+        speedChange *= 2f;
     }
 
     private void OnEnable()

@@ -7,6 +7,8 @@ TagManager:
   - Powerup
   - Hazard
   - SpikesActivator
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX

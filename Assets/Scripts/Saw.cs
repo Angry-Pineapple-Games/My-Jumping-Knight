@@ -33,14 +33,14 @@ public class Saw : MonoBehaviour
 
     private void SlowDown()
     {
-        speedChange = 0.5f;
-        animator.speed = 0.5f;
+        speedChange *= 0.5f;
+        animator.speed *= 0.5f;
     }
 
     private void RestoreTime()
     {
-        speedChange = 1f;
-        animator.speed = 1f;
+        speedChange *= 2f;
+        animator.speed *= 2f;
     }
 
     private void OnEnable()
