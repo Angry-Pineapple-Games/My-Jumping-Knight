@@ -9,6 +9,10 @@ using UnityEngine.Networking;
 class ManagerAPI : MonoBehaviour
 {
     #region Variables
+    //objetos
+    public GameObject serverMaintenanceWarning;
+
+    //generales
     private bool debug = true;
     private const int NUMBERLEVELS = 3;
     private const int NUMBERGAMES = 20;
@@ -82,7 +86,8 @@ class ManagerAPI : MonoBehaviour
         yield return client.SendWebRequest();
 
         Msg msg = JsonUtility.FromJson<Msg>(client.downloadHandler.text);
-        if (mode.Equals("Login")) { Login(msg.msg, username, password); }
+        if(msg == null) { ServerMaintenance(); }
+        else if (mode.Equals("Login")) { Login(msg.msg, username, password); }
         else if (mode.Equals("Registration")) { Registration(msg.msg, username, password); }
     }
 
@@ -160,6 +165,11 @@ class ManagerAPI : MonoBehaviour
         }
     }
 
+    private void ServerMaintenance()
+    {
+        Instantiate(serverMaintenanceWarning, GameObject.Find("Canvas").transform);
+    }
+
     public IEnumerator Record(string levelstring, string rank, string level)
     {
 
@@ -213,13 +223,15 @@ class ManagerAPI : MonoBehaviour
         LoopPlayerPrefs("Get", eString);
 
         //si no hay conexión a internet salta al menú del juego
-        if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            myUsername = "Anonimous";
-            isNetReachability = false;
-            SceneManager.LoadScene(GAME);
-        }
+        if (Application.internetReachability == NetworkReachability.NotReachable) { NetUnavailable(); }
         else { isNetReachability = true; }
+    }
+
+    public void NetUnavailable()
+    {
+        myUsername = "Anonimous";
+        isNetReachability = false;
+        SceneManager.LoadScene(GAME);
     }
 
     /*Recorre el almacenamiento en el cliente modificando los playerprefs

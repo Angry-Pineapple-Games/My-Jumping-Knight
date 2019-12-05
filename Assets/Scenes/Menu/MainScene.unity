@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 254023058}
   - component: {fileID: 254023060}
   - component: {fileID: 254023059}
+  - component: {fileID: 254023061}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -249,7 +250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: play
 --- !u!222 &254023060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -258,6 +259,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254023057}
   m_CullTransparentMesh: 0
+--- !u!114 &254023061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254023057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &306291209
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Username
+  m_Text: username
 --- !u!224 &6801092259339308387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -731,6 +744,7 @@ GameObject:
   - component: {fileID: 8622588979452606184}
   - component: {fileID: 8622588979452606186}
   - component: {fileID: 8622588979452606185}
+  - component: {fileID: 8622588979452606187}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -788,7 +802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Creditos
+  m_Text: credits
 --- !u!222 &8622588979452606186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -797,6 +811,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622588979452606183}
   m_CullTransparentMesh: 0
+--- !u!114 &8622588979452606187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8622588979452606183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!223 &8622588980047696992
 Canvas:
   m_ObjectHideFlags: 0
@@ -1035,6 +1061,7 @@ GameObject:
   - component: {fileID: 8622588981244784098}
   - component: {fileID: 8622588981244784100}
   - component: {fileID: 8622588981244784099}
+  - component: {fileID: 8622588981244784101}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1092,7 +1119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Configuracion
+  m_Text: settings
 --- !u!222 &8622588981244784100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1101,6 +1128,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622588981244784097}
   m_CullTransparentMesh: 0
+--- !u!114 &8622588981244784101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8622588981244784097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8686334204851789843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1151,7 @@ GameObject:
   - component: {fileID: 6801092259339308387}
   - component: {fileID: 8916284819944615372}
   - component: {fileID: 4958091265920651406}
+  - component: {fileID: 8686334204851789844}
   m_Layer: 5
   m_Name: Username
   m_TagString: Untagged
@@ -1119,6 +1159,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8686334204851789844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686334204851789843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4180d358eff544d934fa47b9213807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &8916284819944615372
 CanvasRenderer:
   m_ObjectHideFlags: 0

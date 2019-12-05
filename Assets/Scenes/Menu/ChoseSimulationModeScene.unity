@@ -545,7 +545,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Simular
+  m_Text: auto
 --- !u!1 &1259259138842910601
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 45874907186448510}
   - component: {fileID: 6664319425417622220}
   - component: {fileID: 7766340827413928963}
+  - component: {fileID: 1259259138842910602}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -564,6 +565,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1259259138842910602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259259138842910601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &1921591612992017826
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -585,7 +598,7 @@ GameObject:
   - component: {fileID: 5979432572103953270}
   - component: {fileID: 360275644503621959}
   m_Layer: 5
-  m_Name: Jugar
+  m_Name: Manual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +654,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Atras
+  m_Text: back
 --- !u!1 &2286204381875338667
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +666,7 @@ GameObject:
   - component: {fileID: 2286204381875338664}
   - component: {fileID: 2286204381875338670}
   - component: {fileID: 2286204381875338665}
+  - component: {fileID: 2286204381875338668}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -660,6 +674,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2286204381875338668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286204381875338667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &2286204381875338670
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -752,7 +778,7 @@ GameObject:
   - component: {fileID: 2286204382334372406}
   - component: {fileID: 2286204382334372401}
   m_Layer: 5
-  m_Name: Atras
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,6 +948,7 @@ GameObject:
   - component: {fileID: 8028232081298600640}
   - component: {fileID: 5383303655357616751}
   - component: {fileID: 8486745795428380461}
+  - component: {fileID: 5297456940880928689}
   m_Layer: 5
   m_Name: Username
   m_TagString: Untagged
@@ -929,6 +956,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5297456940880928689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297456940880928688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4180d358eff544d934fa47b9213807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &5383303655357616751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -948,6 +987,7 @@ GameObject:
   - component: {fileID: 3386455186665967477}
   - component: {fileID: 8864197886581222958}
   - component: {fileID: 635255696035056847}
+  - component: {fileID: 5587340417069313918}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -955,6 +995,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5587340417069313918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587340417069313917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5979432572103953270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,7 +1100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: manual
 --- !u!224 &8028232081298600640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1099,7 +1151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Username
+  m_Text: username
 --- !u!1 &8542723031095905384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1165,7 @@ GameObject:
   - component: {fileID: 7224730520186588358}
   - component: {fileID: 5185940104653810339}
   m_Layer: 5
-  m_Name: Simular
+  m_Name: Auto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

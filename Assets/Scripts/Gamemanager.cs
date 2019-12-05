@@ -408,6 +408,7 @@ public class Gamemanager : MonoBehaviour
         }
         start = true;
         oponentMove = StartCoroutine(OponentMove(move));
+        GameObject.Destroy(textCountDown);
     }
 
     /*Realiza los movimientos del oponente*/

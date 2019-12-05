@@ -71,4 +71,20 @@ public class ButtonBehaviours : MonoBehaviour
         }
         return true;
     }
+
+    /*Cambia el idioma*/
+    public void ChangeLang(string lang)
+    {
+        Language language = GameObject.Find("Language(Clone)").GetComponent<Language>();
+        language.LanguageSelector(lang);
+        PlayerPrefs.SetString("lang", lang);
+    }
+
+    /*Servidor en mantenimiento*/
+    public void ServerMaintenance()
+    {
+        ManagerAPI apiClient = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+        apiClient.NetUnavailable();
+        Destroy(GameObject.Find("ServerMaintenance(Clone)"));
+    }
 }
