@@ -22,26 +22,31 @@ public class MovementSphere : MonoBehaviour
 
     public void OnMouseUp()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray)){
-            switch (direction)
+        if(gamemanager.start && !gamemanager.end)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray))
             {
-                case Gamemanager.Direction.up:
-                    gamemanager.InputUp(player);
-                    break;
-                case Gamemanager.Direction.down:
-                    gamemanager.InputDown(player);
-                    break;
-                case Gamemanager.Direction.right:
-                    gamemanager.InputRight(player);
-                    break;
-                case Gamemanager.Direction.left:
-                    gamemanager.InputLeft(player);
-                    break;
-                default:
-                    Debug.Log("Error in Movement Sphere.");
-                    break;
-            }
-        };
+                switch (direction)
+                {
+                    case Gamemanager.Direction.up:
+                        gamemanager.InputUp(player);
+                        break;
+                    case Gamemanager.Direction.down:
+                        gamemanager.InputDown(player);
+                        break;
+                    case Gamemanager.Direction.right:
+                        gamemanager.InputRight(player);
+                        break;
+                    case Gamemanager.Direction.left:
+                        gamemanager.InputLeft(player);
+                        break;
+                    default:
+                        Debug.Log("Error in Movement Sphere.");
+                        break;
+                }
+            };
+        }
+        
     }
 }
