@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class Gamemanager : MonoBehaviour
     public int stepCounter;
     public TextAsset levelTxt;
     public string userName = "Anon";
-    
+    public int countDown;
+    public Text textCountDown;
     #endregion
 
     #region Prefabs
@@ -27,7 +29,7 @@ public class Gamemanager : MonoBehaviour
     public Tile HeartTilePrefab;
     public Tile ShieldTilePrefab;
     public Tile HourglassTilePrefab;
-    
+
     #endregion
 
     #region Parameters
@@ -38,11 +40,14 @@ public class Gamemanager : MonoBehaviour
     private string currentMatch;
     private bool end = false;
     CultureInfo myCIintl = new CultureInfo("en-US", false);
+    private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
+    private ManagerAPI managerAPI;
     #endregion
 
     #region Enumerations
     public enum Direction { up, right, left, down };
-    public enum TileType {
+    public enum TileType
+    {
         none = 0,
         empty = 1,
         arrow = 2,
@@ -54,7 +59,8 @@ public class Gamemanager : MonoBehaviour
         clock = 8,
         emptySaw = 9,
         goal = 10,
-        start = 11 };
+        start = 11
+    };
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -83,13 +89,15 @@ public class Gamemanager : MonoBehaviour
                     break;
                 case TileType.arrow:
                     tiles.Add(createTile(idX, idY, ArrowTilePrefab));
-                    if(tileIds[i] == 2.1f)
+                    if (tileIds[i] == 2.1f)
                     {
                         tiles[i].transform.Rotate(0, 180, 0);
-                    }else if(tileIds[i] == 2.2f)
+                    }
+                    else if (tileIds[i] == 2.2f)
                     {
                         tiles[i].transform.Rotate(0, -90, 0);
-                    }else if(tileIds[i] == 2.3f)
+                    }
+                    else if (tileIds[i] == 2.3f)
                     {
                         tiles[i].transform.Rotate(0, 90, 0);
                     }
@@ -127,7 +135,7 @@ public class Gamemanager : MonoBehaviour
                     break;
                 case TileType.emptySaw:
                     tiles.Add(createTile(idX, idY, EmptySawTilePrefab));
-                    if(tileIds[i] == 9.1f)
+                    if (tileIds[i] == 9.1f)
                     {
                         tiles[i].transform.Rotate(0, 90, 0);
                     }
@@ -175,23 +183,6 @@ public class Gamemanager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             InputLeft(P1);
-        }
-        //Inputs Dummy. Eliminar
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            InputUp(P2);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            InputDown(P2);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            InputRight(P2);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            InputLeft(P2);
         }
 
         if (!end && (P1.currentTileId == goalTileId))
@@ -368,5 +359,32 @@ public class Gamemanager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver");
+    }
+
+    /*Cuenta atrás para el comienzo de la partida y prepara lo necesario del oponente
+     llamar con StartCoroutine(método) cuando se deba empezar la cuenta atrás*/
+    IEnumerator StartCountDown()
+    {
+        string[] move = managerAPI.GetRandomOponent();
+        for (int i = countDown; i > 0; i--)
+        {
+            textCountDown.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+        oponentMove = StartCoroutine(OponentMove(move));
+    }
+
+    /*Realiza los movimientos del oponente*/
+    IEnumerator OponentMove(string[] move)
+    {
+        for (int i = 0; i < move.Length; i += 2)
+        {
+            yield return new WaitForSeconds(float.Parse(move[i]));
+            Direction action = (Direction)int.Parse(move[i + 1]);
+            if (action == Direction.up) { InputUp(P2); }
+            else if (action == Direction.right) { InputRight(P2); }
+            else if (action == Direction.left) { InputLeft(P2); }
+            else if (action == Direction.down) { InputDown(P2); }
+        }
     }
 }
