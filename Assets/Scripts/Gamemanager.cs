@@ -4,12 +4,15 @@ using System.Globalization;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
     #region InEditorParameters
     public Player P1;
     public Player P2;
+    public string currentLevel;
+    public float minRankSPlus;
     public int gridH;
     public int gridW;
     public int stepCounter;
@@ -33,17 +36,22 @@ public class Gamemanager : MonoBehaviour
     #endregion
 
     #region Parameters
+    [HideInInspector]
     public List<Tile> tiles;
     private int startTileId = 0;
     private int goalTileId;
     private float globalTimer = 0.0f;
     private float currentTimer = 0.0f;
     private string currentMatch;
+    [HideInInspector]
     public bool start = false;
+    [HideInInspector]
     public bool end = false;
     CultureInfo myCIintl = new CultureInfo("en-US", false);
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
     private ManagerAPI managerAPI;
+    private const string GAMEOVER = "GameOverScene";
+    private const string VICTORY = "VictoryScene";
     #endregion
 
     #region Enumerations
@@ -365,6 +373,7 @@ public class Gamemanager : MonoBehaviour
         Tile tile = Instantiate(prefab, this.transform);
         tile.transform.Translate(-10 * xId, 0, -10 * yId);
         return tile;
+        
     }
 
     public void addMatchToFile()
@@ -389,11 +398,18 @@ public class Gamemanager : MonoBehaviour
         
     }
 
+    /*Gestiona el final de partida, convocando las llamadas al servidor si procede*/
     public void EndMatch()
     {
         end = true;
         currentMatch += globalTimer + " " + P1.getHealth();
+        managerAPI.UpdateLevelUserPlayerPrefs(currentLevel, currentMatch, true, minRankSPlus, P1.getHealth(), globalTimer);
         addMatchToFile();
+        managerAPI.myGlobalTime = globalTimer;
+        if (P1.getHealth() <= 0 || globalTimer < float.Parse(managerAPI.oponentGlobalTime))
+            SceneManager.LoadScene(GAMEOVER);
+        else
+            SceneManager.LoadScene(VICTORY);
     }
 
     /*Cuenta atrás para el comienzo de la partida y prepara lo necesario del oponente
