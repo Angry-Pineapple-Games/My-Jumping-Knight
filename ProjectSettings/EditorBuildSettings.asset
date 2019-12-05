@@ -6,6 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TileParserTest.unity
+    path: Assets/Scenes/Access/Login.unity
+    guid: 00b6ab0690a17d24caaf673c321f6fb4
+  - enabled: 1
+    path: Assets/Scenes/Access/Signup.unity
+    guid: aa965c9d12f17f2489eda20b6b73e470
+  - enabled: 1
+    path: Assets/Scenes/Menu/MainScene.unity
+    guid: 607790ba281b3404187bbe1c2dee57d4
+  - enabled: 1
+    path: Assets/Scenes/Menu/ConfigScene.unity
+    guid: 3bf45b5f17981064d92d0918f0c4346a
+  - enabled: 1
+    path: Assets/Scenes/Menu/ChoseModeScene.unity
+    guid: c622cc8964aa1094a9b5dd2fd9a73945
+  - enabled: 1
+    path: Assets/Scenes/Menu/ChooseLevelScene.unity
+    guid: f337fcdb2a71fe04394a00a94736a58c
+  - enabled: 1
+    path: Assets/Scenes/Menu/CreditsScene.unity
+    guid: dfa0d3263470f774287249a4a3e32efd
+  - enabled: 1
+    path: Assets/Scenes/Menu/ChoseSimulationModeScene.unity
+    guid: b3e0e260b8a4c4547a4b9dc2a3e02968
+  - enabled: 1
+    path: Assets/Scenes/Game/Level1Scene.unity
     guid: 64cf958138e7b364eb4e7211e4435910
+  - enabled: 1
+    path: Assets/Scenes/Game/Level2Scene.unity
+    guid: 5f2b885207f753547b3071d3ced9c443
+  - enabled: 1
+    path: Assets/Scenes/Game/Level3Scene.unity
+    guid: 9c9aa2e7bcb06f24882e312b7c9930c6
+  - enabled: 1
+    path: Assets/Scenes/Game/GameOverScene.unity
+    guid: 67507c3d990491640a5def7dff6fad25
+  - enabled: 1
+    path: Assets/Scenes/Game/VictoryScene.unity
+    guid: 39bfdaeb35c2ef1499a1467a234c4ddf
   m_configObjects: {}
