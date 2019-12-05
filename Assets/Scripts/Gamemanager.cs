@@ -36,8 +36,10 @@ public class Gamemanager : MonoBehaviour
     public List<Tile> tiles;
     private int startTileId = 0;
     private int goalTileId;
+    private float globalTimer = 0.0f;
     private float currentTimer = 0.0f;
     private string currentMatch;
+    private bool start = false;
     private bool end = false;
     CultureInfo myCIintl = new CultureInfo("en-US", false);
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
@@ -65,10 +67,14 @@ public class Gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Thread.CurrentThread.CurrentCulture = myCIintl;
         if (GameObject.Find("ApiClient(Clone)") != null)
-            userName = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>().myUsername;
+        {
+            managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+            userName = managerAPI.myUsername;
+        }
+        Thread.CurrentThread.CurrentCulture = myCIintl;            
         currentMatch += userName + " ";
+        
         //Instanciacion del nivel
         tiles = new List<Tile>();
         TileParser parser = new TileParser();
@@ -160,37 +166,41 @@ public class Gamemanager : MonoBehaviour
         P1.transform.Translate(-10 * idX, 0, -10 * idY);
         P2.currentTileId = startTileId;
         P2.transform.Translate(-10 * idX, 0, -10 * idY);
-
+        StartCoroutine(StartCountDown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTimer += Time.deltaTime;
-        //Inputs
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (start)
         {
-            InputUp(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            InputDown(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            InputRight(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            InputLeft(P1);
-        }
+            globalTimer += Time.deltaTime;
+            currentTimer += Time.deltaTime;
+            //Inputs
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                InputUp(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                InputDown(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                InputRight(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                InputLeft(P1);
+            }
 
-        if (!end && (P1.currentTileId == goalTileId))
-        {
-            currentMatch += currentTimer + " " + P1.getHealth();
-            Debug.Log("Goal");
-            addMatchToFile();
-            end = true;
+            if (!end && (P1.currentTileId == goalTileId))
+            {
+                currentMatch += globalTimer + " " + P1.getHealth();
+                Debug.Log("Goal");
+                addMatchToFile();
+                end = true;
+            }
         }
     }
 
@@ -198,7 +208,11 @@ public class Gamemanager : MonoBehaviour
     public void InputUp(Player player)
     {
         if (player.tag == "Player1")
+        {
             currentMatch += currentTimer + " " + 0 + " ";
+            currentTimer = 0.0f;
+        }
+            
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -234,7 +248,10 @@ public class Gamemanager : MonoBehaviour
     public void InputDown(Player player)
     {
         if (player.tag == "Player1")
+        {
             currentMatch += currentTimer + " " + 3 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -270,7 +287,10 @@ public class Gamemanager : MonoBehaviour
     public void InputRight(Player player)
     {
         if (player.tag == "Player1")
+        {
             currentMatch += currentTimer + " " + 1 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -305,7 +325,10 @@ public class Gamemanager : MonoBehaviour
     public void InputLeft(Player player)
     {
         if (player.tag == "Player1")
+        {
             currentMatch += currentTimer + " " + 2 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -371,6 +394,7 @@ public class Gamemanager : MonoBehaviour
             textCountDown.text = i.ToString();
             yield return new WaitForSeconds(1f);
         }
+        start = true;
         oponentMove = StartCoroutine(OponentMove(move));
     }
 
