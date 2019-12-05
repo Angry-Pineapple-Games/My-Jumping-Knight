@@ -35,23 +35,39 @@ public class Spikes : MonoBehaviour
 
     private void SlowDown()
     {
-        animator.speed *= 0.5f;
+        animator.speed = 0.5f;
     }
 
     private void RestoreTime()
     {
-        animator.speed *= 2f;
+        animator.speed = 1f;
     }
 
     private void OnEnable()
     {
-        Player.OnTimeStopped += SlowDown;
-        Player.OnTimeStarted += RestoreTime;
+        if (tag == "Hazard")
+        {
+            Player.OnTimeStopped += SlowDown;
+            Player.OnTimeStarted += RestoreTime;
+        }
+        if (tag == "HazardP2")
+        {
+            Player.OnTimeStoppedP2 += SlowDown;
+            Player.OnTimeStartedP2 += RestoreTime;
+        }
     }
 
     private void OnDisable()
     {
-        Player.OnTimeStopped -= SlowDown;
-        Player.OnTimeStarted -= RestoreTime;
+        if (tag == "Hazard")
+        {
+            Player.OnTimeStopped -= SlowDown;
+            Player.OnTimeStarted -= RestoreTime;
+        }
+        if (tag == "HazardP2")
+        {
+            Player.OnTimeStoppedP2 -= SlowDown;
+            Player.OnTimeStartedP2 -= RestoreTime;
+        }
     }
 }
