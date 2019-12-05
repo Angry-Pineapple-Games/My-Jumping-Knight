@@ -25,7 +25,7 @@ class ManagerAPI : MonoBehaviour
     private string myAccessToken;
     private string myRefreshToken;
     //usuario
-    private string myUsername;
+    public string myUsername;
     private string myPassword;
     private string myLevel1;
     private string myLevel2;

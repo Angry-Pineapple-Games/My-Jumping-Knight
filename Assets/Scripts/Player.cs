@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         if (jumping && targetTile != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetTile, speed);
-            if(transform.position == targetTile)
+            if(Vector3.Distance(transform.position, targetTile) <= 0.001f)
             {
                 jumping = false;
             }
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         if(falling && !jumping && targetTile != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, fallPos, speed);
-            if (transform.position == fallPos)
+            if (Vector3.Distance(transform.position, fallPos) <= 0.001f)
             {
                 GetHit();
                 transform.position = lastTile;
