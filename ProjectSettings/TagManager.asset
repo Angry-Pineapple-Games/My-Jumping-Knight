@@ -9,6 +9,8 @@ TagManager:
   - SpikesActivator
   - Player1
   - Player2
+  - HazardP2
+  - SpikesActivatorP2
   layers:
   - Default
   - TransparentFX

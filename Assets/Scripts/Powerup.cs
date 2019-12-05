@@ -33,7 +33,7 @@ public class Powerup : MonoBehaviour
                 }
                 else
                 {
-                    meshRenderer.material.color = Color.blue;
+                    meshRenderer.material.color = new Color(0f, 0f, 1f, 0.5f);
                 }
                 DoEffect(player);
             }
@@ -45,10 +45,6 @@ public class Powerup : MonoBehaviour
                 if (player1)
                 {
                     this.transform.gameObject.SetActive(false);
-                }
-                else
-                {
-                    meshRenderer.material.color = Color.red;
                 }
                 DoEffect(player);
             }

@@ -43,4 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef087ac0150069d4294f630e08834f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverMaintenanceWarning: {fileID: 17766116103815386, guid: d0b90dc7d7662454cb8f87e58c8f7c74,
+    type: 3}
   isNetReachability: 0
+  myUsername: 
+  myPassword: 
+  myRank1: 
+  myLevel1: 
+  myRank2: 
+  myLevel2: 
+  myRank3: 
+  myLevel3: 
+  oponentUsername: 

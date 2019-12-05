@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
     #region InEditorParameters
     public Player P1;
     public Player P2;
+    public string currentLevel;
+    public float minRankSPlus;
     public int gridH;
     public int gridW;
     public int stepCounter;
     public TextAsset levelTxt;
+    public string userName = "Anon";
     public int countDown;
     public Text textCountDown;
     #endregion
@@ -30,11 +36,22 @@ public class Gamemanager : MonoBehaviour
     #endregion
 
     #region Parameters
-    private List<Tile> tiles;
+    [HideInInspector]
+    public List<Tile> tiles;
     private int startTileId = 0;
     private int goalTileId;
+    private float globalTimer = 0.0f;
+    private float currentTimer = 0.0f;
+    private string currentMatch;
+    [HideInInspector]
+    public bool start = false;
+    [HideInInspector]
+    public bool end = false;
+    CultureInfo myCIintl = new CultureInfo("en-US", false);
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
     private ManagerAPI managerAPI;
+    private const string GAMEOVER = "GameOverScene";
+    private const string VICTORY = "VictoryScene";
     #endregion
 
     #region Enumerations
@@ -58,6 +75,14 @@ public class Gamemanager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("ApiClient(Clone)") != null)
+        {
+            managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+            userName = managerAPI.myUsername;
+        }
+        Thread.CurrentThread.CurrentCulture = myCIintl;            
+        currentMatch += userName + " ";
+        
         //Instanciacion del nivel
         tiles = new List<Tile>();
         TileParser parser = new TileParser();
@@ -93,7 +118,9 @@ public class Gamemanager : MonoBehaviour
                     break;
                 case TileType.saw:
                     tiles.Add(createTile(idX, idY, SawTilePrefab));
-                    tiles[i].GetComponentInChildren<Saw>().tileDistance = (tileIds[i] * 100) % 10;
+                    Saw[] saws = tiles[i].GetComponentsInChildren<Saw>();
+                    saws[0].tileDistance = (tileIds[i] * 100) % 10;
+                    saws[1].tileDistance = (tileIds[i] * 100) % 10;
                     if (tileIds[i] >= 3.1f)
                     {
                         tiles[i].transform.Rotate(0, 180, 0);
@@ -149,39 +176,50 @@ public class Gamemanager : MonoBehaviour
         P1.transform.Translate(-10 * idX, 0, -10 * idY);
         P2.currentTileId = startTileId;
         P2.transform.Translate(-10 * idX, 0, -10 * idY);
-
+        StartCoroutine(StartCountDown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Inputs
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (start && !end)
         {
-            InputUp(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            InputDown(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            InputRight(P1);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            InputLeft(P1);
-        }
+            globalTimer += Time.deltaTime;
+            currentTimer += Time.deltaTime;
+            //Inputs
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                InputUp(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                InputDown(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                InputRight(P1);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                InputLeft(P1);
+            }
 
-        if (P1.currentTileId == goalTileId)
-        {
-            Debug.Log("Goal");
+            if (!end && (P1.currentTileId == goalTileId))
+            {
+                EndMatch();
+            }
         }
     }
 
     #region Inputs
     public void InputUp(Player player)
     {
+        if (player.tag == "Player1")
+        {
+            currentMatch += currentTimer + " " + 0 + " ";
+            currentTimer = 0.0f;
+        }
+            
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -216,6 +254,11 @@ public class Gamemanager : MonoBehaviour
 
     public void InputDown(Player player)
     {
+        if (player.tag == "Player1")
+        {
+            currentMatch += currentTimer + " " + 3 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -250,6 +293,11 @@ public class Gamemanager : MonoBehaviour
 
     public void InputRight(Player player)
     {
+        if (player.tag == "Player1")
+        {
+            currentMatch += currentTimer + " " + 1 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -283,6 +331,11 @@ public class Gamemanager : MonoBehaviour
 
     public void InputLeft(Player player)
     {
+        if (player.tag == "Player1")
+        {
+            currentMatch += currentTimer + " " + 2 + " ";
+            currentTimer = 0.0f;
+        }
         if (!player.jumping && !player.falling)
         {
             Tile lastTile = tiles[player.currentTileId];
@@ -322,11 +375,43 @@ public class Gamemanager : MonoBehaviour
         Tile tile = Instantiate(prefab, this.transform);
         tile.transform.Translate(-10 * xId, 0, -10 * yId);
         return tile;
+        
     }
 
-    public void GameOver()
+    public void addMatchToFile()
     {
-        Debug.Log("GameOver");
+        using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(Application.dataPath + "/PresetMatches.txt", true))
+        {
+            file.WriteLine(currentMatch);
+        }
+    }
+
+    public void GameOver(Player player)
+    {
+        if(player.tag == "Player1")
+        {
+            EndMatch();
+        }
+        else
+        {
+            player.transform.gameObject.SetActive(false);
+        }
+        
+    }
+
+    /*Gestiona el final de partida, convocando las llamadas al servidor si procede*/
+    public void EndMatch()
+    {
+        end = true;
+        currentMatch += globalTimer + " " + P1.getHealth();
+        managerAPI.UpdateLevelUserPlayerPrefs(currentLevel, currentMatch, true, minRankSPlus, P1.getHealth(), globalTimer);
+        addMatchToFile();
+        managerAPI.myGlobalTime = globalTimer;
+        if (P1.getHealth() <= 0 || globalTimer < float.Parse(managerAPI.oponentGlobalTime))
+            SceneManager.LoadScene(GAMEOVER);
+        else
+            SceneManager.LoadScene(VICTORY);
     }
 
     /*Cuenta atrás para el comienzo de la partida y prepara lo necesario del oponente
@@ -339,7 +424,9 @@ public class Gamemanager : MonoBehaviour
             textCountDown.text = i.ToString();
             yield return new WaitForSeconds(1f);
         }
+        start = true;
         oponentMove = StartCoroutine(OponentMove(move));
+        GameObject.Destroy(textCountDown);
     }
 
     /*Realiza los movimientos del oponente*/
