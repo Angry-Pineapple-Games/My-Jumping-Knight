@@ -39,8 +39,8 @@ public class Gamemanager : MonoBehaviour
     private float globalTimer = 0.0f;
     private float currentTimer = 0.0f;
     private string currentMatch;
-    private bool start = false;
-    private bool end = false;
+    public bool start = false;
+    public bool end = false;
     CultureInfo myCIintl = new CultureInfo("en-US", false);
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
     private ManagerAPI managerAPI;
@@ -172,7 +172,7 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (start)
+        if (start && !end)
         {
             globalTimer += Time.deltaTime;
             currentTimer += Time.deltaTime;
@@ -196,10 +196,7 @@ public class Gamemanager : MonoBehaviour
 
             if (!end && (P1.currentTileId == goalTileId))
             {
-                currentMatch += globalTimer + " " + P1.getHealth();
-                Debug.Log("Goal");
-                addMatchToFile();
-                end = true;
+                EndMatch();
             }
         }
     }
@@ -379,9 +376,24 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public void GameOver(Player player)
     {
-        Debug.Log("GameOver");
+        if(player.tag == "Player1")
+        {
+            EndMatch();
+        }
+        else
+        {
+            player.transform.gameObject.SetActive(false);
+        }
+        
+    }
+
+    public void EndMatch()
+    {
+        end = true;
+        currentMatch += globalTimer + " " + P1.getHealth();
+        addMatchToFile();
     }
 
     /*Cuenta atrás para el comienzo de la partida y prepara lo necesario del oponente

@@ -184,6 +184,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5085651128339645547, guid: 6fbc256c3e86fe2479a412296be819a3,
+        type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 1188972554}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbc256c3e86fe2479a412296be819a3, type: 3}
 --- !u!114 &385591748 stripped
@@ -615,6 +620,7 @@ MonoBehaviour:
   gridW: 10
   stepCounter: 0
   levelTxt: {fileID: 4900000, guid: 85268f060dd891a46be4bc86f7f0102d, type: 3}
+  userName: Anon
   countDown: 3
   textCountDown: {fileID: 3216942009212615087}
   TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
@@ -635,6 +641,9 @@ MonoBehaviour:
     type: 3}
   HourglassTilePrefab: {fileID: 12687982339409576, guid: 384b2ffc63f45b3419bb39fe339b9bbf,
     type: 3}
+  tiles: []
+  start: 0
+  end: 0
 --- !u!4 &1188972555
 Transform:
   m_ObjectHideFlags: 0
@@ -903,6 +912,11 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5085651128339645547, guid: a2c72758d478d7544ba682248c249050,
+        type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 1188972554}
     - target: {fileID: 5085651128339645543, guid: a2c72758d478d7544ba682248c249050,
         type: 3}
       propertyPath: m_LocalPosition.x

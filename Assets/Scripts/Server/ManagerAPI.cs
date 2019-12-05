@@ -213,7 +213,7 @@ class ManagerAPI : MonoBehaviour
         LoopPlayerPrefs("Get", eString);
 
         //si no hay conexión a internet salta al menú del juego
-        if (true || Application.internetReachability == NetworkReachability.NotReachable)
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
             myUsername = "Anonimous";
             isNetReachability = false;

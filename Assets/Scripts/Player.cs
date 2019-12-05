@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public Vector2 pos;
     public Gamemanager.Direction orientation;
+    public Gamemanager gamemanager;
     private int health = 3;
     private bool shield = false;
     private bool clock = false;
@@ -177,10 +178,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Debug.Log("GameOver");
-                animator.SetTrigger("Damage");
+                gamemanager.GameOver(this);
             }
-            Debug.Log("Ouch");
         }
         
     }
