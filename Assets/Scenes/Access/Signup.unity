@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 429524360}
   - component: {fileID: 429524362}
   - component: {fileID: 429524361}
+  - component: {fileID: 429524363}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -458,7 +459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Registration
+  m_Text: signup
 --- !u!222 &429524362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -467,6 +468,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429524359}
   m_CullTransparentMesh: 0
+--- !u!114 &429524363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429524359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &734327843
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +933,7 @@ GameObject:
   - component: {fileID: 1320313807}
   - component: {fileID: 1320313809}
   - component: {fileID: 1320313808}
+  - component: {fileID: 1320313810}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -977,7 +991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back to Login
+  m_Text: back
 --- !u!222 &1320313809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -986,6 +1000,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320313806}
   m_CullTransparentMesh: 0
+--- !u!114 &1320313810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320313806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1391985802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1217,7 @@ GameObject:
   - component: {fileID: 1457510912}
   - component: {fileID: 1457510914}
   - component: {fileID: 1457510913}
+  - component: {fileID: 1457510915}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1248,7 +1275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Username
+  m_Text: username
 --- !u!222 &1457510914
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1257,6 +1284,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457510911}
   m_CullTransparentMesh: 0
+--- !u!114 &1457510915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457510911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1649332792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1495,7 @@ GameObject:
   - component: {fileID: 1716802512}
   - component: {fileID: 1716802514}
   - component: {fileID: 1716802513}
+  - component: {fileID: 1716802515}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1513,7 +1553,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Password check
+  m_Text: passwordcheck
 --- !u!222 &1716802514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1522,6 +1562,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716802511}
   m_CullTransparentMesh: 0
+--- !u!114 &1716802515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716802511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1914291448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1585,7 @@ GameObject:
   - component: {fileID: 1914291449}
   - component: {fileID: 1914291451}
   - component: {fileID: 1914291450}
+  - component: {fileID: 1914291452}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1590,7 +1643,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Password
+  m_Text: password
 --- !u!222 &1914291451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1599,6 +1652,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914291448}
   m_CullTransparentMesh: 0
+--- !u!114 &1914291452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914291448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2072860788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1829,7 @@ GameObject:
   - component: {fileID: 84030036008702139}
   - component: {fileID: 8090592220524502361}
   - component: {fileID: 1836932257001537842}
+  - component: {fileID: 1650923439277109371}
   m_Layer: 5
   m_Name: Requirements
   m_TagString: Untagged
@@ -1771,6 +1837,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1650923439277109371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650923439277109370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f650b83e37b944bbf1aa324c6edb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1836932257001537842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,7 +1880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Only numbers and letters, \nwithout spaces in Username"
+  m_Text: requirement
 --- !u!222 &4579944567292531715
 CanvasRenderer:
   m_ObjectHideFlags: 0

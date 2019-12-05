@@ -340,6 +340,7 @@ public class Gamemanager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         oponentMove = StartCoroutine(OponentMove(move));
+        GameObject.Destroy(textCountDown);
     }
 
     /*Realiza los movimientos del oponente*/
