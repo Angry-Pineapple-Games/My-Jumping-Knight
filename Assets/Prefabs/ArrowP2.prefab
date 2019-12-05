@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 219449985229945169}
   - component: {fileID: 104063256436627279}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: ArrowP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3a6152dbfe2f7024d87edcf8abaa26b6, type: 3}
       propertyPath: m_TagString
-      value: Hazard
+      value: HazardP2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3a6152dbfe2f7024d87edcf8abaa26b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -123,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 3a6152dbfe2f7024d87edcf8abaa26b6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 72cb2030ef1a1404c9e1d3007f8b6c4f, type: 2}
+      objectReference: {fileID: 2100000, guid: aa916fbec6e751d4dae681a10e503953, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a6152dbfe2f7024d87edcf8abaa26b6, type: 3}
 --- !u!1 &6755618994382687387 stripped

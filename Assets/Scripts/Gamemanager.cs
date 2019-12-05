@@ -110,7 +110,9 @@ public class Gamemanager : MonoBehaviour
                     break;
                 case TileType.saw:
                     tiles.Add(createTile(idX, idY, SawTilePrefab));
-                    tiles[i].GetComponentInChildren<Saw>().tileDistance = (tileIds[i] * 100) % 10;
+                    Saw[] saws = tiles[i].GetComponentsInChildren<Saw>();
+                    saws[0].tileDistance = (tileIds[i] * 100) % 10;
+                    saws[1].tileDistance = (tileIds[i] * 100) % 10;
                     if (tileIds[i] >= 3.1f)
                     {
                         tiles[i].transform.Rotate(0, 180, 0);

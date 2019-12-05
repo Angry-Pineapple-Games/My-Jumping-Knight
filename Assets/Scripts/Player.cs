@@ -37,9 +37,13 @@ public class Player : MonoBehaviour
 
     public delegate void StopTime();
     public static event StopTime OnTimeStopped;
+    public delegate void StopTimeP2();
+    public static event StopTimeP2 OnTimeStoppedP2;
 
     public delegate void StartTime();
     public static event StartTime OnTimeStarted;
+    public delegate void StartTimeP2();
+    public static event StartTimeP2 OnTimeStartedP2;
 
     #endregion
     // Start is called before the first frame update
@@ -102,6 +106,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region Movement
     public void Move(Gamemanager.Direction direction)
     {
         Rotate(direction);
@@ -137,21 +142,48 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.tag == "SpikesActivator")
         {
-            Spikes spikes = collider.gameObject.GetComponentInChildren<Spikes>();
-            if (!spikes.isActive())
+            if (tag == "Player1")
             {
-                spikes.Activate();
+                Spikes spikes = collider.gameObject.GetComponentInChildren<Spikes>();
+                if (!spikes.isActive())
+                {
+                    spikes.Activate();
+                }
+            }
+        }
+
+        if(collider.gameObject.tag == "SpikesActivatorP2")
+        {
+            if (tag == "Player2")
+            {
+                Spikes spikes = collider.gameObject.GetComponentInChildren<Spikes>();
+                if (!spikes.isActive())
+                {
+                    spikes.Activate();
+                }
             }
         }
 
         if(collider.gameObject.tag == "Hazard")
         {
-            GetHit();
+            if(tag == "Player1")
+            {
+                GetHit();
+            }
+        }
+
+        if(collider.gameObject.tag == "HazardP2")
+        {
+            if (tag == "Player2")
+            {
+                GetHit();
+            }
         }
 
         if(collider.gameObject.tag == "Powerup")
@@ -170,7 +202,7 @@ public class Player : MonoBehaviour
                 shield = false;
                 shieldObject.SetActive(false);
             }
-            else if (health > 0)
+            else if (health > 1)
             {
                 health--;
                 animator.SetTrigger("Damage");
@@ -184,6 +216,7 @@ public class Player : MonoBehaviour
         
     }
 
+    #region PowerUp Effects
     public void healHealth()
     {
         if(health < 3)
@@ -192,7 +225,7 @@ public class Player : MonoBehaviour
         }
         Debug.Log("healed");
     }
-
+    
     public void obtainShield()
     {
         shield = true;
@@ -201,19 +234,36 @@ public class Player : MonoBehaviour
 
     public void obtainHourglass()
     {
-        if(OnTimeStopped != null)
-            OnTimeStopped();
+        if(tag == "Player1")
+        {
+            if (OnTimeStopped != null)
+                OnTimeStopped();
+        }
+        if(tag == "Player2")
+        {
+            if (OnTimeStoppedP2 != null)
+                OnTimeStoppedP2();
+        }
         clock = true;
         Debug.Log("Got clock");
     }
 
     public void restoreTime()
     {
-        if (OnTimeStarted != null)
-            OnTimeStarted();
+        if (tag == "Player1")
+        {
+            if (OnTimeStarted != null)
+                OnTimeStarted();
+        }
+        if (tag == "Player2")
+        {
+            if (OnTimeStartedP2 != null)
+                OnTimeStartedP2();
+        }
         clock = false;
         Debug.Log("Time back");
     }
+    #endregion
 
     #region getters and setters
 
