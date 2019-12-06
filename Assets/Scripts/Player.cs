@@ -195,11 +195,23 @@ public class Player : MonoBehaviour
 
         if(collider.gameObject.tag == "Button")
         {
-            DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
-            doorButton.OpenMyDoor();
+            if(tag == "Player1")
+            {
+                DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
+                doorButton.OpenMyDoor();
+            }
         }
 
-        if(collider.gameObject.tag == "Portal")
+        if (collider.gameObject.tag == "ButtonP2")
+        {
+            if (tag == "Player2")
+            {
+                DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
+                doorButton.OpenMyDoor();
+            }
+        }
+
+        if (collider.gameObject.tag == "Portal")
         {
             if (!teleporting)
             {

@@ -21,7 +21,14 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        tile.walkable = true;
+        if(tag == "Hazard")
+        {
+            tile.walkable = true;
+        }
+        else
+        {
+            tile.walkableP2 = true;
+        }
         animator.SetTrigger("Open");
     }
 }

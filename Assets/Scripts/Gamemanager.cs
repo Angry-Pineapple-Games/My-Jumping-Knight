@@ -44,6 +44,8 @@ public class Gamemanager : MonoBehaviour
     private List<Tile> tiles;
     private Door[] doors;
     private DoorButton[] buttons;
+    private Door[] doorsP2;
+    private DoorButton[] buttonsP2;
     private Portal[] portals;
     private int startTileId = 0;
     private int goalTileId;
@@ -103,6 +105,11 @@ public class Gamemanager : MonoBehaviour
         doors = new Door[numDoors];
         buttons = new DoorButton[numDoors];
         portals = new Portal[numPortals];
+        if (multiplayer)
+        {
+            doorsP2 = new Door[numDoors];
+            buttonsP2 = new DoorButton[numDoors];
+        }
         for (int i = 0; i < tileIds.Count; i++)
         {
             idX = i % gridW;
@@ -181,12 +188,32 @@ public class Gamemanager : MonoBehaviour
                 case TileType.door:
                     tiles.Add(createTile(idX, idY, DoorTilePrefab));
                     int doorIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10);
-                    doors[doorIndex - 1] = tiles[i].GetComponentInChildren<Door>();
+                    Door[] bothDoors = tiles[i].GetComponentsInChildren<Door>();
+                    foreach(Door d in bothDoors)
+                    {
+                        if(d.tag == "Hazard")
+                        {
+                            doors[doorIndex - 1] = d;
+                        }else if(multiplayer && d.tag == "HazardP2")
+                        {
+                            doorsP2[doorIndex - 1] = d;
+                        }
+                    }
                     break;
                 case TileType.button:
                     tiles.Add(createTile(idX, idY, ButtonTilePrefab));
                     int buttonIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10);
-                    buttons[buttonIndex - 1] = tiles[i].GetComponentInChildren<DoorButton>();
+                    DoorButton[] bothButtons = tiles[i].GetComponentsInChildren<DoorButton>();
+                    foreach(DoorButton db in bothButtons)
+                    {
+                        if(db.tag == "Button")
+                        {
+                            buttons[buttonIndex - 1] = db;
+                        } else if(multiplayer && db.tag == "ButtonP2")
+                        {
+                            buttonsP2[buttonIndex - 1] = db;
+                        }
+                    }
                     break;
                 case TileType.portal:
                     tiles.Add(createTile(idX, idY, PortalTilePrefab));
@@ -213,6 +240,10 @@ public class Gamemanager : MonoBehaviour
             for(int i = 0; i < numDoors; i++)
             {
                 buttons[i].door = doors[i];
+                if (multiplayer)
+                {
+                    buttonsP2[i].door = doorsP2[i];
+                }
             }
         }
         idX = startTileId % gridW;
@@ -291,7 +322,7 @@ public class Gamemanager : MonoBehaviour
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.up);
                 }
-                else if (nextTile.walkable)
+                else if ((player.tag == "Player1" && nextTile.walkable) || (player.tag == "Player2" && nextTile.walkableP2))
                 {
                     player.currentTileId += gridW;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
@@ -328,7 +359,7 @@ public class Gamemanager : MonoBehaviour
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.down);
                 }
-                else if (nextTile.walkable)
+                else if ((player.tag == "Player1" && nextTile.walkable) || (player.tag == "Player2" && nextTile.walkableP2))
                 {
                     player.currentTileId -= gridW;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
@@ -364,7 +395,7 @@ public class Gamemanager : MonoBehaviour
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.right);
                 }
-                else if (nextTile.walkable)
+                else if ((player.tag == "Player1" && nextTile.walkable) || (player.tag == "Player2" && nextTile.walkableP2))
                 {
                     player.currentTileId++;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
@@ -400,7 +431,7 @@ public class Gamemanager : MonoBehaviour
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.left);
                 }
-                else if (nextTile.walkable)
+                else if ((player.tag == "Player1" && nextTile.walkable) || (player.tag == "Player2" && nextTile.walkableP2))
                 {
                     player.currentTileId--;
 
