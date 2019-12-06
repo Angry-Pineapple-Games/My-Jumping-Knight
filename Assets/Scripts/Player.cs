@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public bool falling = false;
     private bool teleporting = false;
     public Vector3 lastTile;
+    public HeartController heartsUI;
 
     private Animator animator;
     public Renderer modelRenderer;
@@ -246,6 +247,8 @@ public class Player : MonoBehaviour
             {
                 gamemanager.GameOver(this);
             }
+            if (heartsUI != null)
+                heartsUI.UpdateHealthUI(health);
         }
         
     }
@@ -264,7 +267,8 @@ public class Player : MonoBehaviour
         {
             health++;
         }
-        Debug.Log("healed");
+        if(heartsUI != null)
+            heartsUI.UpdateHealthUI(health);
     }
     
     public void obtainShield()
