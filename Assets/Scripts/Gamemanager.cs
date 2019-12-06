@@ -19,6 +19,9 @@ public class Gamemanager : MonoBehaviour
     public string userName = "Anon";
     public int countDown;
     public Text textCountDown;
+    public bool multiplayer = false;
+    public int numDoors = 0;
+    public int numPortals = 0;
     #endregion
 
     #region Prefabs
@@ -31,11 +34,16 @@ public class Gamemanager : MonoBehaviour
     public Tile HeartTilePrefab;
     public Tile ShieldTilePrefab;
     public Tile HourglassTilePrefab;
+    public Tile DoorTilePrefab;
+    public Tile ButtonTilePrefab;
+    public Tile PortalTilePrefab;
 
     #endregion
 
     #region Parameters
     private List<Tile> tiles;
+    public Door[] doors;
+    public DoorButton[] buttons;
     private int startTileId = 0;
     private int goalTileId;
     private float globalTimer = 0.0f;
@@ -68,7 +76,10 @@ public class Gamemanager : MonoBehaviour
         clock = 8,
         emptySaw = 9,
         goal = 10,
-        start = 11
+        start = 11,
+        button = 12,
+        door = 13,
+        portal = 14
     };
     #endregion
     // Start is called before the first frame update
@@ -79,7 +90,7 @@ public class Gamemanager : MonoBehaviour
             managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
             userName = managerAPI.myUsername;
         }
-        Thread.CurrentThread.CurrentCulture = myCIintl;            
+        Thread.CurrentThread.CurrentCulture = myCIintl;
         currentMatch += userName + " ";
         
         //Instanciacion del nivel
@@ -88,6 +99,9 @@ public class Gamemanager : MonoBehaviour
         List<float> tileIds = parser.GetTilesFromFile(levelTxt);
         int idX;
         int idY;
+        doors = new Door[numDoors];
+        buttons = new DoorButton[numDoors];
+
         for (int i = 0; i < tileIds.Count; i++)
         {
             idX = i % gridW;
@@ -163,18 +177,42 @@ public class Gamemanager : MonoBehaviour
                     tiles.Add(createTile(idX, idY, TilePrefab));
                     startTileId = i;
                     break;
+                case TileType.door:
+                    tiles.Add(createTile(idX, idY, DoorTilePrefab));
+                    int doorIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10);
+                    doors[doorIndex - 1] = tiles[i].GetComponentInChildren<Door>();
+                    break;
+                case TileType.button:
+                    tiles.Add(createTile(idX, idY, ButtonTilePrefab));
+                    int buttonIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10);
+                    buttons[buttonIndex - 1] = tiles[i].GetComponentInChildren<DoorButton>();
+                    break;
                 default:
                     tiles.Add(null);
-
                     break;
+            }
+        }
+        if(numDoors > 0)
+        {
+            for(int i = 0; i < numDoors; i++)
+            {
+                buttons[i].door = doors[i];
             }
         }
         idX = startTileId % gridW;
         idY = startTileId / gridW;
         P1.currentTileId = startTileId;
         P1.transform.Translate(-10 * idX, 0, -10 * idY);
-        P2.currentTileId = startTileId;
-        P2.transform.Translate(-10 * idX, 0, -10 * idY);
+        if (multiplayer)
+        {
+            P2.currentTileId = startTileId;
+            P2.transform.Translate(-10 * idX, 0, -10 * idY);
+        }
+        else
+        {
+            P2.gameObject.SetActive(false);
+        }
+        
         StartCoroutine(StartCountDown());
     }
 
@@ -403,7 +441,7 @@ public class Gamemanager : MonoBehaviour
         managerAPI.UpdateLevelUserPlayerPrefs(currentLevel, currentMatch, true, minRankSPlus, P1.getHealth(), globalTimer);
         addMatchToFile();
         managerAPI.myGlobalTime = globalTimer;
-        if (P1.getHealth() <= 0 || globalTimer < float.Parse(managerAPI.oponentGlobalTime))
+        if (P1.getHealth() <= 0 || globalTimer < float.Parse(managerAPI.oponentGlobalTime) || stepCounter <= 0)
             SceneManager.LoadScene(GAMEOVER);
         else
             SceneManager.LoadScene(VICTORY);
@@ -413,15 +451,20 @@ public class Gamemanager : MonoBehaviour
      llamar con StartCoroutine(método) cuando se deba empezar la cuenta atrás*/
     IEnumerator StartCountDown()
     {
-        string[] move = managerAPI.GetRandomOponent();
+        
         for (int i = countDown; i > 0; i--)
         {
             textCountDown.text = i.ToString();
             yield return new WaitForSeconds(1f);
         }
         start = true;
-        oponentMove = StartCoroutine(OponentMove(move));
         GameObject.Destroy(textCountDown);
+        if(multiplayer && managerAPI != null)
+        {
+            string[] move = managerAPI.GetRandomOponent();
+            oponentMove = StartCoroutine(OponentMove(move));
+        }
+        
     }
 
     /*Realiza los movimientos del oponente*/

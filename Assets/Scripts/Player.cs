@@ -191,6 +191,12 @@ public class Player : MonoBehaviour
             Powerup powerup = collider.gameObject.GetComponent<Powerup>();
             powerup.GetPowerUp(this);
         }
+
+        if(collider.gameObject.tag == "Button")
+        {
+            DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
+            doorButton.OpenMyDoor();
+        }
     }
 
     public void GetHit()
