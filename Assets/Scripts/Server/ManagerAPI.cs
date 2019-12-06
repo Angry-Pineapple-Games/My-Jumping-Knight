@@ -133,9 +133,9 @@ class ManagerAPI : MonoBehaviour
             /*Si no existe crea los playerprefs con informacion de un dummy para el usuario
              Se actualizan los datos locales con los del servidor si son partidas mejores*/
             InitUserPlayerPrefs();
-            UpdateLevelUserPlayerPrefs("1", myLevel1);
-            UpdateLevelUserPlayerPrefs("2", myLevel3);
-            UpdateLevelUserPlayerPrefs("3", myLevel3);
+            UpdateUserPlayerPrefs("1", myLevel1, myRank1);
+            UpdateUserPlayerPrefs("2", myLevel2, myRank2);
+            UpdateUserPlayerPrefs("3", myLevel3, myRank3);
 
             SceneManager.LoadScene(GAME);
         }
@@ -325,7 +325,7 @@ class ManagerAPI : MonoBehaviour
     /*Guarda en local la mejor partida del cliente (compara la pasada con la existente)
      si es nuevo lo guarda o 
      si tiene más o la misma vida y si ha tardado menos tiempo*/
-    public void UpdateLevelUserPlayerPrefs(string level, string levelstring, bool saveRecord = false, float min = 0f, int heal = 0, float globaltime = 0f)
+    public void UpdateUserPlayerPrefs(string level, string levelstring, string rank)
     {
         string keylevel = myUsername + "level" + level;
         string keyrank = myUsername + "rank" + level;
@@ -334,13 +334,30 @@ class ManagerAPI : MonoBehaviour
         if (oldLevelString.Length == 1 || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[oldLevelString.Length - 1])
             && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[oldLevelString.Length - 2])))
         {
-            if (saveRecord && globaltime < MAXTIMETOSAVE)
+            PlayerPrefs.SetString(keylevel, levelstring);
+            PlayerPrefs.SetString(keyrank, rank);
+        }
+    }
+
+
+    /*Guarda la partida si es la mejor que tiene el cliente tanto los movimientos
+     como el rango*/
+    public void SaveRecordLevelUser(string level, string levelstring, float min, int heal, float globaltime)
+    {
+        string keylevel = myUsername + "level" + level;
+        string keyrank = myUsername + "rank" + level;
+        string[] newLevelString = levelstring.Split(null);
+        string[] oldLevelString = PlayerPrefs.GetString(keylevel).Split(' ');
+        if (oldLevelString.Length == 1 || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[oldLevelString.Length - 1])
+            && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[oldLevelString.Length - 2])))
+        {
+            if (globaltime < MAXTIMETOSAVE)
             {
                 string rank = CalculateRank(min, heal, globaltime, level);
                 Record(levelstring, rank, level);
                 PlayerPrefs.SetString(keyrank, rank);
+                PlayerPrefs.SetString(keylevel, levelstring);
             }
-            PlayerPrefs.SetString(keylevel, levelstring);
         }
     }
 
