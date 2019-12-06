@@ -15,7 +15,6 @@ public class Gamemanager : MonoBehaviour
     public float minRankSPlus;
     public int gridH;
     public int gridW;
-    public int stepCounter;
     public TextAsset levelTxt;
     public string userName = "Anon";
     public int countDown;
@@ -36,13 +35,13 @@ public class Gamemanager : MonoBehaviour
     #endregion
 
     #region Parameters
-    [HideInInspector]
-    public List<Tile> tiles;
+    private List<Tile> tiles;
     private int startTileId = 0;
     private int goalTileId;
     private float globalTimer = 0.0f;
     private float currentTimer = 0.0f;
     private string currentMatch;
+    public int stepCounter = 250;
     [HideInInspector]
     public bool start = false;
     [HideInInspector]
@@ -165,7 +164,7 @@ public class Gamemanager : MonoBehaviour
                     startTileId = i;
                     break;
                 default:
-                    Debug.Log("Id de tile erroneo." + tileIds[i]);
+                    tiles.Add(null);
 
                     break;
             }
@@ -208,6 +207,10 @@ public class Gamemanager : MonoBehaviour
             {
                 EndMatch();
             }
+            if(stepCounter <= 0)
+            {
+                GameOver(P1);
+            }
         }
     }
 
@@ -218,6 +221,7 @@ public class Gamemanager : MonoBehaviour
         {
             currentMatch += currentTimer + " " + 0 + " ";
             currentTimer = 0.0f;
+            stepCounter--;
         }
             
         if (!player.jumping && !player.falling)
@@ -232,14 +236,12 @@ public class Gamemanager : MonoBehaviour
                     player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.up);
-                    stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
                     player.currentTileId += gridW;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
                     player.Move(Direction.up);
-                    stepCounter++;
                 }
             }
             else
@@ -247,7 +249,6 @@ public class Gamemanager : MonoBehaviour
                 player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
                 player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                 player.Fall(Direction.up);
-                stepCounter++;
             }
         }
     }
@@ -258,6 +259,7 @@ public class Gamemanager : MonoBehaviour
         {
             currentMatch += currentTimer + " " + 3 + " ";
             currentTimer = 0.0f;
+            stepCounter--;
         }
         if (!player.jumping && !player.falling)
         {
@@ -271,14 +273,12 @@ public class Gamemanager : MonoBehaviour
                     player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.down);
-                    stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
                     player.currentTileId -= gridW;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
                     player.Move(Direction.down);
-                    stepCounter++;
                 }
             }
             else
@@ -286,7 +286,6 @@ public class Gamemanager : MonoBehaviour
                 player.SetTargetTile(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
                 player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                 player.Fall(Direction.down);
-                stepCounter++;
             }
         }
     }
@@ -297,6 +296,7 @@ public class Gamemanager : MonoBehaviour
         {
             currentMatch += currentTimer + " " + 1 + " ";
             currentTimer = 0.0f;
+            stepCounter--;
         }
         if (!player.jumping && !player.falling)
         {
@@ -309,14 +309,12 @@ public class Gamemanager : MonoBehaviour
                     player.SetTargetTile(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.right);
-                    stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
                     player.currentTileId++;
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
                     player.Move(Direction.right);
-                    stepCounter++;
                 }
             }
             else
@@ -324,7 +322,6 @@ public class Gamemanager : MonoBehaviour
                 player.SetTargetTile(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
                 player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                 player.Fall(Direction.right);
-                stepCounter++;
             }
         }
     }
@@ -335,6 +332,7 @@ public class Gamemanager : MonoBehaviour
         {
             currentMatch += currentTimer + " " + 2 + " ";
             currentTimer = 0.0f;
+            stepCounter--;
         }
         if (!player.jumping && !player.falling)
         {
@@ -347,7 +345,6 @@ public class Gamemanager : MonoBehaviour
                     player.SetTargetTile(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
                     player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                     player.Fall(Direction.left);
-                    stepCounter++;
                 }
                 else if (nextTile.walkable)
                 {
@@ -355,7 +352,6 @@ public class Gamemanager : MonoBehaviour
 
                     player.SetTargetTile(new Vector3(nextTile.transform.position.x, player.transform.position.y, nextTile.transform.position.z));
                     player.Move(Direction.left);
-                    stepCounter++;
                 }
             }
             else
@@ -363,7 +359,6 @@ public class Gamemanager : MonoBehaviour
                 player.SetTargetTile(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
                 player.SetLastTile(new Vector3(lastTile.transform.position.x, player.transform.position.y, lastTile.transform.position.z));
                 player.Fall(Direction.left);
-                stepCounter++;
             }
         }
     }
