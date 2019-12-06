@@ -13,6 +13,7 @@ TagManager:
   - SpikesActivatorP2
   - Button
   - ButtonP2
+  - Portal
   layers:
   - Default
   - TransparentFX

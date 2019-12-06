@@ -42,8 +42,9 @@ public class Gamemanager : MonoBehaviour
 
     #region Parameters
     private List<Tile> tiles;
-    public Door[] doors;
-    public DoorButton[] buttons;
+    private Door[] doors;
+    private DoorButton[] buttons;
+    private Portal[] portals;
     private int startTileId = 0;
     private int goalTileId;
     private float globalTimer = 0.0f;
@@ -101,7 +102,7 @@ public class Gamemanager : MonoBehaviour
         int idY;
         doors = new Door[numDoors];
         buttons = new DoorButton[numDoors];
-
+        portals = new Portal[numPortals];
         for (int i = 0; i < tileIds.Count; i++)
         {
             idX = i % gridW;
@@ -186,6 +187,21 @@ public class Gamemanager : MonoBehaviour
                     tiles.Add(createTile(idX, idY, ButtonTilePrefab));
                     int buttonIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10);
                     buttons[buttonIndex - 1] = tiles[i].GetComponentInChildren<DoorButton>();
+                    break;
+                case TileType.portal:
+                    tiles.Add(createTile(idX, idY, PortalTilePrefab));
+                    int portalIndex = Mathf.RoundToInt((tileIds[i] * 10) % 10) - 1;
+                    Portal newPortal = tiles[i].GetComponentInChildren<Portal>();
+                    newPortal.tileId = i;
+                    if (portals[portalIndex] == null)
+                    {
+                        portals[portalIndex] = newPortal;
+                    }
+                    else
+                    {
+                        portals[portalIndex].otherPortal = newPortal;
+                        newPortal.otherPortal = portals[portalIndex];
+                    }
                     break;
                 default:
                     tiles.Add(null);
