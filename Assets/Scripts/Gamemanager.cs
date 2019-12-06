@@ -290,6 +290,23 @@ public class Gamemanager : MonoBehaviour
                 InputLeft(P1);
             }
 
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                InputUp(P2);
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                InputDown(P2);
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                InputRight(P2);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                InputLeft(P2);
+            }
+
             if (!end && (P1.currentTileId == goalTileId))
             {
                 EndMatch();
