@@ -524,7 +524,7 @@ public class Gamemanager : MonoBehaviour
         managerAPI.UpdateLevelUserPlayerPrefs(currentLevel, currentMatch, true, minRankSPlus, P1.getHealth(), globalTimer);
         addMatchToFile();
         managerAPI.myGlobalTime = globalTimer;
-        if (P1.getHealth() <= 0 || globalTimer < float.Parse(managerAPI.oponentGlobalTime) || stepCounter <= 0)
+        if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
             SceneManager.LoadScene(GAMEOVER);
         else
             SceneManager.LoadScene(VICTORY);

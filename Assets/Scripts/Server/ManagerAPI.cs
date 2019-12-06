@@ -16,6 +16,7 @@ class ManagerAPI : MonoBehaviour
     private bool debug = true;
     private const int NUMBERLEVELS = 3;
     private const int NUMBERGAMES = 20;
+    private const float MAXTIMETOSAVE = 1000f;
     private const string GAME = "MainScene";
     private string[] RANKS = new string[] { "C", "B", "A", "A+", "S", "S+" };
     private int[] RANKSSTEPS = new int[] { 120, 95, 55, 30, 10, 2};
@@ -237,6 +238,7 @@ class ManagerAPI : MonoBehaviour
         else { isNetReachability = true; }
     }
 
+    /*Si la red o el servidor no están disponibles, crea un perfil anónimo para la partida*/
     public void NetUnavailable()
     {
         myUsername = "Anonimous";
@@ -332,7 +334,7 @@ class ManagerAPI : MonoBehaviour
         if (oldLevelString.Length == 1 || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[oldLevelString.Length - 1])
             && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[oldLevelString.Length - 2])))
         {
-            if (saveRecord)
+            if (saveRecord && globaltime < MAXTIMETOSAVE)
             {
                 string rank = CalculateRank(min, heal, globaltime, level);
                 Record(levelstring, rank, level);
