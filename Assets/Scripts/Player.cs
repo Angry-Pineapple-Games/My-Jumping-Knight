@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool jumping = false;
     public float speed = 1f;
     public bool falling = false;
+    private bool teleporting = false;
     public Vector3 lastTile;
 
     private Animator animator;
@@ -191,6 +192,39 @@ public class Player : MonoBehaviour
             Powerup powerup = collider.gameObject.GetComponent<Powerup>();
             powerup.GetPowerUp(this);
         }
+
+        if(collider.gameObject.tag == "Button")
+        {
+            if(tag == "Player1")
+            {
+                DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
+                doorButton.OpenMyDoor();
+            }
+        }
+
+        if (collider.gameObject.tag == "ButtonP2")
+        {
+            if (tag == "Player2")
+            {
+                DoorButton doorButton = collider.gameObject.GetComponent<DoorButton>();
+                doorButton.OpenMyDoor();
+            }
+        }
+
+        if (collider.gameObject.tag == "Portal")
+        {
+            if (!teleporting)
+            {
+                Portal portal = collider.gameObject.GetComponent<Portal>();
+                Teleport(portal.otherPortal);
+                teleporting = true;
+            }
+            else
+            {
+                teleporting = false;
+            }
+            
+        }
     }
 
     public void GetHit()
@@ -214,6 +248,13 @@ public class Player : MonoBehaviour
             }
         }
         
+    }
+
+    public void Teleport(Portal portal)
+    {
+        currentTileId = portal.tileId;
+        transform.position = new Vector3(portal.transform.position.x, transform.position.y, portal.transform.position.z);
+        jumping = false;
     }
 
     #region PowerUp Effects

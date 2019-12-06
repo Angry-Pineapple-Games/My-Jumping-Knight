@@ -237,7 +237,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120799331}
-  m_LocalRotation: {x: -0.041184578, y: -0.8983251, z: 0.4288027, w: -0.08628017}
+  m_LocalRotation: {x: -0.0411846, y: -0.8983251, z: 0.4288027, w: -0.08628021}
   m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -426,6 +426,9 @@ MonoBehaviour:
   userName: Anon
   countDown: 3
   textCountDown: {fileID: 1836674209}
+  multiplayer: 1
+  numDoors: 4
+  numPortals: 7
   TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
     type: 3}
   ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,
@@ -443,6 +446,12 @@ MonoBehaviour:
   ShieldTilePrefab: {fileID: 8271056958710736010, guid: abc5af2fa120da34b8737230eb1e0a66,
     type: 3}
   HourglassTilePrefab: {fileID: 12687982339409576, guid: 384b2ffc63f45b3419bb39fe339b9bbf,
+    type: 3}
+  DoorTilePrefab: {fileID: 6429189149479497630, guid: 6f16ef8187d829142b330701a8e00ba2,
+    type: 3}
+  ButtonTilePrefab: {fileID: 7067474416135682285, guid: 0b49815b4326ec543bce4f595464be6c,
+    type: 3}
+  PortalTilePrefab: {fileID: 945105372574183072, guid: dbcb4408a630c4c43b7da86dc7d2dddd,
     type: 3}
   stepCounter: 250
   start: 0
@@ -740,7 +749,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009973677}
-  m_LocalRotation: {x: -0.041184578, y: -0.8983251, z: 0.4288027, w: -0.08628017}
+  m_LocalRotation: {x: -0.0411846, y: -0.8983251, z: 0.4288027, w: -0.08628021}
   m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

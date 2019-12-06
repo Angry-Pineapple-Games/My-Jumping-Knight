@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class Portal : MonoBehaviour
 {
-    public Vector2 pos;
-    public bool walkable = true;
-    public bool walkableP2 = true;
-
+    public Portal otherPortal;
+    public int tileId;
     // Start is called before the first frame update
     void Start()
     {

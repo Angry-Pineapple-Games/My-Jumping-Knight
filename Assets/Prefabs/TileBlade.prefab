@@ -62,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   walkable: 0
+  walkableP2: 0
 --- !u!136 &8760897140996800588
 CapsuleCollider:
   m_ObjectHideFlags: 0
