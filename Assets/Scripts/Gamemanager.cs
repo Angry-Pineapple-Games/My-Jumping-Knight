@@ -17,8 +17,9 @@ public class Gamemanager : MonoBehaviour
     public int gridW;
     public TextAsset levelTxt;
     public string userName = "Anon";
+    public string oponentName = "Anon";
     public int countDown;
-    public Text textCountDown;
+    
     public bool multiplayer = false;
     public int numDoors = 0;
     public int numPortals = 0;
@@ -65,6 +66,16 @@ public class Gamemanager : MonoBehaviour
     private const string MULTIPLAYERKEY = "MultiplayerGame";
     #endregion
 
+    #region UI Elements
+
+    public Text textCountDown;
+    public Text textTimer;
+    public Text textName;
+    public Text textOponent;
+    public Text textSteps;
+
+    #endregion
+
     #region Enumerations
     public enum Direction { up, right, left, down };
     public enum TileType
@@ -96,7 +107,8 @@ public class Gamemanager : MonoBehaviour
         }
         Thread.CurrentThread.CurrentCulture = myCIintl;
         currentMatch += userName + " ";
-        
+        multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
+
         //Instanciacion del nivel
         tiles = new List<Tile>();
         TileParser parser = new TileParser();
@@ -106,7 +118,7 @@ public class Gamemanager : MonoBehaviour
         doors = new Door[numDoors];
         buttons = new DoorButton[numDoors];
         portals = new Portal[numPortals];
-        multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
+        
         if (multiplayer)
         {
             doorsP2 = new Door[numDoors];
@@ -271,6 +283,7 @@ public class Gamemanager : MonoBehaviour
         if (start && !end)
         {
             globalTimer += Time.deltaTime;
+            textTimer.text = "" + Mathf.FloorToInt(globalTimer);
             currentTimer += Time.deltaTime;
             //Inputs
             if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -326,6 +339,7 @@ public class Gamemanager : MonoBehaviour
             currentMatch += currentTimer + " " + 0 + " ";
             currentTimer = 0.0f;
             stepCounter--;
+            textSteps.text = "" + stepCounter;
         }
             
         if (!player.jumping && !player.falling)
@@ -364,6 +378,7 @@ public class Gamemanager : MonoBehaviour
             currentMatch += currentTimer + " " + 3 + " ";
             currentTimer = 0.0f;
             stepCounter--;
+            textSteps.text = "" + stepCounter;
         }
         if (!player.jumping && !player.falling)
         {
@@ -401,6 +416,7 @@ public class Gamemanager : MonoBehaviour
             currentMatch += currentTimer + " " + 1 + " ";
             currentTimer = 0.0f;
             stepCounter--;
+            textSteps.text = "" + stepCounter;
         }
         if (!player.jumping && !player.falling)
         {
@@ -437,6 +453,7 @@ public class Gamemanager : MonoBehaviour
             currentMatch += currentTimer + " " + 2 + " ";
             currentTimer = 0.0f;
             stepCounter--;
+            textSteps.text = "" + stepCounter;
         }
         if (!player.jumping && !player.falling)
         {
@@ -528,9 +545,11 @@ public class Gamemanager : MonoBehaviour
         if(multiplayer && managerAPI != null)
         {
             string[] move = managerAPI.GetRandomOponent();
+            oponentName = managerAPI.oponentUsername;
             oponentMove = StartCoroutine(OponentMove(move));
+            textOponent.text = oponentName;
         }
-        
+        textName.text = userName;
     }
 
     /*Realiza los movimientos del oponente*/
