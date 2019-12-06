@@ -62,6 +62,7 @@ public class Gamemanager : MonoBehaviour
     private ManagerAPI managerAPI;
     private const string GAMEOVER = "GameOverScene";
     private const string VICTORY = "VictoryScene";
+    private const string MULTIPLAYERKEY = "MultiplayerGame";
     #endregion
 
     #region Enumerations
@@ -105,6 +106,7 @@ public class Gamemanager : MonoBehaviour
         doors = new Door[numDoors];
         buttons = new DoorButton[numDoors];
         portals = new Portal[numPortals];
+        multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
         if (multiplayer)
         {
             doorsP2 = new Door[numDoors];
