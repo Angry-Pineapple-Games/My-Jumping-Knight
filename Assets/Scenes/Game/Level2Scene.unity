@@ -928,6 +928,8 @@ MonoBehaviour:
   ButtonTilePrefab: {fileID: 0}
   PortalTilePrefab: {fileID: 0}
   TutorialTilePrefab: {fileID: 0}
+  GoalTilePrefab: {fileID: 3713010864252844173, guid: 676712c07ffeab94780c6f1e39bdb458,
+    type: 3}
   stepCounter: 280
   start: 0
   end: 0

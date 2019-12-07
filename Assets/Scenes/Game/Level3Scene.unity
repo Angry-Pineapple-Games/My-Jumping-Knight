@@ -920,6 +920,8 @@ MonoBehaviour:
   PortalTilePrefab: {fileID: 945105372574183072, guid: dbcb4408a630c4c43b7da86dc7d2dddd,
     type: 3}
   TutorialTilePrefab: {fileID: 0}
+  GoalTilePrefab: {fileID: 3713010864252844173, guid: cabfc46e6c1e28e49aac1fb05c8b9034,
+    type: 3}
   stepCounter: 280
   start: 0
   end: 0

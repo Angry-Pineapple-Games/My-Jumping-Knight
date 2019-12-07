@@ -52,6 +52,7 @@ public class Gamemanager : MonoBehaviour
     public Tile ButtonTilePrefab;
     public Tile PortalTilePrefab;
     public Tile TutorialTilePrefab;
+    public Tile GoalTilePrefab;
 
     #endregion
 
@@ -258,7 +259,7 @@ public class Gamemanager : MonoBehaviour
                     }
                     break;
                 case TileType.goal:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    tiles.Add(createTile(idX, idY, GoalTilePrefab));
                     goalTileId = i;
                     break;
                 case TileType.start:
