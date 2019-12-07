@@ -21,6 +21,7 @@ public class Gamemanager : MonoBehaviour
     public int countDown;
     
     public bool multiplayer = false;
+    public bool autoplay = false;
     public int numDoors = 0;
     public int numPortals = 0;
     #endregion
@@ -302,40 +303,23 @@ public class Gamemanager : MonoBehaviour
             textTimer.text = "" + Mathf.FloorToInt(globalTimer);
             currentTimer += Time.deltaTime;
             //Inputs
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 InputUp(P1);
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 InputDown(P1);
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 InputRight(P1);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 InputLeft(P1);
             }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                InputUp(P2);
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                InputDown(P2);
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                InputRight(P2);
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                InputLeft(P2);
-            }
-
+            
             if (!end && (P1.currentTileId == goalTileId))
             {
                 EndMatch();
@@ -538,7 +522,7 @@ public class Gamemanager : MonoBehaviour
         end = true;
         currentMatch += globalTimer + " " + P1.getHealth();
         managerAPI.SaveRecordLevelUser(currentLevel, currentMatch, minRankSPlus, P1.getHealth(), globalTimer);
-        addMatchToFile();
+        //addMatchToFile();
         managerAPI.myGlobalTime = globalTimer;
         if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
             SceneManager.LoadScene(GAMEOVER);

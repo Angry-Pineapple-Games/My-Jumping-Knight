@@ -26,7 +26,7 @@ public class RankImage : MonoBehaviour
                 image.sprite = RankB;
                 break;
             case "A":
-                image.sprite = RankC;
+                image.sprite = RankA;
                 break;
             case "A+":
                 image.sprite = RankAPlus;
