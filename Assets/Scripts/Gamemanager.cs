@@ -302,6 +302,16 @@ public class Gamemanager : MonoBehaviour
                 movementSphere.gameObject.SetActive(false);
             }
         }
+
+        if (!multiplayer)
+        {
+            GameObject[] multiplayerHazards = GameObject.FindGameObjectsWithTag("HazardP2");
+            foreach(GameObject hazard in multiplayerHazards)
+            {
+                hazard.SetActive(false);
+            }
+        }
+
         StartCoroutine(StartCountDown());
     }
 

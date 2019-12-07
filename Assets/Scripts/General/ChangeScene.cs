@@ -21,6 +21,7 @@ public class ChangeScene : MonoBehaviour
     public void SingleplayerButton(string sceneName)
     {
         PlayerPrefs.SetInt(MULTIPLAYERKEY, 0);
+        PlayerPrefs.SetInt(AUTOPLAYKEY, 0);
         ChangeToScene(sceneName);
     }
 
