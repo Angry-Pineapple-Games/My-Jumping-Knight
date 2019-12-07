@@ -226,6 +226,12 @@ public class Player : MonoBehaviour
             }
             
         }
+
+        if(collider.gameObject.tag == "TutorialSpawner")
+        {
+            TutorialSpawner tutorialSpawner = collider.gameObject.GetComponent<TutorialSpawner>();
+            tutorialSpawner.TriggerTutorial();
+        }
     }
 
     public void GetHit()
@@ -239,7 +245,8 @@ public class Player : MonoBehaviour
             }
             else if (health > 1)
             {
-                health--;
+                if(!gamemanager.tutorial)
+                    health--;
                 animator.SetTrigger("Damage");
                 invincible = true;
             }

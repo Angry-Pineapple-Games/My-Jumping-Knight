@@ -22,8 +22,11 @@ public class Gamemanager : MonoBehaviour
     
     public bool multiplayer = false;
     public bool autoplay = false;
+    public bool tutorial = false;
     public int numDoors = 0;
     public int numPortals = 0;
+    public List<string> tutorialKeys;
+    public Image tutorialImage;
     #endregion
 
     #region Ranks
@@ -48,6 +51,7 @@ public class Gamemanager : MonoBehaviour
     public Tile DoorTilePrefab;
     public Tile ButtonTilePrefab;
     public Tile PortalTilePrefab;
+    public Tile TutorialTilePrefab;
 
     #endregion
 
@@ -76,6 +80,7 @@ public class Gamemanager : MonoBehaviour
     private const string VICTORY = "VictoryScene";
     private const string MULTIPLAYERKEY = "MultiplayerGame";
     private const string AUTOPLAYKEY = "AutoplayGame";
+    private const string MAINSCENE = "MainScene";
     #endregion
 
     #region UI Elements
@@ -106,22 +111,37 @@ public class Gamemanager : MonoBehaviour
         start = 11,
         button = 12,
         door = 13,
-        portal = 14
+        portal = 14,
+        tutorial = 15
     };
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.Find("ApiClient(Clone)") != null)
+        if (!tutorial)
         {
-            managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
-            userName = managerAPI.myUsername;
+            if (GameObject.Find("ApiClient(Clone)") != null)
+            {
+                managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+                userName = managerAPI.myUsername;
+            }
+            Thread.CurrentThread.CurrentCulture = myCIintl;
+            currentMatch += userName + " ";
+            multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
+            autoplay = PlayerPrefs.GetInt(AUTOPLAYKEY) == 1;
         }
-        Thread.CurrentThread.CurrentCulture = myCIintl;
-        currentMatch += userName + " ";
-        multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
-        autoplay = PlayerPrefs.GetInt(AUTOPLAYKEY) == 1;
-
+        else
+        {
+            Language lang = GameObject.Find("Language(Clone)").GetComponent<Language>();
+            if (!Application.isMobilePlatform)
+            {
+                tutorialImage.GetComponentInChildren<Text>().text = lang.GetString(tutorialKeys[1]);
+            }
+            else
+            {
+                tutorialImage.GetComponentInChildren<Text>().text = lang.GetString(tutorialKeys[0]);
+            }
+        }
         //Instanciacion del nivel
         tiles = new List<Tile>();
         TileParser parser = new TileParser();
@@ -264,6 +284,13 @@ public class Gamemanager : MonoBehaviour
                         newPortal.otherPortal = portals[portalIndex];
                     }
                     break;
+                case TileType.tutorial:
+                    tiles.Add(createTile(idX, idY, TutorialTilePrefab));
+                    TutorialSpawner newTutorial = tiles[i].GetComponentInChildren<TutorialSpawner>();
+                    int keyIndex = Mathf.RoundToInt((tileIds[i] * 100) % 100) - 1;
+                    newTutorial.keyString = tutorialKeys[keyIndex];
+                    newTutorial.TutorialText = tutorialImage;
+                    break;
                 default:
                     tiles.Add(null);
                     break;
@@ -310,9 +337,21 @@ public class Gamemanager : MonoBehaviour
             {
                 hazard.SetActive(false);
             }
+            GameObject[] powerupObjects = GameObject.FindGameObjectsWithTag("Powerup");
+            foreach(GameObject powerupObject in powerupObjects)
+            {
+                powerupObject.GetComponent<Powerup>().multiplayer = false;
+            }
         }
-
-        StartCoroutine(StartCountDown());
+        if (!tutorial)
+        {
+            StartCoroutine(StartCountDown());
+        }
+        else
+        {
+            start = true;
+        }
+        
     }
 
     // Update is called once per frame
@@ -320,9 +359,13 @@ public class Gamemanager : MonoBehaviour
     {
         if (start && !end)
         {
-            globalTimer += Time.deltaTime;
-            textTimer.text = "" + Mathf.FloorToInt(globalTimer);
-            currentTimer += Time.deltaTime;
+            if (!tutorial)
+            {
+                globalTimer += Time.deltaTime;
+                textTimer.text = "" + Mathf.FloorToInt(globalTimer);
+                currentTimer += Time.deltaTime;
+            }
+            
             //Inputs
             if (!autoplay)
             {
@@ -348,7 +391,7 @@ public class Gamemanager : MonoBehaviour
             {
                 EndMatch();
             }
-            if(stepCounter <= 0)
+            if(stepCounter <= 0 && !tutorial)
             {
                 GameOver(P1);
             }
@@ -358,7 +401,7 @@ public class Gamemanager : MonoBehaviour
     #region Inputs
     public void InputUp(Player player)
     {
-        if (player.tag == "Player1")
+        if (player.tag == "Player1" && !tutorial)
         {
             currentMatch += currentTimer + " " + 0 + " ";
             currentTimer = 0.0f;
@@ -397,7 +440,7 @@ public class Gamemanager : MonoBehaviour
 
     public void InputDown(Player player)
     {
-        if (player.tag == "Player1")
+        if (player.tag == "Player1" && !tutorial)
         {
             currentMatch += currentTimer + " " + 3 + " ";
             currentTimer = 0.0f;
@@ -435,7 +478,7 @@ public class Gamemanager : MonoBehaviour
 
     public void InputRight(Player player)
     {
-        if (player.tag == "Player1")
+        if (player.tag == "Player1" && !tutorial)
         {
             currentMatch += currentTimer + " " + 1 + " ";
             currentTimer = 0.0f;
@@ -472,7 +515,7 @@ public class Gamemanager : MonoBehaviour
 
     public void InputLeft(Player player)
     {
-        if (player.tag == "Player1")
+        if (player.tag == "Player1" && !tutorial)
         {
             currentMatch += currentTimer + " " + 2 + " ";
             currentTimer = 0.0f;
@@ -544,17 +587,25 @@ public class Gamemanager : MonoBehaviour
     public void EndMatch()
     {
         end = true;
-        currentMatch += globalTimer + " " + P1.getHealth();
-        if (!autoplay)
+        if (!tutorial)
         {
-            managerAPI.SaveRecordLevelUser(currentLevel, currentMatch, minRankSPlus, P1.getHealth(), globalTimer);
-            //addMatchToFile();
-            managerAPI.myGlobalTime = globalTimer;
+            currentMatch += globalTimer + " " + P1.getHealth();
+            if (!autoplay)
+            {
+                managerAPI.SaveRecordLevelUser(currentLevel, currentMatch, minRankSPlus, P1.getHealth(), globalTimer);
+                //addMatchToFile();
+                managerAPI.myGlobalTime = globalTimer;
+            }
+            if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
+                SceneManager.LoadScene(GAMEOVER);
+            else
+                SceneManager.LoadScene(VICTORY);
         }
-        if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
-            SceneManager.LoadScene(GAMEOVER);
         else
-            SceneManager.LoadScene(VICTORY);
+        {
+            SceneManager.LoadScene(MAINSCENE);
+        }
+        
     }
 
     /*Cuenta atrás para el comienzo de la partida y prepara lo necesario del oponente

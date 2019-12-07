@@ -6,6 +6,7 @@ public class Powerup : MonoBehaviour
 {
     bool player1 = false;
     bool player2 = false;
+    public bool multiplayer = true;
     public MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class Powerup : MonoBehaviour
             if (!player1)
             {
                 player1 = true;
-                if (player2)
+                if (player2 || !multiplayer)
                 {
                     this.transform.gameObject.SetActive(false);
                 }
