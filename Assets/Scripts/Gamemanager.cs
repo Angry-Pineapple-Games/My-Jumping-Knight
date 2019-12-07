@@ -70,10 +70,12 @@ public class Gamemanager : MonoBehaviour
     public bool end = false;
     CultureInfo myCIintl = new CultureInfo("en-US", false);
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
+    private Coroutine playerMove; //rutina que controlará los movimientos del jugador en autoplay
     private ManagerAPI managerAPI;
     private const string GAMEOVER = "GameOverScene";
     private const string VICTORY = "VictoryScene";
     private const string MULTIPLAYERKEY = "MultiplayerGame";
+    private const string AUTOPLAYKEY = "AutoplayGame";
     #endregion
 
     #region UI Elements
@@ -118,6 +120,7 @@ public class Gamemanager : MonoBehaviour
         Thread.CurrentThread.CurrentCulture = myCIintl;
         currentMatch += userName + " ";
         multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
+        autoplay = PlayerPrefs.GetInt(AUTOPLAYKEY) == 1;
 
         //Instanciacion del nivel
         tiles = new List<Tile>();
@@ -290,7 +293,15 @@ public class Gamemanager : MonoBehaviour
         {
             P2.gameObject.SetActive(false);
         }
-        
+
+        if (autoplay)
+        {
+            MovementSphere[] movementSpheres = P1.GetComponentsInChildren<MovementSphere>();
+            foreach(MovementSphere movementSphere in movementSpheres)
+            {
+                movementSphere.gameObject.SetActive(false);
+            }
+        }
         StartCoroutine(StartCountDown());
     }
 
@@ -303,21 +314,24 @@ public class Gamemanager : MonoBehaviour
             textTimer.text = "" + Mathf.FloorToInt(globalTimer);
             currentTimer += Time.deltaTime;
             //Inputs
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            if (!autoplay)
             {
-                InputUp(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-            {
-                InputDown(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                InputRight(P1);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-            {
-                InputLeft(P1);
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                {
+                    InputUp(P1);
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    InputDown(P1);
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+                {
+                    InputRight(P1);
+                }
+                if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+                {
+                    InputLeft(P1);
+                }
             }
             
             if (!end && (P1.currentTileId == goalTileId))
@@ -521,9 +535,12 @@ public class Gamemanager : MonoBehaviour
     {
         end = true;
         currentMatch += globalTimer + " " + P1.getHealth();
-        managerAPI.SaveRecordLevelUser(currentLevel, currentMatch, minRankSPlus, P1.getHealth(), globalTimer);
-        //addMatchToFile();
-        managerAPI.myGlobalTime = globalTimer;
+        if (!autoplay)
+        {
+            managerAPI.SaveRecordLevelUser(currentLevel, currentMatch, minRankSPlus, P1.getHealth(), globalTimer);
+            //addMatchToFile();
+            managerAPI.myGlobalTime = globalTimer;
+        }
         if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
             SceneManager.LoadScene(GAMEOVER);
         else
@@ -544,25 +561,30 @@ public class Gamemanager : MonoBehaviour
         GameObject.Destroy(textCountDown);
         if(multiplayer && managerAPI != null)
         {
-            string[] move = managerAPI.GetRandomOponent();
+            string[] moveP2 = managerAPI.GetRandomOponent();
             oponentName = managerAPI.oponentUsername;
-            oponentMove = StartCoroutine(OponentMove(move));
+            oponentMove = StartCoroutine(BotMove(moveP2, P2));
             textOponent.text = oponentName;
+        }
+        if (autoplay)
+        {
+            string[] moveP1 = managerAPI.GetBestPlayerLevel(currentLevel);
+            playerMove = StartCoroutine(BotMove(moveP1, P1));
         }
         textName.text = userName;
     }
 
     /*Realiza los movimientos del oponente*/
-    IEnumerator OponentMove(string[] move)
+    IEnumerator BotMove(string[] move, Player player)
     {
         for (int i = 0; i < move.Length; i += 2)
         {
             yield return new WaitForSeconds(float.Parse(move[i]));
             Direction action = (Direction)int.Parse(move[i + 1]);
-            if (action == Direction.up) { InputUp(P2); }
-            else if (action == Direction.right) { InputRight(P2); }
-            else if (action == Direction.left) { InputLeft(P2); }
-            else if (action == Direction.down) { InputDown(P2); }
+            if (action == Direction.up) { InputUp(player); }
+            else if (action == Direction.right) { InputRight(player); }
+            else if (action == Direction.left) { InputLeft(player); }
+            else if (action == Direction.down) { InputDown(player); }
         }
     }
 }

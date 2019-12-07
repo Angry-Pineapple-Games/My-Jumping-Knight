@@ -376,6 +376,14 @@ class ManagerAPI : MonoBehaviour
         return result;
     }
 
+    public string[] GetBestPlayerLevel(string level)
+    {
+        string[] levelString = PlayerPrefs.GetString(myUsername + "level" + level).Split(' ');
+        string[] result = new string[levelString.Length - 2];
+        Array.Copy(levelString, 1, result, 0, levelString.Length - 2);
+        return result;
+    }
+
     /*Calcula el rango obtenido por el jugador en la partida*/
     private string CalculateRank(float min, int heal, float globaltime, string level)
     {

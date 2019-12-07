@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     private const string MULTIPLAYERKEY = "MultiplayerGame";
+    private const string AUTOPLAYKEY = "AutoplayGame";
     public void ChangeToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -20,6 +21,17 @@ public class ChangeScene : MonoBehaviour
     public void SingleplayerButton(string sceneName)
     {
         PlayerPrefs.SetInt(MULTIPLAYERKEY, 0);
+        ChangeToScene(sceneName);
+    }
+
+    public void AutoplayButton(string sceneName)
+    {
+        PlayerPrefs.SetInt(AUTOPLAYKEY, 1);
+        ChangeToScene(sceneName);
+    }
+    public void ManualButton(string sceneName)
+    {
+        PlayerPrefs.SetInt(AUTOPLAYKEY, 0);
         ChangeToScene(sceneName);
     }
 }
