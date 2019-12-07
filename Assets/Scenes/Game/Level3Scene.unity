@@ -237,7 +237,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120799331}
-  m_LocalRotation: {x: -0.0411846, y: -0.8983251, z: 0.4288027, w: -0.08628021}
+  m_LocalRotation: {x: -0.041184578, y: -0.8983251, z: 0.4288027, w: -0.08628017}
   m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -424,7 +424,7 @@ MonoBehaviour:
   P1: {fileID: 436031105}
   P2: {fileID: 2144494530}
   currentLevel: 3
-  minRankSPlus: 80
+  minRankSPlus: 75
   gridH: 100
   gridW: 10
   levelTxt: {fileID: 4900000, guid: d8181358d9bcf0c42bd9b3450005cebc, type: 3}
@@ -858,7 +858,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009973677}
-  m_LocalRotation: {x: -0.0411846, y: -0.8983251, z: 0.4288027, w: -0.08628021}
+  m_LocalRotation: {x: -0.041184578, y: -0.8983251, z: 0.4288027, w: -0.08628017}
   m_LocalPosition: {x: -34.314133, y: 119.441666, z: 74.411385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

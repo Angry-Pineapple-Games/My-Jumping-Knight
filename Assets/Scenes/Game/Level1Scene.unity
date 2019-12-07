@@ -554,7 +554,7 @@ MonoBehaviour:
   P1: {fileID: 385591748}
   P2: {fileID: 1522363388}
   currentLevel: 1
-  minRankSPlus: 40
+  minRankSPlus: 38
   gridH: 100
   gridW: 10
   levelTxt: {fileID: 4900000, guid: 85268f060dd891a46be4bc86f7f0102d, type: 3}

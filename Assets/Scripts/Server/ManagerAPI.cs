@@ -19,7 +19,10 @@ class ManagerAPI : MonoBehaviour
     private const float MAXTIMETOSAVE = 1000f;
     private const string GAME = "MainScene";
     private string[] RANKS = new string[] { "C", "B", "A", "A+", "S", "S+" };
-    private int[] RANKSSTEPS = new int[] { 120, 95, 55, 30, 10, 2};
+    //private int[] RANKSSTEPS = new int[] { 120, 95, 55, 30, 10, 2};
+    private int[] RANKSSTEPS1 = new int[] { 120, 57, 37, 22, 10, 2};
+    private int[] RANKSSTEPS2 = new int[] { 120, 100, 60, 35, 15, 5};
+    private int[] RANKSSTEPS3 = new int[] { 120, 100, 65, 45, 25, 15, 5};
     [HideInInspector]
     public bool isNetReachability;
 
@@ -376,25 +379,37 @@ class ManagerAPI : MonoBehaviour
     private string CalculateRank(float min, int heal, float globaltime, string level)
     {
         string result;
+        int[] ranksSteps;
+        if(level == "1")
+        {
+            ranksSteps = RANKSSTEPS1;
+        }else if(level == "2")
+        {
+            ranksSteps = RANKSSTEPS2;
+        }
+        else
+        {
+            ranksSteps = RANKSSTEPS3;
+        }
         if (heal <= 0){ result = RANKS[0];}
         else if(heal == 1)
         {
-            if (globaltime > min + RANKSSTEPS[1]) { result = RANKS[0]; }
+            if (globaltime > min + ranksSteps[1]) { result = RANKS[0]; }
             else { result = RANKS[1]; }
         }
         else if (heal == 2) {
-            if(globaltime > min + RANKSSTEPS[1]) { result = RANKS[0]; }
-            else if(globaltime > min + RANKSSTEPS[2]) { result = RANKS[1]; }
-            else if(globaltime > min + RANKSSTEPS[3]) { result = RANKS[2]; }
+            if(globaltime > min + ranksSteps[1]) { result = RANKS[0]; }
+            else if(globaltime > min + ranksSteps[2]) { result = RANKS[1]; }
+            else if(globaltime > min + ranksSteps[3]) { result = RANKS[2]; }
             else { result = RANKS[3]; }
         }
         else
         {
-            if (globaltime > min + RANKSSTEPS[1]) { result = RANKS[0]; }
-            else if (globaltime > min + RANKSSTEPS[2]) { result = RANKS[1]; }
-            else if (globaltime > min + RANKSSTEPS[3]) { result = RANKS[2]; }
-            else if (globaltime > min + RANKSSTEPS[4]) { result = RANKS[3]; }
-            else if (globaltime > min + RANKSSTEPS[5]) { result = RANKS[4]; }
+            if (globaltime > min + ranksSteps[1]) { result = RANKS[0]; }
+            else if (globaltime > min + ranksSteps[2]) { result = RANKS[1]; }
+            else if (globaltime > min + ranksSteps[3]) { result = RANKS[2]; }
+            else if (globaltime > min + ranksSteps[4]) { result = RANKS[3]; }
+            else if (globaltime > min + ranksSteps[5]) { result = RANKS[4]; }
             else { result = RANKS[5]; }
         }
 
