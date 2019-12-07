@@ -351,12 +351,13 @@ class ManagerAPI : MonoBehaviour
         string keyrank = myUsername + "rank" + level;
         string[] newLevelString = levelstring.Split(null);
         string[] oldLevelString = PlayerPrefs.GetString(keylevel).Split(' ');
+        string rank = CalculateRank(min, heal, globaltime, level);
+        PlayerPrefs.SetString("lastRank", rank);
         if (oldLevelString.Length == 1 || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[oldLevelString.Length - 1])
             && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[oldLevelString.Length - 2])))
         {
             if (globaltime < MAXTIMETOSAVE)
             {
-                string rank = CalculateRank(min, heal, globaltime, level);
                 Record(levelstring, rank, level);
                 PlayerPrefs.SetString(keyrank, rank);
                 PlayerPrefs.SetString(keylevel, levelstring);
