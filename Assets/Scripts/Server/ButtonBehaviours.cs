@@ -101,4 +101,9 @@ public class ButtonBehaviours : MonoBehaviour
         apiClient.NetUnavailable();
         Destroy(GameObject.Find("ServerMaintenance(Clone)"));
     }
+
+    public void WarningButton(string warning)
+    {
+        Destroy(GameObject.Find(warning));
+    }
 }

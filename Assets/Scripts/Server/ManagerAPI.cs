@@ -12,12 +12,15 @@ class ManagerAPI : MonoBehaviour
     //objetos
     public GameObject serverMaintenanceWarning;
     public GameObject iconLoading;
+    public GameObject userWarning;
+    public GameObject credentialsWarning;
 
     //generales
     private bool debug = true;
     private const int NUMBERLEVELS = 3;
     private const int NUMBERGAMES = 5;
     private const float MAXTIMETOSAVE = 1000f;
+    private const string ADDRESS = "http://angrygame.ddns.net:5000/";
     private const string GAME = "MainScene";
     private const string LOGIN = "Login";
     private string[] RANKS = new string[] { "C", "B", "A", "A+", "S", "S+" };
@@ -89,8 +92,8 @@ class ManagerAPI : MonoBehaviour
         form.AddField("msg", A_encrypter.RSAencrypt(json, serverKey));
 
         string url;
-        if (mode.Equals("Login")) { url = "http://localhost:5000/login"; }
-        else if (mode.Equals("Registration")) { url = "http://localhost:5000/registration"; }
+        if (mode.Equals("Login")) { url = ADDRESS + "login"; }
+        else if (mode.Equals("Registration")) { url = ADDRESS + "registration"; }
         else { url = ""; }
         UnityWebRequest client = UnityWebRequest.Post(url, form);
 
@@ -149,6 +152,8 @@ class ManagerAPI : MonoBehaviour
         else
         {
             if (debug) { Debug.Log(aLogin.error); }
+            if (aLogin.error.Equals("Bad credentials"))
+                CredentialsWarning();
         }
     }
 
@@ -175,12 +180,24 @@ class ManagerAPI : MonoBehaviour
         else
         {
             if (debug) { Debug.Log(aRegistration.error); }
+            if (aRegistration.error.Equals("User already exist"))
+                UserWarning();
         }
     }
 
     private void ServerMaintenance()
     {
         Instantiate(serverMaintenanceWarning, GameObject.Find("Canvas").transform);
+    }
+
+    private void UserWarning()
+    {
+        Instantiate(userWarning, GameObject.Find("Canvas").transform);
+    }
+
+    private void CredentialsWarning()
+    {
+        Instantiate(credentialsWarning, GameObject.Find("Canvas").transform);
     }
 
     public IEnumerator Record(string levelstring, string rank, string level)
@@ -191,7 +208,7 @@ class ManagerAPI : MonoBehaviour
             WWWForm form = new WWWForm();
             form.AddField("msg", A_encrypter.RSAencrypt(json, serverKey));
 
-            UnityWebRequest client = UnityWebRequest.Post("http://localhost:5000/update", form);
+            UnityWebRequest client = UnityWebRequest.Post(ADDRESS + "update", form);
             client.SetRequestHeader("Authorization", "Bearer " + myAccessToken);
 
             yield return client.SendWebRequest();
@@ -206,7 +223,7 @@ class ManagerAPI : MonoBehaviour
     {
         if (isNetReachability)
         {
-            UnityWebRequest client = UnityWebRequest.Get("http://localhost:5000/games");
+            UnityWebRequest client = UnityWebRequest.Get(ADDRESS + "games");
             client.SetRequestHeader("Authorization", "Bearer " + myAccessToken);
 
             yield return client.SendWebRequest();

@@ -59,6 +59,8 @@ public class Language : MonoBehaviour
         English.Add("manual", "Manual play");
         English.Add("auto", "Autoplay");
         English.Add("loading", "Loading");
+        English.Add("userexist", "User already exist");
+        English.Add("badcredentials", "Credentials error!");
         #endregion
 
         #region Game
@@ -113,6 +115,8 @@ public class Language : MonoBehaviour
         Spanish.Add("manual", "Partida manual");
         Spanish.Add("auto", "Partida automática");
         Spanish.Add("loading", "Cargando");
+        Spanish.Add("userexist", "El usuario ya existe");
+        Spanish.Add("badcredentials", "Error de credenciales!");
         #endregion
 
         #region Game
