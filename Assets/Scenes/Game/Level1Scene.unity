@@ -585,7 +585,7 @@ MonoBehaviour:
   DoorTilePrefab: {fileID: 0}
   ButtonTilePrefab: {fileID: 0}
   PortalTilePrefab: {fileID: 0}
-  stepCounter: 250
+  stepCounter: 280
   start: 0
   end: 0
   textCountDown: {fileID: 3216942009212615087}

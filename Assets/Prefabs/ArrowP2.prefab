@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  limit: 100
+  limit: 90
   speedChange: 1
 --- !u!136 &5529676941914956691
 CapsuleCollider:

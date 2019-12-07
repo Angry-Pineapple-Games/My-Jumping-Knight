@@ -433,7 +433,7 @@ MonoBehaviour:
   countDown: 3
   multiplayer: 1
   numDoors: 4
-  numPortals: 7
+  numPortals: 8
   TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
     type: 3}
   ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,
@@ -458,7 +458,7 @@ MonoBehaviour:
     type: 3}
   PortalTilePrefab: {fileID: 945105372574183072, guid: dbcb4408a630c4c43b7da86dc7d2dddd,
     type: 3}
-  stepCounter: 250
+  stepCounter: 280
   start: 0
   end: 0
   textCountDown: {fileID: 583024084}

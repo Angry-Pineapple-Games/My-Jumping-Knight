@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 104063256436627279, guid: cdf6c06e100dc97459d07ca684f777ef,
     type: 3}
-  timeInterval: 1
+  timeInterval: 2
 --- !u!1 &6405826235711615238
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 104063256436627279, guid: cfba79952e7f85747a5d575f3fb50921,
     type: 3}
-  timeInterval: 1
+  timeInterval: 2
 --- !u!1001 &5847204117270689184
 PrefabInstance:
   m_ObjectHideFlags: 0

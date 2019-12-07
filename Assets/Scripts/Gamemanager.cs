@@ -53,7 +53,7 @@ public class Gamemanager : MonoBehaviour
     private float globalTimer = 0.0f;
     private float currentTimer = 0.0f;
     private string currentMatch;
-    public int stepCounter = 250;
+    public int stepCounter = 280;
     [HideInInspector]
     public bool start = false;
     [HideInInspector]
