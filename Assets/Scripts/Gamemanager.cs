@@ -76,6 +76,7 @@ public class Gamemanager : MonoBehaviour
     private Coroutine oponentMove; //rutina que controlará los movimientos del oponente
     private Coroutine playerMove; //rutina que controlará los movimientos del jugador en autoplay
     private ManagerAPI managerAPI;
+    private AudioManager audioManager;
     private const string GAMEOVER = "GameOverScene";
     private const string VICTORY = "VictoryScene";
     private const string MULTIPLAYERKEY = "MultiplayerGame";
@@ -125,6 +126,25 @@ public class Gamemanager : MonoBehaviour
                 managerAPI = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
                 userName = managerAPI.myUsername;
             }
+            if(GameObject.Find("Audiomanager") != null)
+            {
+                audioManager = GameObject.Find("Audiomanager").GetComponent<AudioManager>();
+                if(currentLevel == "1")
+                {
+                    audioManager.SelectSong(1);
+                    audioManager.PlaySong();
+                }
+                else if(currentLevel == "2")
+                {
+                    audioManager.SelectSong(2);
+                    audioManager.PlaySong();
+                }
+                else if(currentLevel == "3")
+                {
+                    audioManager.SelectSong(3);
+                    audioManager.PlaySong();
+                }
+            }
             Thread.CurrentThread.CurrentCulture = myCIintl;
             currentMatch += userName + " ";
             multiplayer = PlayerPrefs.GetInt(MULTIPLAYERKEY) == 1;
@@ -132,6 +152,12 @@ public class Gamemanager : MonoBehaviour
         }
         else
         {
+            if (GameObject.Find("Audiomanager") != null)
+            {
+                audioManager = GameObject.Find("Audiomanager").GetComponent<AudioManager>();
+                audioManager.SelectSong(4);
+                audioManager.PlaySong();
+            }
             Language lang = GameObject.Find("Language(Clone)").GetComponent<Language>();
             if (!Application.isMobilePlatform)
             {
@@ -596,7 +622,7 @@ public class Gamemanager : MonoBehaviour
                 //addMatchToFile();
                 managerAPI.myGlobalTime = globalTimer;
             }
-            if (P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime)))
+            if ((P1.getHealth() <= 0 || stepCounter <= 0 || (multiplayer && globalTimer < float.Parse(managerAPI.oponentGlobalTime))) && P2.getHealth() > 0)
                 SceneManager.LoadScene(GAMEOVER);
             else
                 SceneManager.LoadScene(VICTORY);
@@ -605,6 +631,8 @@ public class Gamemanager : MonoBehaviour
         {
             SceneManager.LoadScene(MAINSCENE);
         }
+        audioManager.SelectSong(0);
+        audioManager.PlaySong();
         
     }
 

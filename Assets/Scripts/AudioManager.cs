@@ -9,10 +9,10 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioClip> songs;
     public List<AudioClip> sounds;
-    private AudioSource musicSource;
-    private AudioSource soundSource;
+    public AudioSource musicSource;
+    public AudioSource soundSource;
     private static bool created = false;
-    private String currentScene;
+    private string currentScene;
 
     /*Asigna la cancion indicada a la fuente de audio*/
     public void SelectSong(int i)
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
             default:
                 break;
         }
-        
     }
+
 }
 
