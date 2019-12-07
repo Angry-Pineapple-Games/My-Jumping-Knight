@@ -14,6 +14,7 @@ TagManager:
   - Button
   - ButtonP2
   - Portal
+  - TutorialSpawner
   layers:
   - Default
   - TransparentFX
