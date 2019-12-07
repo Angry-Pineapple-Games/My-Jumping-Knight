@@ -310,6 +310,11 @@ public class Gamemanager : MonoBehaviour
             {
                 hazard.SetActive(false);
             }
+            GameObject[] powerupObjects = GameObject.FindGameObjectsWithTag("Powerup");
+            foreach(GameObject powerupObject in powerupObjects)
+            {
+                powerupObject.GetComponent<Powerup>().multiplayer = false;
+            }
         }
 
         StartCoroutine(StartCountDown());
