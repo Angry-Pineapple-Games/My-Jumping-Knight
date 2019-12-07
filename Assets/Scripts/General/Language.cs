@@ -58,6 +58,7 @@ public class Language : MonoBehaviour
         English.Add("menu", "Menu");
         English.Add("manual", "Manual-play");
         English.Add("auto", "Auto-play");
+        English.Add("loading", "Loading");
         #endregion
 
         #region Game
@@ -94,6 +95,7 @@ public class Language : MonoBehaviour
         Spanish.Add("menu", "Menú");
         Spanish.Add("manual", "Partida manual");
         Spanish.Add("auto", "Partida automática");
+        Spanish.Add("loading", "Cargando");
         #endregion
 
         #region Game

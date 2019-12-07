@@ -11,48 +11,62 @@ public class ButtonBehaviours : MonoBehaviour
 
     private const int SIZEUSERNAME = 30;
     private const int SIZEPASSWORD = 120;
+
+    public bool pressed = false;
+    public GameObject icon;
     #endregion
 
     /*Métodos que proporcionan los comportamientos necesarios para controlar los envios al servidor
      de forma asíncrona*/
     public void SendRegistration()
     {
-        bool usernameCorrect = !username.text.Equals("") && username.text.Length <= SIZEUSERNAME && CheckIsLetterNumberOnly(username.text);
-        bool passwordCorrect = !password.text.Equals("") && password.text.Length <= SIZEPASSWORD && CheckIsLetterNumberOnly(password.text, true);
-        bool passwordsEquals = password.text.Equals(passwordCheck.text);
-
-        if (passwordCorrect && usernameCorrect && passwordsEquals)
+        if (!pressed)
         {
-            ManagerAPI apiClient = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+            pressed = true;
+            bool usernameCorrect = !username.text.Equals("") && username.text.Length <= SIZEUSERNAME && CheckIsLetterNumberOnly(username.text);
+            bool passwordCorrect = !password.text.Equals("") && password.text.Length <= SIZEPASSWORD && CheckIsLetterNumberOnly(password.text, true);
+            bool passwordsEquals = password.text.Equals(passwordCheck.text);
 
-            StartCoroutine(apiClient.PostRequest(username.text, password.text, "Registration"));
-            if (debug) { Debug.Log("Registro enviado"); }
-        }
-        else
-        {
-            if (debug)
+            if (passwordCorrect && usernameCorrect && passwordsEquals)
             {
-                Debug.Log("Ni el nombre de usuario ni la contraseña pueden estar vacios y las contraseñas deben coincidir," +
-       " máximo de caracteres para el usuario 30 y 120 para la contraseña");
+                ManagerAPI apiClient = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+                icon = Instantiate(apiClient.iconLoading, GameObject.Find("Canvas").transform);
+                StartCoroutine(apiClient.PostRequest(username.text, password.text, "Registration", this));
+                if (debug) { Debug.Log("Registro enviado"); }
+            }
+            else
+            {
+                pressed = false;
+                if (debug)
+                {
+                    Debug.Log("Ni el nombre de usuario ni la contraseña pueden estar vacios y las contraseñas deben coincidir," +
+           " máximo de caracteres para el usuario 30 y 120 para la contraseña");
+                }
             }
         }
     }
 
     public void SendLogin()
     {
-        bool usernameCorrect = !username.text.Equals("") && username.text.Length <= SIZEUSERNAME && CheckIsLetterNumberOnly(username.text);
-        bool passwordCorrect = !password.text.Equals("") && password.text.Length <= SIZEPASSWORD && CheckIsLetterNumberOnly(password.text, true);
-
-        if (passwordCorrect && usernameCorrect)
+        if (!pressed)
         {
-            ManagerAPI apiClient = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+            pressed = true;
+            bool usernameCorrect = !username.text.Equals("") && username.text.Length <= SIZEUSERNAME && CheckIsLetterNumberOnly(username.text);
+            bool passwordCorrect = !password.text.Equals("") && password.text.Length <= SIZEPASSWORD && CheckIsLetterNumberOnly(password.text, true);
 
-            StartCoroutine(apiClient.PostRequest(username.text, password.text, "Login"));
-            if (debug) { Debug.Log("Login enviado"); }
-        }
-        else
-        {
-            if (debug) { Debug.Log("Ni el nombre de usuario ni la contraseña pueden estar vacios y las contraseñas deben coincidir"); }
+            if (passwordCorrect && usernameCorrect)
+            {
+                ManagerAPI apiClient = GameObject.Find("ApiClient(Clone)").GetComponent<ManagerAPI>();
+                icon = Instantiate(apiClient.iconLoading, GameObject.Find("Canvas").transform);
+                StartCoroutine(apiClient.PostRequest(username.text, password.text, "Login", this));
+                
+                if (debug) { Debug.Log("Login enviado"); }
+            }
+            else
+            {
+                pressed = false;
+                if (debug) { Debug.Log("Ni el nombre de usuario ni la contraseña pueden estar vacios y las contraseñas deben coincidir"); }
+            }
         }
     }
 

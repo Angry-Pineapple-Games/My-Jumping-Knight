@@ -576,7 +576,7 @@ public class Gamemanager : MonoBehaviour
         GameObject.Destroy(textCountDown);
         if(multiplayer && managerAPI != null)
         {
-            string[] moveP2 = managerAPI.GetRandomOponent();
+            string[] moveP2 = managerAPI.GetRandomOponent(currentLevel);
             oponentName = managerAPI.oponentUsername;
             oponentMove = StartCoroutine(BotMove(moveP2, P2));
             textOponent.text = oponentName;
@@ -594,7 +594,7 @@ public class Gamemanager : MonoBehaviour
     {
         for (int i = 0; i < move.Length; i += 2)
         {
-            yield return new WaitForSeconds(float.Parse(move[i]));
+            yield return new WaitForSeconds(float.Parse(move[i])-0.001f);
             Direction action = (Direction)int.Parse(move[i + 1]);
             if (action == Direction.up) { InputUp(player); }
             else if (action == Direction.right) { InputRight(player); }
