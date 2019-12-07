@@ -439,9 +439,11 @@ MonoBehaviour:
   MAX_TIME_APLUS: 110
   MAX_TIME_A: 135
   MAX_TIME_B: 175
-  TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
+  TilePrefab: {fileID: 3713010864252844173, guid: 5b3b7986951128e42a09fe84df153807,
     type: 3}
-  ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,
+  TilePrefab2: {fileID: 3713010864252844173, guid: e5d9c6ba5f05fc84fac087eb032998a2,
+    type: 3}
+  ArrowTilePrefab: {fileID: 6405826235711615239, guid: 8ad04f9f30f7f8b4a9564227814dcc71,
     type: 3}
   SpikesTilePrefab: {fileID: 8915381401257643688, guid: e2610b86890c6434e8913f2de52c219a,
     type: 3}
@@ -451,11 +453,11 @@ MonoBehaviour:
     type: 3}
   BladeTilePrefab: {fileID: 2967030372457460084, guid: 4b0e1d638c65f1a44bcead2510e5a8c8,
     type: 3}
-  HeartTilePrefab: {fileID: 3406421510933918812, guid: b171edb9fc5691a4e9123076ca6d474f,
+  HeartTilePrefab: {fileID: 3406421510933918812, guid: 8d63b74b649fe304b88933e106c8df1f,
     type: 3}
-  ShieldTilePrefab: {fileID: 8271056958710736010, guid: abc5af2fa120da34b8737230eb1e0a66,
+  ShieldTilePrefab: {fileID: 8271056958710736010, guid: 219f98bb20da4974a944ee43a6217206,
     type: 3}
-  HourglassTilePrefab: {fileID: 12687982339409576, guid: 384b2ffc63f45b3419bb39fe339b9bbf,
+  HourglassTilePrefab: {fileID: 12687982339409576, guid: 77226ca8b817df442b58a9e10facbf86,
     type: 3}
   DoorTilePrefab: {fileID: 6429189149479497630, guid: 6f16ef8187d829142b330701a8e00ba2,
     type: 3}

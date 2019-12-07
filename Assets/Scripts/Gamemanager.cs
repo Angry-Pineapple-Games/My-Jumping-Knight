@@ -35,6 +35,7 @@ public class Gamemanager : MonoBehaviour
 
     #region Prefabs
     public Tile TilePrefab;
+    public Tile TilePrefab2;
     public Tile ArrowTilePrefab;
     public Tile SpikesTilePrefab;
     public Tile SawTilePrefab;
@@ -142,7 +143,14 @@ public class Gamemanager : MonoBehaviour
                     tiles.Add(null);
                     break;
                 case TileType.empty:
-                    tiles.Add(createTile(idX, idY, TilePrefab));
+                    if((idX + (idY % 2)) % 2 == 0)
+                    {
+                        tiles.Add(createTile(idX, idY, TilePrefab));
+                    }
+                    else
+                    {
+                        tiles.Add(createTile(idX, idY, TilePrefab2));
+                    }
                     break;
                 case TileType.arrow:
                     tiles.Add(createTile(idX, idY, ArrowTilePrefab));

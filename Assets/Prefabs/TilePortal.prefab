@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   walkable: 1
+  walkableP2: 1
 --- !u!65 &7152350278586427012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -244,6 +245,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0031685524
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 40c778a6f865ea24388bfe3ac8c47d5c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 441f382862ecb5546875d2e3e48a435e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c778a6f865ea24388bfe3ac8c47d5c, type: 3}
 --- !u!4 &4916842475060855949 stripped

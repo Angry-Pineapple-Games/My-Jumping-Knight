@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   walkable: 1
+  walkableP2: 1
 --- !u!1001 &10147225484397255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: a72b192ba30a5d140826a2ea60df2ad7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd22f273b0f5f21448fdb0ef3809cc93, type: 2}
+      objectReference: {fileID: 2100000, guid: 669a2788f00b69e4083c9da5a920247c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a72b192ba30a5d140826a2ea60df2ad7, type: 3}
 --- !u!4 &10147225484267591 stripped

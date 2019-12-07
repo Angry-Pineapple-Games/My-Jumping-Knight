@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 2}
   walkable: 1
+  walkableP2: 1
 --- !u!65 &3762820297821421912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -208,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 2}
   walkable: 1
+  walkableP2: 1
 --- !u!1 &8915381401257643689
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 2, y: 2}
   walkable: 1
+  walkableP2: 1
 --- !u!1001 &4963859032217604328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 0d176ec918769d14ab027d8ad91cbc86, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fc3f42792e7b3b74d913c9b76028536d, type: 2}
+      objectReference: {fileID: 2100000, guid: 7d68f040a685a814eaa40104b8b21344, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d176ec918769d14ab027d8ad91cbc86, type: 3}
 --- !u!1 &6238536495236747608 stripped

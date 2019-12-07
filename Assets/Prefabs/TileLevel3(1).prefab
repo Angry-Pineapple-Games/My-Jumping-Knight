@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3713010864252844174}
   - component: {fileID: 3713010864252844173}
   m_Layer: 0
-  m_Name: TileEmpty
+  m_Name: TileLevel3(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
   walkable: 1
+  walkableP2: 1
 --- !u!1001 &8837982007559718944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +128,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0031685524
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 40c778a6f865ea24388bfe3ac8c47d5c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 94c347e68ba1d3241b01a71ed172e3f0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c778a6f865ea24388bfe3ac8c47d5c, type: 3}
 --- !u!4 &8837982007559590560 stripped
