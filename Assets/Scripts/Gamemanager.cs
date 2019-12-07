@@ -25,6 +25,14 @@ public class Gamemanager : MonoBehaviour
     public int numPortals = 0;
     #endregion
 
+    #region Ranks
+    [SerializeField] private float MAX_TIME_SPLUS;
+    [SerializeField] private float MAX_TIME_S;
+    [SerializeField] private float MAX_TIME_APLUS;
+    [SerializeField] private float MAX_TIME_A;
+    [SerializeField] private float MAX_TIME_B;
+    #endregion
+
     #region Prefabs
     public Tile TilePrefab;
     public Tile ArrowTilePrefab;

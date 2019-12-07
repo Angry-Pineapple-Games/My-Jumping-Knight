@@ -424,7 +424,7 @@ MonoBehaviour:
   P1: {fileID: 436031105}
   P2: {fileID: 2144494530}
   currentLevel: 3
-  minRankSPlus: 60
+  minRankSPlus: 80
   gridH: 100
   gridW: 10
   levelTxt: {fileID: 4900000, guid: d8181358d9bcf0c42bd9b3450005cebc, type: 3}
@@ -434,6 +434,11 @@ MonoBehaviour:
   multiplayer: 1
   numDoors: 4
   numPortals: 8
+  MAX_TIME_SPLUS: 80
+  MAX_TIME_S: 90
+  MAX_TIME_APLUS: 110
+  MAX_TIME_A: 135
+  MAX_TIME_B: 175
   TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
     type: 3}
   ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,

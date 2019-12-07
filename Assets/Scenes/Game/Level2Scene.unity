@@ -508,6 +508,11 @@ MonoBehaviour:
   multiplayer: 0
   numDoors: 0
   numPortals: 0
+  MAX_TIME_SPLUS: 60
+  MAX_TIME_S: 70
+  MAX_TIME_APLUS: 90
+  MAX_TIME_A: 115
+  MAX_TIME_B: 155
   TilePrefab: {fileID: 3713010864252844173, guid: ec08ada9b784df34bbc910c71acfaa56,
     type: 3}
   ArrowTilePrefab: {fileID: 6405826235711615239, guid: 2595a6d5455201e408ad199cf7d93920,
