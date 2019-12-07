@@ -245,6 +245,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                health--;
                 gamemanager.GameOver(this);
             }
             if (heartsUI != null)
