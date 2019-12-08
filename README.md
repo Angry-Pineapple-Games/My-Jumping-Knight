@@ -1,8 +1,8 @@
 # My Jumping Knight: Documento de Diseño de Juego
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Logo/logo-decorated.png)
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Logo/logo-decorated.png)
 > Angry Pineapple Games
 
-> Versión del Documento: 1.1
+> Versión del Documento: 1.2
 
 > Plantilla de GDD adaptada por: [Benjamin “HeadClot” Stanley](https://docs.google.com/document/d/1-I08qX76DgSFyN1ByIGtPuqXh7bVKraHcNIA25tpAzE/ "Enlace al documento de plantilla")
 
@@ -13,15 +13,17 @@
 * 0.2: Corrección de errores y apartados de gameplay en detalle.
 * 1.0: Redacción de todos los apartados detallados.
 * 1.1: Inclusión de los modelos de negocio y monetización.
+* 1.2: Cambio en imágenes y ciertos apartados.
 ## 2. Concepto de Juego
 ### 2.1. Género y Setting
 My Jumping Knight es un juego de *running by tapping* en 3D con vista isométrica en el que el jugador deberá manejar a un caballero que se mueve casilla a casilla por un tablero lleno de trampas hasta alcanzar la salida, todo ello con ambientación medieval.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Modelos3D/Personaje%20principal/caballero_vistas.png "Modelado del caballero protagonista")
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Assets/UI%20Elements/casco.png "Icono del caballero")
+
 Permite además enfrentarse a otros jugadores mediante la subida y descarga del recorrido que ha hecho el jugador en distintas iteraciones del juego, evitando así lag y dando lugar a un enfrentamiento muy preciso. De la misma forma, también se pueden poner datos de dos jugadores a competir entre ellos.
 
 ### 2.2. Mecánicas de juego principales
 * **Avance en casillas**: El personaje no se moverá libremente por el escenario, sino que avanzará a una casilla adyacente a la que se encuentra, según dónde le indique el jugador al pulsar en pantalla o controlar el teclado.
-* **Limitación del movimiento**: El jugador tendrá un límite de movimientos para superar el nivel. Si consume todos sus movimientos, perderá la partida.
+* **Limitación del movimiento**: El jugador tendrá un límite de 280 movimientos para superar el nivel. Si consume todos sus movimientos, perderá la partida.
 * **Trampas**: Habrá diferentes trampas en el escenario que tendrán efectos negativos sobre el jugador, como restarle una vida.
 * **Power Ups**: Se encontrarán esparcidos por el mapa varios power ups que el personaje podrá utilizar.
 * **Competición**: Se incentivará al jugador a competir tanto consigo mismo como con otros jugadores. Se desarrolla esta idea en los subapartados de "Puntuación" y "Modos de Juego".
@@ -35,7 +37,7 @@ Estará disponible en los idiomas inglés y español.
 -   **Escala económica y de tiempo**:
     -   **Presupuesto inicial**: 0 euros.
     -   **Fecha de inicio**: 4 de noviembre de 2019.
-    -   **Fecha estimada de finalización del prototipo**: 5 de diciembre de 2019.
+    -   **Fecha de finalización**: 8 de diciembre de 2019.
 -   **Equipo**:
     -   **Mario Aceituno Cordero**: Concept art, texturizado y diseño GUI.
     -   **Javier Albaráñez Martínez**: Programación.
@@ -47,63 +49,57 @@ Estará disponible en los idiomas inglés y español.
 * **Crossy Road**: Juego de estilo *Frogger* procedimental donde se avanza haciendo *taps* en la pantalla. Ha sido una influencia a la hora de escoger el enfoque que se quería hacer al juego para ofrecer al jugador una experiencia inmediata y de fácil aprendizaje.
 * **Crypt of the Necrodancer**: Otro juego donde el movimiento se basa en desplazamientos por una cuadrícula pudiendo avanzar hacia zonas adyacentes dentro del grid.
 ## 3. Elevator Pitch
-*My Jumping Knight* es un juego de desplazamiento por casillas donde deberás llegar al final del nivel sorteando trampas en el menor tiempo posible. Podrás entrenar a tu caballero para obtener la mejor puntuación posible y hacer que se enfrente a los caballeros de otros jugadores para ver quién es el mejor.
-## 4. Historia y Gameplay
-### 4.1. Sinopsis de la historia
-*My Jumping Knight* tiene una historia muy simple, partiendo de la típica premisa de un rescate para dar comienzo a la aventura, ya que se busca dar total protagonismo a la jugabilidad arcade, pero siempre con una pequeña justificación de fondo para dar ambiente.
-
-El juego, de ambientación medievial, contará cómo el caballero protagonista (sin nombre) se aventura para rescatar a su pequeño dragón, que ha sido secuestrado.
-### 4.2. Historia en detalle
-La historia se contará de manera breve con ilustraciones estáticas y texto, sin animaciones más allá de las transiciones. Se buscará un apartado artístico en consonancia con el juego: desenfadado y con colores muy vivos.
-* **Introducción**: Un joven caballero se dispone a disfrutar de una plácida tarde en el prado con su mascota: un pequeño dragón. En un momento, el caballero decide ir a coger unas manzanas de un árbol, y cuando vuelve al encuentro con su mascota descubre que esta ha desaparecido. Alarmado, comienza a buscarlo y consigue divisar a lo lejos cómo su dragón está siendo raptado por una extraña figura, que se dirige hacia el bosque que conduce al castillo. El caballero no duda en apresurarse a rescatarlo.
-* **Final**: El caballero llega al castillo y encuentra a su dragón. No parece haber nadie más cerca, por lo que después de un feliz reencuentro, ambos vuelven al prado y deciden retomar su plan inicial. Detrás de un árbol se puede ver a la figura oscura de nuevo, y con ello finaliza la secuencia. 
-### 4.3. Gameplay resumido
+*My Jumping Knight* es un juego competitivo que reta al jugador a encontrar el camino más corto hasta la meta de la manera más rápida posible, haciendo uso de su ingenio y su habilidad.
+Se orienta a jugadores competitivos, que disfruten de juegos de ingenio y dinámicos, y que cuenten con periodos pequeños de tiempo para jugar.
+Se puede competir contra otra gente sin conexión a internet, y brinda la posibilidad de usar las mejores partidas de cada usuario para enfrentarse a otros jugadores, aunque no se cuente con tiempo para ello, gracias al modo de juego automático.
+## 4. Gameplay
+### 4.1. Gameplay resumido
 Mediante interacción del jugador se avanzará por un tablero con forma irregular que estará lleno de trampas que el personaje deberá esquivar. Si no consigue esquivar alguna de estas trampas, perderá una vida, teniendo un total de tres. Las trampas plantearán retos de habilidad y también retos de inteligencia, recompensando a dos tipos de jugadores distintos y premiando enormemente al jugador equilibrado que sepa entender cuándo debe avanzar rápido y cuándo debe a pararse a resolver un pequeño puzle. También habrá power ups que el jugador podrá coger para obtener un beneficio.
-### 4.4. Gameplay en detalle
-#### 4.4.1. Flujo de recorrido del usuario
-Al finalizar la carga y comenzar el juego, el usuario podrá escoger entre jugar, ver los créditos o configurar ciertos parámetros del juego. 
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Game%20Design/Mockups%20pantallas%20e%20interfaz/PantallaInicio.png "Mockup de pantalla inicial del juego")
-Al pulsar en jugar, deberá escoger entre los dos modos de juego (individual o multijugador) y luego escoger uno de los tres posibles niveles, estando estos bloqueados si aún no se ha finalizado el nivel anterior. Al escoger el nivel 1, siempre se mostrará un tutorial omisible, pudiendo configurar su aparición en la pantalla de configuración.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Game%20Design/Mockups%20pantallas%20e%20interfaz/PantallaNivelesLockedV2.png "Mockup de la pantalla de selección de nivel")
-En caso de seleccionar multijugador, se le dará la opción de escoger competir contra un bot de otro jugador o poner a competir su propio bot contra otro descargado, siendo esta última opción la que no tiene intervención directa del jugador en el desarrollo de la partida.
+### 4.2. Gameplay en detalle
+#### 4.2.1. Flujo de recorrido del usuario
+El jugador comenzará con una pantalla con el logo del juego y un botón de comienzo. Acto seguido, se le dará la posibilidad de iniciar sesión y/o registrarse, y tras ello llegará a la pantalla principal de menú, que permitirá escoger entre Jugar, Tutorial, Opciones y Créditos.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/3_main.png "Pantalla del menú principal")Al escoger en opciones, se podrá cambiar el idioma y desactivar el sonido y/o la música del juego. En créditos se podrá ver información del equipo y las licencias utilizadas. Al escoger tutorial, comenzará una partida a una pequeña pantalla donde se explicará al jugador cómo jugar al juego y cómo funciona su dinámica.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/6_tuto.png "Pantalla de tutorial")
+En caso de escoger jugar, tendrá que elegir entre modo individual o multijugador. En multijugador, a su vez, entre partida automática (caballero contra caballero, sin control del jugador) o manual. Y tras ello, escoger entre uno de los tres niveles para jugar.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/7_single.png "Pantalla de selección de nivel")
+Al perder o ganar un nivel, podrá volver al menú de selección de nivel o al menú principal.
 
-Si muere en un nivel, se le dará la opción de volver al menú o repetir el nivel, mientras que si alcanza la victoria, podrá continuar al siguiente nivel (volver al menú en caso de ser el último nivel) o repetirlo. En caso de terminar una simulación de bot vs bot, se podrá escoger repetirla o volver al menú.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Game%20Design/Mockups%20pantallas%20e%20interfaz/PantallaGameOver.png "Mockup de la pantalla de Game Over")
-El usuario, además, podrá retroceder a las pantallas anteriores del menú y también pausar el juego en mitad del nivel y salir al menú, reiniciar el nivel o cancelar la pausa. 
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Game%20Design/Diagrama%20de%20flujo%20de%20pantallas.png "Flujo de recorrido del usuario V1")
+El usuario, además, podrá retroceder a las pantallas anteriores del menú.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Diagrama%20de%20flujo%20de%20pantallas.png "Flujo de recorrido del usuario V2")
 #### 4.4.2. Información en pantalla
-Durante la partida, el jugador podrá apreciar varios elementos en la interfaz: un cronómetro que muestra el tiempo transcurrido, unos corazones que indican la vida restante, unos orbes que indican hacia dónde puede moverse el jugador (se situarán en las casillas adyacentes a la casilla en donde esté situado el jugador) y un botón de pausa que permita al jugador detener el juego.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Game%20Design/Mockups%20pantallas%20e%20interfaz/PantallaNivelJugable.png "Mockup de la pantalla de juego principal")
+Durante la partida, el jugador podrá apreciar varios elementos en la interfaz: un reloj que muestra el tiempo transcurrido, unos corazones que indican la vida restante, unos orbes que indican hacia dónde puede moverse el jugador (se situarán en las casillas adyacentes a la casilla en donde esté situado el jugador), su nombre de usuario y unas botas acompañadas de un número que indica la cantidad de pasos restante.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/11_lv1.png "Interfaz")
 #### 4.4.3. Desarrollo de una partida
 El jugador comenzará en la parte inicial del nivel y deberá sortear obstáculos y trampas para llegar al final. Algunas secuencias de trampas requerirán de habilidad, mientras que otras funcionarán a modo de puzles y exigirán al jugador pensar la solución lo más rápido posible.
 #### 4.4.4. Trampas
 * **Pinchos**: Los pinchos son una trampa oculta que saltarán en cuanto el jugador se sitúe encima de la casilla en donde estos se encuentren.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Traps/spikes-trap-color.png "Bloque con pinchos")
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/spikes-trap-color.png "Bloque con pinchos")
 * **Sierra**: Trampa que se transporta lateralmente de un lado a otro. El jugador tendrá que contemporizar para pasar por el camino sin entrar en contacto con ella.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Traps/saw-trap-color.png "Bloque con sierra")
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/saw-trap-color.png "Bloque con sierra")
 * **Flechas**: Las flechas se disparan continuamente en un intervalo de tiempo concreto, por lo que el jugador deberá contemporizar para esquivarlas.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Traps/arrow-trap-color.png "Hoja de detalles del lanzaflechas y la flecha")
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/arrow-trap-color.png "Hoja de detalles del lanzaflechas y la flecha")
 * **Cuchilla giratoria**: El eje se situará en una casilla y la cuchilla girará alrededor de él, moviéndose por las casillas adyacentes a dicho eje, obligando al jugador a sortear el obstáculo.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Traps/blade-trap-color.png "Posibles diseños de la cuchilla giratoria")
-* **Casillas de movimiento**: No son una trampa en si misma, pero habrá casillas que, en cuanto detecten que el jugador se sitúe sobre ellas, comenzarán un movimiento de una posición a otra, transporando al jugador con ellas.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/blade-trap-color.png "Posibles diseños de la cuchilla giratoria")
+* **Portales**: No son una trampa en si misma, pero habrá casillas que, en cuanto detecten que el jugador se sitúe sobre ellas, le teletransportarán a otra posición en la que se encuentre el portal emparejado.
+* **Botones y puertas**: Las puertas bloquean el paso del jugador, mientras que los botones (generalmente situados en otra zona del mapa), accionan las puertas y permiten al jugador pasar a través de ellas.
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/13_lv3.png "Pantallazo del tercer nivel, con portal y botón")
 #### 4.4.5. Power Ups
 * **Corazón**: El corazón, como es habitual en cualquier juego con sistema de vidas, recuperará una vida al jugador. Se puede coger un corazón aunque se conserven las tres vidas, pero este no tendrá efecto.
 * **Escudo**: El escudo prevendrá el daño de la próxima trampa con la que interactúe el jugador, es decir, que evitará que el jugador pierda una vida en su siguiente encuentro con una trampa.
 * **Reloj de arena**: El reloj de arena hará que el tiempo (salvo el caballero) vaya más despacio durante unos segundos, por lo que el jugador podrá tomar ventaja para sortear ciertas trampas o avanzar más rápido por alguna sección del escenario.
-![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/Bocetos/Power-Ups/hourglass-color.png "Diseño del reloj de arena")
-#### 4.4.6. Desarrollo de los niveles
-Aquí se especificará el diseño de niveles cuando se finalice.
-#### 4.4.7. Cámara
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Power-Ups/hourglass-color.png "Diseño del reloj de arena")
+#### 4.4.6. Cámara
 La cámara se colocará con una vista isométrica, situándose encima del personaje y ligeramente detrás y a la derecha. Seguirá el movimiento al personaje, permitiendo ver siempre parte del camino que hay alrededor de este.
-#### 4.4.8. Controles
+#### 4.4.7. Controles
 En ordenador se podrá controlar con teclado (teclas direccionales o WASD) y por ratón (pulsando en una casilla a la que se pueda mover el personaje), mientras que en dispositivos táctiles se controlará pulsando (un *tap*) sobre la casilla a la que se pueda mover el personaje.
-#### 4.4.9. Puntuación
+#### 4.4.8. Puntuación
 Al finalizar cada partida, se comprobará el tiempo que ha tardado el jugador en finalizar el nivel, los pasos restantes y sus vidas restantes, lo cual determinará un rango que va desde C hasta S+. Además, este rango y el tiempo se compararán con el TOP10 de mejores registros locales del jugador, y se incluirán en dicho TOP10 en caso de que proceda. Se subirá al servidor el mejor recorrido que ha hecho un jugador basándose en su rango.
-#### 4.4.10. Modos de juego
+![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/10_victory.png "Pantalla de victoria, con rango A obtenido")
+#### 4.4.9. Modos de juego
 * **Individual**: El jugador podrá jugar los 3 niveles del juego, desbloqueándolos uno a uno e intentando sacar el mejor rango y tiempo posible.
 * **Multijugador**: El jugador se enfrentará a un caballero de otro jugador que se ha descargado, intentando finalizar el nivel antes de que lo haga el otro. El matchmaking se realizará aplicando lógica difusa: al jugador que está buscando jugar online se le asignará un jugador cuya puntuación media en las partidas sea similar a la suya.
-* **Caballero VS Caballero**: El caballero de un jugador se enfrentará de manera automática contra el caballero de otro jugador que se haya descargado y emparejado por el mismo criterio de matchmaking que en el modo multijugador. No habrá intervención directa del jugador en estas partidas y se podrán ver a 2x y 4x de velocidad.
-#### 4.4.11. Sistema de guardado
+* **Automático**: El caballero de un jugador se enfrentará de manera automática contra el caballero de otro jugador que se haya descargado y emparejado por el mismo criterio de matchmaking que en el modo multijugador. No habrá intervención directa del jugador en estas partidas.
+#### 4.4.10. Sistema de guardado
 El sistema de guardado del jugador permitirá recordar sus mejores puntuaciones, así como los niveles que ha desbloqueado. Para ello, se guardará una estructura de datos asociada a su nombre de usuario.
 ## 5. Posibles ampliaciones
 * **Niveles extra**: El juego base cuenta con tres niveles, pero podría expandirse hasta donde la creatividad y el presupuesto alcanzase.
@@ -270,7 +266,7 @@ En cuanto a las recompensas a los *backers*, seguirán este modo:
 -   Animación de trampa: sierra
 -   Animación de trampa: cuchilla giratoria
 ## 9. Milestones del proyecto
-#### Milestone 1 - 11/ 11/ 2019 [FINALIZADO]
+#### Milestone 1 - 11/ 11/ 2019
 
 ##### Objetivo: Concepto de juego y entorno de desarrollo.
 -   **Programación**: Proyecto dividido en escenas. Mecánica de movimiento. Diagrama UML. Implementación de la cámara. Implementación de subida y guardado en servidor de la información.
@@ -309,12 +305,29 @@ En cuanto a las recompensas a los *backers*, seguirán este modo:
 -   **Programación**: Solución de posibles bugs.
 -   **Arte y assets**: Arte y modelos extras para posibles ampliaciones.
 -   **Marketing y gestión**: Subida definitiva del juego a las redes. Preparación de la presentación. Retoques finales a web y a Itch.io.
-## 10. Contacto y enlaces de interés
+
+## 10. Referencias y licencias
+Se han utilizado los siguientes *assets* de licencia libre:
+* Canciones: Call to Adventure, Death and Axes, Mall, Rainbows y Teddy Bear Waltz. Todas ellas pertenecientes a Kevin Macleod. Licencia de Creative Commons bajo atribución 4.0
+* Sonido: 
+
+## 11. Contacto y enlaces de interés
+
+### Angry Pineapple Games
+
+>[Web portfolio de la compañía](https://angry-pineapple-games.github.io/apg-portfolio/)
+
 > [Twitter](https://twitter.com/AngryPineappleG "Twitter de la compañía")
  
-> [Itch.io](https://angrypineapplegames.itch.io/ "Itch.io de la compañía")
-
 > [Youtube](https://www.youtube.com/channel/UC-beom-Ex559oRHYl8knUAQ "Canal de Youtube de la compañía")
 
 > [Facebook](https://www.facebook.com/juanantonio.martingarcia.33671?ref=bookmarks "Facebook de la compañía")
 
+> [Itch.io](https://angrypineapplegames.itch.io/ "Itch.io de la compañía")
+
+### My Jumping Knight
+> [Itch.io](https://angrypineapplegames.itch.io/my-jumping-knight "Itch.io con enlace al juego")
+
+> [Github Pages](https://angry-pineapple-games.github.io/My-Jumping-Knight/ "Github pages con el juego funcional")
+
+>[Facebook Instant Games (solo accesible con inicio de sesión al estar oculto para el desarrollador)](https://fb.gg/play/1192728987604922 "Enlace con Facebook funcional")
