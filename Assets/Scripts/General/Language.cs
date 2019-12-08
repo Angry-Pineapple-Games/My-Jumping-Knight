@@ -52,7 +52,7 @@ public class Language : MonoBehaviour
         English.Add("level1", "Level 1");
         English.Add("level2", "Level 2");
         English.Add("level3", "Level 3");
-        English.Add("mode", "Mode selection");
+        English.Add("mode", "Mode\nselection");
         English.Add("singleplayer", "Single player");
         English.Add("multiplayer", "Multiplayer");
         English.Add("menu", "Menu");
@@ -112,7 +112,7 @@ public class Language : MonoBehaviour
         Spanish.Add("level1", "Nivel 1");
         Spanish.Add("level2", "Nivel 2");
         Spanish.Add("level3", "Nivel 3");
-        Spanish.Add("mode", "Selección de modo");
+        Spanish.Add("mode", "Selección\nde modo");
         Spanish.Add("singleplayer", "Individual");
         Spanish.Add("multiplayer", "Multijugador");
         Spanish.Add("menu", "Menú");

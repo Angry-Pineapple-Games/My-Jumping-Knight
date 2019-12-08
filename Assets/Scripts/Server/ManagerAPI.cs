@@ -387,8 +387,11 @@ class ManagerAPI : MonoBehaviour
         string[] oldLevelString = PlayerPrefs.GetString(keylevel).Split(' ');
         string rank = CalculateRank(min, heal, globaltime, level);
         PlayerPrefs.SetString("lastRank", rank);
-        if (!oldLevelString[0].Equals(myUsername) || (int.Parse(newLevelString[newLevelString.Length - 1]) >= int.Parse(oldLevelString[oldLevelString.Length - 1])
-            && float.Parse(newLevelString[newLevelString.Length - 2]) < float.Parse(oldLevelString[oldLevelString.Length - 2])))
+        int oldHeal = int.Parse(oldLevelString[oldLevelString.Length - 1]);
+        int newHeal = int.Parse(newLevelString[newLevelString.Length - 1]);
+        float oldTime = float.Parse(newLevelString[newLevelString.Length - 2]);
+        float newTime = float.Parse(oldLevelString[oldLevelString.Length - 2]);
+        if (!oldLevelString[0].Equals(myUsername) || oldHeal == 0 || (newHeal >= oldHeal && oldTime < newTime))
         {
             if (globaltime < MAXTIMETOSAVE)
             {
