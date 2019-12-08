@@ -17,6 +17,7 @@
 ## 2. Concepto de Juego
 ### 2.1. Género y Setting
 My Jumping Knight es un juego de *running by tapping* en 3D con vista isométrica en el que el jugador deberá manejar a un caballero que se mueve casilla a casilla por un tablero lleno de trampas hasta alcanzar la salida, todo ello con ambientación medieval.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Assets/UI%20Elements/casco.png "Icono del caballero")
 
 Permite además enfrentarse a otros jugadores mediante la subida y descarga del recorrido que ha hecho el jugador en distintas iteraciones del juego, evitando así lag y dando lugar a un enfrentamiento muy preciso. De la misma forma, también se pueden poner datos de dos jugadores a competir entre ellos.
