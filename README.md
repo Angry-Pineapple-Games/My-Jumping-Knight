@@ -310,8 +310,8 @@ En cuanto a las recompensas a los *backers*, seguirán este modo:
 ## 10. Referencias y licencias
 Se han utilizado los siguientes *assets* bajo licencia Creative Commons 4.0:
 * Canciones: Call to Adventure, Death and Axes, Mall, Rainbows y Teddy Bear Waltz. Todas ellas pertenecientes a [Kevin Macleod](https://incompetech.com/).
-* Sonido: [Annulet of absorption, de CosmicCD](https://freesound.org/people/CosmicD/sounds/133008/). L
-* Skyboxes: [David Schmeltekopf, Grass Depot](http://grassdepartment.com/unityas/index.php/portfolio/dramatic-skies-skybox-collection/)
+* Sonido: [Annulet of absorption, de CosmicCD](https://freesound.org/people/CosmicD/sounds/133008/).
+* Skyboxes: [David Schmeltekopf, Grass Depot](http://grassdepartment.com/unityas/index.php/portfolio/dramatic-skies-skybox-collection/).
 
 ## 11. Contacto y enlaces de interés
 
