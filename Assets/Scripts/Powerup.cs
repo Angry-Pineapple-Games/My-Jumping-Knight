@@ -6,6 +6,7 @@ public class Powerup : MonoBehaviour
 {
     bool player1 = false;
     bool player2 = false;
+    public bool multiplayer = true;
     public MeshRenderer meshRenderer;
 
     // Start is called before the first frame update
@@ -27,13 +28,13 @@ public class Powerup : MonoBehaviour
             if (!player1)
             {
                 player1 = true;
-                if (player2)
+                if (player2 || !multiplayer)
                 {
                     this.transform.gameObject.SetActive(false);
                 }
                 else
                 {
-                    meshRenderer.material.color = Color.blue;
+                    meshRenderer.material.color = new Color(0f, 0f, 1f, 0.5f);
                 }
                 DoEffect(player);
             }
@@ -45,10 +46,6 @@ public class Powerup : MonoBehaviour
                 if (player1)
                 {
                     this.transform.gameObject.SetActive(false);
-                }
-                else
-                {
-                    meshRenderer.material.color = Color.red;
                 }
                 DoEffect(player);
             }

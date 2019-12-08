@@ -30,13 +30,30 @@ public class Blade : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.OnTimeStopped += SlowDown;
-        Player.OnTimeStarted += RestoreTime;
+        if(tag == "Hazard")
+        {
+            Player.OnTimeStopped += SlowDown;
+            Player.OnTimeStarted += RestoreTime;
+        }
+        if(tag == "HazardP2")
+        {
+            Player.OnTimeStoppedP2 += SlowDown;
+            Player.OnTimeStartedP2 += RestoreTime;
+        }
+        
     }
 
     private void OnDisable()
     {
-        Player.OnTimeStopped -= SlowDown;
-        Player.OnTimeStarted -= RestoreTime;
+        if (tag == "Hazard")
+        {
+            Player.OnTimeStopped -= SlowDown;
+            Player.OnTimeStarted -= RestoreTime;
+        }
+        if (tag == "HazardP2")
+        {
+            Player.OnTimeStoppedP2 -= SlowDown;
+            Player.OnTimeStartedP2 -= RestoreTime;
+        }
     }
 }

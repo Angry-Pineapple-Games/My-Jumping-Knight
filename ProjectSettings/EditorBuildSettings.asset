@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: 7999be9dbfaf3e74abd030762223f268
+  - enabled: 1
     path: Assets/Scenes/Access/Login.unity
     guid: 00b6ab0690a17d24caaf673c321f6fb4
   - enabled: 1
@@ -29,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/ChoseSimulationModeScene.unity
     guid: b3e0e260b8a4c4547a4b9dc2a3e02968
+  - enabled: 1
+    path: Assets/Scenes/Game/TutorialScene.unity
+    guid: b1e9fafc99515d6499aac13a956ae605
   - enabled: 1
     path: Assets/Scenes/Game/Level1Scene.unity
     guid: 64cf958138e7b364eb4e7211e4435910

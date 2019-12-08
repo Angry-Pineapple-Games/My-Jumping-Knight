@@ -43,4 +43,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef087ac0150069d4294f630e08834f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverMaintenanceWarning: {fileID: 3344675466879385741, guid: 5dc7d3a87a50a5c4bb0309d050b6f6d1,
+    type: 3}
+  iconLoading: {fileID: 7475152281294569420, guid: 9a8bb2cd24f3c4d4dbfcd53a03144175,
+    type: 3}
+  userWarning: {fileID: 3344675466879385741, guid: 58e2e63030f2bb84a8ff02859502da35,
+    type: 3}
+  credentialsWarning: {fileID: 3344675466879385741, guid: 97af5bbd4b0d49f4badcad15486682aa,
+    type: 3}
   isNetReachability: 0
+  myUsername: 
+  myPassword: 
+  myGlobalTime: 0
+  myRank1: 
+  myLevel1: 
+  myRank2: 
+  myLevel2: 
+  myRank3: 
+  myLevel3: 
+  oponentUsername: 
+  oponentGlobalTime: 

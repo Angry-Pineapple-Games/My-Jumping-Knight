@@ -9,6 +9,12 @@ TagManager:
   - SpikesActivator
   - Player1
   - Player2
+  - HazardP2
+  - SpikesActivatorP2
+  - Button
+  - ButtonP2
+  - Portal
+  - TutorialSpawner
   layers:
   - Default
   - TransparentFX
