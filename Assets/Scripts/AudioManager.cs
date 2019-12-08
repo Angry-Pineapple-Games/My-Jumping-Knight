@@ -54,7 +54,6 @@ public class AudioManager : MonoBehaviour
         switch (currentScene)
         {
             case "TitleScene":
-                print("Entro");
                 musicSource.clip = songs[0];
                 PlaySong();
                 break;

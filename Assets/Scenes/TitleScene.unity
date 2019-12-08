@@ -1029,7 +1029,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3e633fc34ec50a34abd3f85626aa71e7, type: 3}
   sounds:
   - {fileID: 8300000, guid: cdf254ab33946ec40bb6bdde558e4f81, type: 3}
-  - {fileID: 8300000, guid: 58cee836ea1480f4db7ff608d5bbc4f1, type: 3}
   musicSource: {fileID: 344531742}
   soundSource: {fileID: 929585432}
 --- !u!4 &2020544387

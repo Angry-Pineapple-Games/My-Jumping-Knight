@@ -65,6 +65,9 @@ public class Language : MonoBehaviour
         English.Add("soundson", "Sounds on");
         English.Add("musicoff", "Music off");
         English.Add("musicon", "Music on");
+        English.Add("license", "License");
+        English.Add("attribution", "Licensed By Creative Commons with Attribution 3.0");
+        English.Add("team", "Team members");
         #endregion
 
         #region Game
@@ -125,6 +128,9 @@ public class Language : MonoBehaviour
         Spanish.Add("soundson", "Activar sonidos");
         Spanish.Add("musicoff", "Desactivar música");
         Spanish.Add("musicon", "Activar música");
+        Spanish.Add("license", "Licencias");
+        Spanish.Add("attribution", "Licencia Creative Commons con Atribución 3.0");
+        Spanish.Add("team", "Miembros del equipo");
         #endregion
 
         #region Game
