@@ -74,16 +74,27 @@ Durante la partida, el jugador podrá apreciar varios elementos en la interfaz: 
 El jugador comenzará en la parte inicial del nivel y deberá sortear obstáculos y trampas para llegar al final. Algunas secuencias de trampas requerirán de habilidad, mientras que otras funcionarán a modo de puzles y exigirán al jugador pensar la solución lo más rápido posible.
 #### 4.4.4. Trampas
 * **Pinchos**: Los pinchos son una trampa oculta que saltarán en cuanto el jugador se sitúe encima de la casilla en donde estos se encuentren.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/spikes-trap-color.png "Bloque con pinchos")
+
 * **Sierra**: Trampa que se transporta lateralmente de un lado a otro. El jugador tendrá que contemporizar para pasar por el camino sin entrar en contacto con ella.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/saw-trap-color.png "Bloque con sierra")
+
 * **Flechas**: Las flechas se disparan continuamente en un intervalo de tiempo concreto, por lo que el jugador deberá contemporizar para esquivarlas.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/arrow-trap-color.png "Hoja de detalles del lanzaflechas y la flecha")
+
 * **Cuchilla giratoria**: El eje se situará en una casilla y la cuchilla girará alrededor de él, moviéndose por las casillas adyacentes a dicho eje, obligando al jugador a sortear el obstáculo.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Bocetos/Traps/blade-trap-color.png "Posibles diseños de la cuchilla giratoria")
+
 * **Portales**: No son una trampa en si misma, pero habrá casillas que, en cuanto detecten que el jugador se sitúe sobre ellas, le teletransportarán a otra posición en la que se encuentre el portal emparejado.
+
 * **Botones y puertas**: Las puertas bloquean el paso del jugador, mientras que los botones (generalmente situados en otra zona del mapa), accionan las puertas y permiten al jugador pasar a través de ellas.
+
 ![](https://raw.githubusercontent.com/Angry-Pineapple-Games/My-Jumping-Knight/master/UnityProject/Game%20Design/Capturas%20GDD/13_lv3.png "Pantallazo del tercer nivel, con portal y botón")
+
 #### 4.4.5. Power Ups
 * **Corazón**: El corazón, como es habitual en cualquier juego con sistema de vidas, recuperará una vida al jugador. Se puede coger un corazón aunque se conserven las tres vidas, pero este no tendrá efecto.
 * **Escudo**: El escudo prevendrá el daño de la próxima trampa con la que interactúe el jugador, es decir, que evitará que el jugador pierda una vida en su siguiente encuentro con una trampa.
@@ -333,3 +344,5 @@ Se han utilizado los siguientes *assets* bajo licencia Creative Commons 4.0:
 > [Github Pages](https://angry-pineapple-games.github.io/My-Jumping-Knight/ "Github pages con el juego funcional")
 
 >[Facebook Instant Games (solo accesible con inicio de sesión al estar oculto para el desarrollador)](https://fb.gg/play/1192728987604922 "Enlace con Facebook funcional")
+
+>[Github del proyecto](https://github.com/Angry-Pineapple-Games/My-Jumping-Knight)
