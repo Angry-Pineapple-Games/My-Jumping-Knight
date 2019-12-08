@@ -19,7 +19,7 @@ public class LangWriter : MonoBehaviour
         lastLang = lang.language;
         key = textfield.text;
         textfield.text = lang.GetString(textfield.text);
-        if (SceneManager.GetActiveScene().name.Equals("Login"))
+        if (SceneManager.GetActiveScene().name.Equals("Login") || SceneManager.GetActiveScene().name.Equals("ConfigScene"))
             StartCoroutine(CheckLangChange());
     }
 

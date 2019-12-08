@@ -61,6 +61,10 @@ public class Language : MonoBehaviour
         English.Add("loading", "Loading");
         English.Add("userexist", "User already exist");
         English.Add("badcredentials", "Credentials error!");
+        English.Add("soundsoff", "Sounds off");
+        English.Add("soundson", "Sounds on");
+        English.Add("musicoff", "Music off");
+        English.Add("musicon", "Music on");
         #endregion
 
         #region Game
@@ -117,6 +121,10 @@ public class Language : MonoBehaviour
         Spanish.Add("loading", "Cargando");
         Spanish.Add("userexist", "El usuario ya existe");
         Spanish.Add("badcredentials", "Error de credenciales!");
+        Spanish.Add("soundsoff", "Desactivar sonidos");
+        Spanish.Add("soundson", "Activar sonidos");
+        Spanish.Add("musicoff", "Desactivar música");
+        Spanish.Add("musicon", "Activar música");
         #endregion
 
         #region Game
