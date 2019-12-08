@@ -16,7 +16,7 @@ class ManagerAPI : MonoBehaviour
     public GameObject credentialsWarning;
 
     //generales
-    private bool debug = true;
+    private bool debug = false;
     private const int NUMBERLEVELS = 3;
     private const int NUMBERGAMES = 5;
     private const float MAXTIMETOSAVE = 1000f;
@@ -24,7 +24,6 @@ class ManagerAPI : MonoBehaviour
     private const string GAME = "MainScene";
     private const string LOGIN = "Login";
     private string[] RANKS = new string[] { "C", "B", "A", "A+", "S", "S+" };
-    //private int[] RANKSSTEPS = new int[] { 120, 95, 55, 30, 10, 2};
     private int[] RANKSSTEPS1 = new int[] { 120, 57, 37, 22, 10, 2};
     private int[] RANKSSTEPS2 = new int[] { 120, 100, 60, 35, 15, 5};
     private int[] RANKSSTEPS3 = new int[] { 120, 100, 65, 45, 25, 15};
@@ -188,6 +187,7 @@ class ManagerAPI : MonoBehaviour
     private void ServerMaintenance()
     {
         Instantiate(serverMaintenanceWarning, GameObject.Find("Canvas").transform);
+        isNetReachability = false;
     }
 
     private void UserWarning()
@@ -273,6 +273,10 @@ class ManagerAPI : MonoBehaviour
         myRank3 = "C";
         myLevel3 = "";
         isNetReachability = false;
+        InitUserPlayerPrefs();
+        UpdateUserPlayerPrefs("1", myLevel1, myRank1);
+        UpdateUserPlayerPrefs("2", myLevel2, myRank2);
+        UpdateUserPlayerPrefs("3", myLevel3, myRank3);
         SceneManager.LoadScene(GAME);
     }
 
