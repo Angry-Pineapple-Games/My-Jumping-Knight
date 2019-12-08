@@ -77,7 +77,7 @@ public class Language : MonoBehaviour
         #endregion
 
         #region General
-        English.Add("maintenance", "If you want to play online, visit:\nhttps://angry-pineapple-games.github.io/My-Jumping-Knight/");
+        English.Add("maintenance", "Download this game\nto play online!");
         English.Add("ok", "Ok");
         #endregion
 
@@ -140,7 +140,7 @@ public class Language : MonoBehaviour
         #endregion
 
         #region General
-        Spanish.Add("maintenance", "Para jugar online, visita:\nhttps://angry-pineapple-games.github.io/My-Jumping-Knight/");
+        Spanish.Add("maintenance", "Descarga el juego\npara jugar online!");
         Spanish.Add("ok", "Ok");
         #endregion
 
